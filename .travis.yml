@@ -1,5 +1,3 @@
-before_install: 
- - rbenv install 0.4.0
 language: ruby
-rbenv:
- - "0.4.0"
+rvm:
+ - 2.2.3-p173
