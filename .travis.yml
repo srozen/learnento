@@ -1,6 +1,6 @@
 before_install:
- - rvm install 2.2.3
+ - rvm install 2.3.0
 
 language: ruby
 rvm:
- - 2.2.3
+ - 2.3.0
