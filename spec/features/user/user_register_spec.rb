@@ -7,7 +7,7 @@ RSpec.feature 'user registration', '
 
   scenario 'Guest register with valid informations' do
     i_am_on_root_page
-    i_go_on_login_form
+    i_go_on_registration_form
     i_fill_the_form_in
     i_create_my_account
 
@@ -18,16 +18,16 @@ RSpec.feature 'user registration', '
     visit '/'
   end
 
-  def i_go_on_login_form
+  def i_go_on_registration_form
     root.access_registration
   end
 
   def i_fill_the_form_in
-    root.fill_form
+    root.fill_register_form
   end
 
   def i_create_my_account
-    root.confirm_form
+    root.confirm_register_form
   end
 
   def my_account_has_been_created
