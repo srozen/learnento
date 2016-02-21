@@ -11,6 +11,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'carrierwave'
 gem 'memoist', '~> 0.14.0'
 gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'jquery-rails'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
 
 group :test do
   gem 'capybara'
