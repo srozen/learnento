@@ -12,6 +12,7 @@ gem 'carrierwave'
 gem 'memoist', '~> 0.14.0'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'jquery-rails'
+gem 'devise'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
