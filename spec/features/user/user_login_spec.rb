@@ -14,6 +14,9 @@ RSpec.feature 'user logging in', '
     my_session_is_active
   end
 
+  private
+
+  let!(:user){User.create(email: "foo@bar.com", password: "password")}
   def i_am_on_root_page
     visit '/'
   end
@@ -23,7 +26,7 @@ RSpec.feature 'user logging in', '
   end
 
   def i_fill_the_form_in
-    root.fill_login_form('email', 'password')
+    root.fill_login_form(user.email, user.password)
   end
 
   def i_log_in

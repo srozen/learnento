@@ -22,4 +22,9 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.for(:sign_in) << :attribute
   # end
+
+  # Path used after sign in
+  def after_sign_in_path_for(user)
+    user_path(current_user) if current_user
+  end
 end
