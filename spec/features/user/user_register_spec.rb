@@ -31,6 +31,6 @@ RSpec.feature 'user registration', '
   end
 
   def my_account_has_been_created
-    expect(page).to have_selector(['data-purpose="first_steps"'])
+    expect(page).to have_selector('[data-purpose="first_steps"]')
   end
 end
