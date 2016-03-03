@@ -23,11 +23,11 @@ RSpec.feature 'user registration', '
   end
 
   def i_fill_the_form_in
-    root.fill_register_form
+    register.fill_register_form
   end
 
   def i_create_my_account
-    root.confirm_register_form
+    register.confirm_register_form
   end
 
   def my_account_has_been_created

@@ -26,11 +26,11 @@ RSpec.feature 'user logging in', '
   end
 
   def i_fill_the_form_in
-    root.fill_login_form(user.email, user.password)
+    login.fill_login_form(user.email, 'password')
   end
 
   def i_log_in
-    root.confirm_login_form
+    login.confirm_login_form
   end
 
   def my_session_is_active

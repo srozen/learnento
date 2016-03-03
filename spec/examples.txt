@@ -1,6 +1,6 @@
 example_id                                      | status  | run_time        |
 ----------------------------------------------- | ------- | --------------- |
-./spec/features/user/user_login_spec.rb[1:1]    | passed  | 0.51673 seconds |
-./spec/features/user/user_register_spec.rb[1:1] | passed  | 0.07899 seconds |
+./spec/features/user/user_login_spec.rb[1:1]    | passed  | 0.0904 seconds  |
+./spec/features/user/user_register_spec.rb[1:1] | passed  | 0.53435 seconds |
 ./spec/helpers/pages_helper_spec.rb[1:1]        | pending | 0.00003 seconds |
 ./spec/models/user_spec.rb[1:1]                 | pending | 0.00002 seconds |
