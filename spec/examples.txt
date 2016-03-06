@@ -1,8 +1,9 @@
 example_id                                                    | status  | run_time        |
 ------------------------------------------------------------- | ------- | --------------- |
-./spec/features/guest/guest_cant_access_profiles_spec.rb[1:1] | passed  | 0.08639 seconds |
-./spec/features/user/user_login_spec.rb[1:1]                  | passed  | 0.50111 seconds |
-./spec/features/user/user_register_spec.rb[1:1]               | passed  | 0.52875 seconds |
-./spec/helpers/pages_helper_spec.rb[1:1]                      | pending | 0.00003 seconds |
-./spec/helpers/users_helper_spec.rb[1:1]                      | pending | 0.00003 seconds |
-./spec/models/user_spec.rb[1:1]                               | pending | 0.00002 seconds |
+./spec/features/guest/guest_cant_access_profiles_spec.rb[1:1] | passed  | 0.20158 seconds |
+./spec/features/user/user_browse_learners_spec.rb[1:1]        | passed  | 0.04251 seconds |
+./spec/features/user/user_login_spec.rb[1:1]                  | passed  | 0.03031 seconds |
+./spec/features/user/user_register_spec.rb[1:1]               | passed  | 0.05516 seconds |
+./spec/helpers/pages_helper_spec.rb[1:1]                      | pending | 0.00002 seconds |
+./spec/helpers/users_helper_spec.rb[1:1]                      | pending | 0.00001 seconds |
+./spec/models/user_spec.rb[1:1]                               | pending | 0.00001 seconds |

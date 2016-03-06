@@ -1,10 +1,16 @@
 <nav class="navbar navbar-light bg-faded">
   <% if !user_signed_in?%>
       <%= link_to 'Learnento', root_path, class: 'navbar-brand', method:'get' %>
+      <form class="form-inline pull-xs-left">
+        <%= link_to 'Learners', users_path, class: 'btn btn-primary', method:'get', 'data-purpose':'learners_button' %>
+      </form>
   <% else %>
       <%= link_to 'Learnento', user_path(current_user), class: 'navbar-brand', method:'get' %>
+      <form class="form-inline pull-xs-left">
+        <%= link_to 'Learners', users_path, class: 'btn btn-primary', method:'get', 'data-purpose':'learners_button' %>
+      </form>
   <% end %>
-      <form class="form-inline pull-xs-right">
+  <form class="form-inline pull-xs-right">
     <% if !user_signed_in? %>
         <%= link_to 'Register', new_user_registration_path, class:'btn btn-primary btn', method:'get', 'data-purpose':'register_form'%>
         <%= link_to 'Login', new_user_session_path, class:'btn btn-primary', method:'get', 'data-purpose':'login_form'%>
