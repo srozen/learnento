@@ -14,6 +14,7 @@ module PagesObjectsHelper
   page_object :root, Spec::Pages::Root
   page_object :login, Spec::Pages::Login
   page_object :register, Spec::Pages::Register
+  page_object :header, Spec::Pages::Header
 
 end
 
