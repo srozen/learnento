@@ -6,10 +6,10 @@ module Spec
       element :password_confirmation_register, '[data-purpose="register_password_confirmation"]'
       element :confirm_register, '[data-purpose="register_confirmation"]'
 
-      def fill_register_form
-        email_register.set("johndoe@foo.bar")
-        password_register.set("197foobar197")
-        password_confirmation_register.set("197foobar197")
+      def fill_register_form(email, password, password_confirmation)
+        email_register.set(email)
+        password_register.set(password)
+        password_confirmation_register.set(password_confirmation)
       end
 
       def confirm_register_form

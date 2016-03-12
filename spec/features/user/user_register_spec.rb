@@ -23,7 +23,7 @@ RSpec.feature 'user registration', '
   end
 
   def i_fill_the_form_in
-    register.fill_register_form
+    register.fill_register_form("johndoe@foo.bar", "197foobar197", "197foobar197")
   end
 
   def i_create_my_account
