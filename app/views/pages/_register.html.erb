@@ -1,0 +1,41 @@
+<!-- Modal Register -->
+<div id="register_form" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <!-- Modal header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Register and Learn English Today !</h4>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= form_for(:user, url: registration_path(:user)) do |f| %>
+            <fieldset class="form-group">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, class:'form-control', type:'email', 'data-purpose':'register_email' %>
+              <small class="text-muted">We'll never share your email with anyone else.</small>
+            </fieldset>
+            <fieldset class="form-group">
+              <%= f.label :password %>
+              <%= f.password_field :password, autocomplete: 'off', class:'form-control', 'data-purpose':'register_password' %>
+            </fieldset>
+            <fieldset class="form-group">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: 'off', class:'form-control', 'data-purpose':'register_password_confirmation' %>
+            </fieldset>
+            <%= f.submit "Register", class:'btn btn-primary', 'data-purpose':'register_confirmation' %>
+        <% end %>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
