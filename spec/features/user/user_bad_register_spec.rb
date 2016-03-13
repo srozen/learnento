@@ -23,7 +23,7 @@ RSpec.feature 'Bad register informations', '
   end
 
   def i_fill_the_form_in
-    register.fill_register_form("jogn@foo.bar", "password", "notsamepass")
+    register.fill_register_form("john@foo.bar", "password", "notsamepass")
   end
 
   def i_create_my_account
@@ -31,6 +31,6 @@ RSpec.feature 'Bad register informations', '
   end
 
   def my_account_has_not_been_created
-
+    expect(page.current_url).to eq('http://www.example.com/users')
   end
 end

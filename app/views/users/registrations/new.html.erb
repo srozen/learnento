@@ -3,19 +3,19 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   <fieldset class="form-group">
-    <%= f.label :email %><br />
+    <%= fa_icon "envelope" %> <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, class:'form-control', type:'email', 'data-purpose':'register_email' %>
     <small class="text-muted">We'll never share your email with anyone else.</small>
   </fieldset>
   <fieldset class="form-group">
-    <%= f.label :password %>
+    <%= fa_icon "lock" %> <%= f.label :password %>
     <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: 'off', class:'form-control', 'data-purpose':'register_password' %>
   </fieldset>
   <fieldset class="form-group">
-    <%= f.label :password_confirmation %><br />
+    <%= fa_icon "lock" %> <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: 'off', class:'form-control', 'data-purpose':'register_password_confirmation' %>
   </fieldset>
   <%= f.submit "Register", class:'btn btn-primary', 'data-purpose':'register_confirmation' %>
