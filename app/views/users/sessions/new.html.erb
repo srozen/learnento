@@ -1,7 +1,8 @@
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <fieldset class="form-group">
+    <%= content_tag(:div, flash[:alert], :id => "flash_alert", 'data-purpose': "devise-alert",  class: "alert alert-danger", role:  "alert") if flash[:alert] %>
+    <fieldset class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, class:'form-control', 'data-purpose':'login_email' %>
   </fieldset>
