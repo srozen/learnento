@@ -34,9 +34,9 @@ RSpec.feature 'Profile edition', '
   end
 
   def i_fill_the_form_in
-    profile_edition.fill_first_name()
-    profile_edition.fill_last_name()
-    profile_edition.upload_avatar()
+    profile_edition.fill_first_name("Samuel")
+    profile_edition.fill_last_name("Monroe")
+    profile_edition.upload_avatar(Rails.root+'/public/images/pepe.jpg')
   end
 
   def i_confirm_the_edition

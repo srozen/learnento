@@ -1,3 +1,4 @@
 <h2 data-purpose="first_steps">Account Overview</h2>
 <span data-purpose="user_details"></span>
 <%= "Hello #{@user.email}" %>
+<%= link_to 'Edit', edit_user_path(@user), class:'btn btn-primary btn', method:'get', 'data-purpose':'edit-profile-button' %>

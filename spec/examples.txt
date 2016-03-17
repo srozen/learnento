@@ -1,12 +1,12 @@
 example_id                                                    | status  | run_time        |
 ------------------------------------------------------------- | ------- | --------------- |
-./spec/features/guest/guest_bad_register_spec.rb[1:1]         | passed  | 0.06638 seconds |
-./spec/features/guest/guest_cant_access_profiles_spec.rb[1:1] | passed  | 0.07975 seconds |
-./spec/features/guest/guest_register_spec.rb[1:1]             | passed  | 0.12448 seconds |
-./spec/features/user/user_bad_login_spec.rb[1:1]              | passed  | 0.12274 seconds |
-./spec/features/user/user_browse_learners_spec.rb[1:1]        | passed  | 0.07164 seconds |
-./spec/features/user/user_edit_profile_spec.rb[1:1]           | failed  | 0.52056 seconds |
-./spec/features/user/user_login_spec.rb[1:1]                  | passed  | 0.54888 seconds |
+./spec/features/guest/guest_bad_register_spec.rb[1:1]         | passed  | 0.05225 seconds |
+./spec/features/guest/guest_cant_access_profiles_spec.rb[1:1] | passed  | 0.02955 seconds |
+./spec/features/guest/guest_register_spec.rb[1:1]             | passed  | 0.02338 seconds |
+./spec/features/user/user_bad_login_spec.rb[1:1]              | passed  | 0.04216 seconds |
+./spec/features/user/user_browse_learners_spec.rb[1:1]        | passed  | 0.23398 seconds |
+./spec/features/user/user_edit_profile_spec.rb[1:1]           | failed  | 0.04742 seconds |
+./spec/features/user/user_login_spec.rb[1:1]                  | passed  | 0.02441 seconds |
 ./spec/helpers/pages_helper_spec.rb[1:1]                      | pending | 0.00001 seconds |
-./spec/helpers/users_helper_spec.rb[1:1]                      | pending | 0.00005 seconds |
+./spec/helpers/users_helper_spec.rb[1:1]                      | pending | 0.00001 seconds |
 ./spec/models/user_spec.rb[1:1]                               | pending | 0.00001 seconds |

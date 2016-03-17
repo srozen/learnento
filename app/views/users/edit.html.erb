@@ -1,0 +1,7 @@
+<h2 data-purpose="profile-edition">Edit your profile</h2>
+
+<%= form_for @user, url: {action: 'update'} do |f| %>
+    <fieldset class="form-group">
+      <%= f.text_field :first_name, class:'form-control', 'data-purpose':'first-name-input'  %>
+    </fieldset>
+<% end %>

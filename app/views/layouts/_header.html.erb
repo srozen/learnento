@@ -15,6 +15,7 @@
         <%= link_to 'Register', new_user_registration_path, class:'btn btn-primary btn', method:'get', 'data-purpose':'register_form'%>
         <%= link_to 'Login', new_user_session_path, class:'btn btn-primary', method:'get', 'data-purpose':'login_form'%>
     <% else %>
+        <%= link_to 'Profile', user_path(current_user), class: 'navbar-brand', method:'get', 'data-purpose': 'profile-button' %>
         <%= link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary btn', method: 'delete', 'data-purpose': 'disconnect_button' %>
     <% end %>
   </form>
