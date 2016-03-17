@@ -16,6 +16,7 @@ module PagesObjectsHelper
   page_object :register, Spec::Pages::Register
   page_object :header, Spec::Pages::Header
   page_object :profile, Spec::Pages::Profile
+  page_object :profile_edition, Spec::Pages::ProfileEdition
 
 end
 
