@@ -5,7 +5,7 @@ example_id                                                    | status  | run_ti
 ./spec/features/guest/guest_register_spec.rb[1:1]             | passed  | 0.03342 seconds |
 ./spec/features/user/user_bad_login_spec.rb[1:1]              | passed  | 0.03621 seconds |
 ./spec/features/user/user_browse_learners_spec.rb[1:1]        | passed  | 0.51816 seconds |
-./spec/features/user/user_edit_profile_spec.rb[1:1]           | failed  | 0.25218 seconds |
+./spec/features/user/user_edit_profile_spec.rb[1:1]           | passed  | 0.24825 seconds |
 ./spec/features/user/user_login_spec.rb[1:1]                  | passed  | 0.02995 seconds |
 ./spec/helpers/pages_helper_spec.rb[1:1]                      | pending | 0.00001 seconds |
 ./spec/helpers/users_helper_spec.rb[1:1]                      | pending | 0.00001 seconds |
