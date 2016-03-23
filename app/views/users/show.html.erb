@@ -8,4 +8,7 @@
 <% if !@user.avatar.nil? %>
     <div><%= image_tag(@user.avatar) %></div>
 <% end %>
-<%= link_to 'Edit', edit_user_path(@user), class:'btn btn-primary btn', method:'get', 'data-purpose':'edit-profile-button' %>
+
+<% if current_user == @user %>
+  <%= link_to 'Edit', edit_user_path(@user), class:'btn btn-primary btn', method:'get', 'data-purpose':'edit-profile-button' %>
+<% end %>
