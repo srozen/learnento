@@ -15,7 +15,7 @@ RSpec.feature 'learners browsing', '
 
   private
 
-  let!(:user){User.create(email: "foo@bar.com", password: "password")}
+  let!(:user){User.create(email: 'foo@bar.com', password: 'password')}
 
   def i_go_on_learners_page
     header.access_learners_page

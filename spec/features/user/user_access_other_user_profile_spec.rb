@@ -19,8 +19,8 @@ RSpec.feature 'learners browsing', '
 
   private
 
-  let!(:user){User.create(username: 'foobar', email: 'foo@bar.com', password: 'password')}
-  let!(:otheruser){User.create(username: 'bazbar', email: 'baz@bar.com', password: 'password')}
+  let!(:user){User.create(email: 'foo@bar.com', password: 'password', first_name: 'John', last_name: 'Foo')}
+  let!(:otheruser){User.create(email: 'baz@bar.com', password: 'password', first_name: 'Jack', last_name: 'Bauer')}
 
   def i_go_on_learners_page
     header.access_learners_page
@@ -31,7 +31,7 @@ RSpec.feature 'learners browsing', '
   end
 
   def i_access_a_user_profile
-    user_list.access_user_profile(otheruser.username)
+    user_list.access_user_profile(otheruser.first_name)
   end
 
   def user_profile_is_displayed
