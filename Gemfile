@@ -15,12 +15,11 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'coveralls', require: false
-gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1'
-=begin
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
-=end
+
 
 group :test do
   gem 'capybara'

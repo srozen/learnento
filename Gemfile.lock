@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
@@ -226,7 +227,7 @@ DEPENDENCIES
   jquery-rails
   memoist (~> 0.14.0)
   rails (= 4.2.5)
-  rails-assets-tether (~> 1.1, >= 1.1.1)
+  rails-assets-tether (>= 1.1.0)!
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
