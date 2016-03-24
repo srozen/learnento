@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'learners browsing', '
+RSpec.feature 'Browse user list', '
   As a registered user
   In order to talk with other people
   I want to know who else is using Learnento' do
