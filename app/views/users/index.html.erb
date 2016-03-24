@@ -1,5 +1,7 @@
 <h1 data-purpose="learners_index">Learners</h1>
 
+<div data-purpose="user-list">
 <% @users.each do |user|  %>
   <%= link_to user.first_name, user_path(user)  %> <%= user.last_name %> - <%= user.email %> <br/>
 <% end %>
+</div>

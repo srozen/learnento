@@ -10,6 +10,7 @@ RSpec.feature 'Browse user list', '
       i_go_on_learners_page
 
       profiles_are_displayed
+      my_profile_is_not_listed
     end
   end
 
@@ -23,5 +24,9 @@ RSpec.feature 'Browse user list', '
 
   def profiles_are_displayed
     expect(page).to have_selector('[data-purpose="learners_index"]')
+  end
+
+  def my_profile_is_not_listed
+    expect(find('[data-purpose="user-list"]')).not_to have_selector(%|[href="#{user_path(user)}"]|)
   end
 end
