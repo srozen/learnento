@@ -34,7 +34,7 @@ RSpec.feature 'user logging in', '
   end
 
   def my_session_is_active
-    expect(page).to have_selector('[data-purpose="user_details"]')
+    expect(page).to have_selector('[data-purpose="user-details"]')
   end
 
 end

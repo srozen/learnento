@@ -35,6 +35,6 @@ RSpec.feature 'learners browsing', '
   end
 
   def user_profile_is_displayed
-    expect(page).to have_selector('[data-purpose="user_details"]')
+    expect(page).to have_selector('[data-purpose="user-details"]')
   end
 end

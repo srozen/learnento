@@ -1,9 +1,9 @@
-<h2 data-purpose="first_steps">Account Overview</h2>
+<h2>Account Overview</h2>
 <% if flash[:notice] %>
     <div data-purpose="success-edit"> <%=flash_success!(flash[:notice]) %> </div>
 <% end %>
 
-<span data-purpose="user_details"></span>
+<span data-purpose="user-details"></span>
 <%= "Hello #{@user.email}" %><br/>
 <% if !@user.avatar.nil? %>
     <div><%= image_tag(@user.avatar) %></div>
