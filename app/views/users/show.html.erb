@@ -12,3 +12,5 @@
 <% if current_user == @user %>
   <%= link_to 'Edit', edit_user_path(@user), class:'btn btn-primary btn', method:'get', 'data-purpose':'edit-profile-button' %>
 <% end %>
+
+<%= friend_request_button %>
