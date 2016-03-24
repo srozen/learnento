@@ -1,14 +1,15 @@
-example_id                                                       | status  | run_time        |
----------------------------------------------------------------- | ------- | --------------- |
-./spec/features/guest/guest_bad_register_spec.rb[1:1]            | passed  | 0.07459 seconds |
-./spec/features/guest/guest_cant_access_profiles_spec.rb[1:1]    | passed  | 0.4098 seconds  |
-./spec/features/guest/guest_register_spec.rb[1:1]                | passed  | 0.06634 seconds |
-./spec/features/user/user_access_other_user_profile_spec.rb[1:1] | passed  | 0.11048 seconds |
-./spec/features/user/user_bad_login_spec.rb[1:1]                 | passed  | 0.06996 seconds |
-./spec/features/user/user_browse_learners_spec.rb[1:1]           | passed  | 0.07726 seconds |
-./spec/features/user/user_cant_edit_other_profile_spec.rb[1:1]   | passed  | 0.09801 seconds |
-./spec/features/user/user_edit_profile_spec.rb[1:1]              | passed  | 0.13262 seconds |
-./spec/features/user/user_login_spec.rb[1:1]                     | passed  | 0.12005 seconds |
-./spec/helpers/pages_helper_spec.rb[1:1]                         | pending | 0.00001 seconds |
-./spec/helpers/users_helper_spec.rb[1:1]                         | pending | 0.00002 seconds |
-./spec/models/user_spec.rb[1:1]                                  | pending | 0.00003 seconds |
+example_id                                                            | status  | run_time        |
+--------------------------------------------------------------------- | ------- | --------------- |
+./spec/features/guest/guest_bad_register_spec.rb[1:1]                 | passed  | 0.07459 seconds |
+./spec/features/guest/guest_cant_access_profiles_spec.rb[1:1]         | passed  | 0.4098 seconds  |
+./spec/features/guest/guest_register_spec.rb[1:1]                     | passed  | 0.06634 seconds |
+./spec/features/user/friendship/user_send_friend_request_spec.rb[1:1] | passed  | 0.70453 seconds |
+./spec/features/user/user_access_other_user_profile_spec.rb[1:1]      | passed  | 0.11048 seconds |
+./spec/features/user/user_bad_login_spec.rb[1:1]                      | passed  | 0.06996 seconds |
+./spec/features/user/user_browse_learners_spec.rb[1:1]                | passed  | 0.07726 seconds |
+./spec/features/user/user_cant_edit_other_profile_spec.rb[1:1]        | passed  | 0.09801 seconds |
+./spec/features/user/user_edit_profile_spec.rb[1:1]                   | passed  | 0.13262 seconds |
+./spec/features/user/user_login_spec.rb[1:1]                          | passed  | 0.12005 seconds |
+./spec/helpers/pages_helper_spec.rb[1:1]                              | pending | 0.00001 seconds |
+./spec/helpers/users_helper_spec.rb[1:1]                              | pending | 0.00002 seconds |
+./spec/models/user_spec.rb[1:1]                                       | pending | 0.00003 seconds |
