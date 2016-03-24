@@ -5,7 +5,7 @@ module UsualStepsHelper
     root.access_login
     login.fill_login_form(user.email, 'password')
     login.confirm_login_form
-    expect(page).to have_selector('[data-purpose="user_details"]')
+    expect(page).to have_selector('[data-purpose="user-details"]')
     yield
   end
 

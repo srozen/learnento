@@ -1,14 +1,14 @@
 example_id                                                       | status  | run_time        |
 ---------------------------------------------------------------- | ------- | --------------- |
-./spec/features/guest/guest_bad_register_spec.rb[1:1]            | passed  | 0.13114 seconds |
-./spec/features/guest/guest_cant_access_profiles_spec.rb[1:1]    | passed  | 0.06135 seconds |
-./spec/features/guest/guest_register_spec.rb[1:1]                | failed  | 0.11374 seconds |
-./spec/features/user/user_access_other_user_profile_spec.rb[1:1] | passed  | 0.08799 seconds |
-./spec/features/user/user_bad_login_spec.rb[1:1]                 | passed  | 0.06921 seconds |
-./spec/features/user/user_browse_learners_spec.rb[1:1]           | passed  | 0.0955 seconds  |
-./spec/features/user/user_cant_edit_other_profile_spec.rb[1:1]   | passed  | 0.52769 seconds |
-./spec/features/user/user_edit_profile_spec.rb[1:1]              | passed  | 0.14423 seconds |
-./spec/features/user/user_login_spec.rb[1:1]                     | passed  | 0.06109 seconds |
-./spec/helpers/pages_helper_spec.rb[1:1]                         | pending | 0.00001 seconds |
-./spec/helpers/users_helper_spec.rb[1:1]                         | pending | 0.00006 seconds |
-./spec/models/user_spec.rb[1:1]                                  | pending | 0.00001 seconds |
+./spec/features/guest/guest_bad_register_spec.rb[1:1]            | passed  | 0.05807 seconds |
+./spec/features/guest/guest_cant_access_profiles_spec.rb[1:1]    | passed  | 0.13452 seconds |
+./spec/features/guest/guest_register_spec.rb[1:1]                | passed  | 0.13028 seconds |
+./spec/features/user/user_access_other_user_profile_spec.rb[1:1] | failed  | 0.07996 seconds |
+./spec/features/user/user_bad_login_spec.rb[1:1]                 | passed  | 0.06751 seconds |
+./spec/features/user/user_browse_learners_spec.rb[1:1]           | failed  | 0.14786 seconds |
+./spec/features/user/user_cant_edit_other_profile_spec.rb[1:1]   | failed  | 0.10819 seconds |
+./spec/features/user/user_edit_profile_spec.rb[1:1]              | failed  | 0.06329 seconds |
+./spec/features/user/user_login_spec.rb[1:1]                     | passed  | 0.51399 seconds |
+./spec/helpers/pages_helper_spec.rb[1:1]                         | pending | 0.00002 seconds |
+./spec/helpers/users_helper_spec.rb[1:1]                         | pending | 0.00004 seconds |
+./spec/models/user_spec.rb[1:1]                                  | pending | 0.00002 seconds |
