@@ -9,15 +9,18 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'memoist', '~> 0.14.0'
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'carrierwave'
-
+gem 'coveralls', require: false
+gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1'
+=begin
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
+=end
 
 group :test do
   gem 'capybara'

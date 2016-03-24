@@ -6,7 +6,7 @@
 <span data-purpose="user-details"></span>
 <%= "Hello #{@user.email}" %><br/>
 <% if !@user.avatar.nil? %>
-    <div><%= image_tag(@user.avatar) %></div>
+    <div><%= image_tag(@user.avatar, size: '200x200') %></div>
 <% end %>
 
 <% if current_user == @user %>
