@@ -7,6 +7,7 @@ RSpec.feature 'User accept friend request', '
 
   scenario 'Registered user accepts a friend request' do
     as_user(user) do
+      otheruser_send_me_a_friend_request
       i_check_my_friend_requests_menu
       i_have_a_new_friend_request
       i_accept_the_friend_request
@@ -21,6 +22,10 @@ RSpec.feature 'User accept friend request', '
   let!(:user){User.create(email: 'foo@bar.com', password: 'password', first_name: 'John', last_name: 'Foo')}
   let!(:otheruser){User.create(email: 'baz@bar.com', password: 'password', first_name: 'Jack', last_name: 'Bauer')}
 
+  def otheruser_send_me_a_friend_request
+    otheruser.friend_request(user)
+  end
+
   def i_check_my_friend_requests_menu
     header.access_friend_requests
   end
@@ -30,7 +35,7 @@ RSpec.feature 'User accept friend request', '
   end
 
   def i_accept_the_friend_request
-    friend_request.accept_friend_request
+    friend_requests.accept_friend_request
   end
 
   def i_go_on_my_friendlist
