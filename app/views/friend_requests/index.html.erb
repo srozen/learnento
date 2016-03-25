@@ -1,0 +1,6 @@
+<% @friend_requests.each do |friend_request| %>
+    <div data-purpose="friend-request">
+      <p><%= friend_request.email %> has added you ! </p>
+      <%= accept_request_button(friend_request) %>
+    </div>
+<% end %>
