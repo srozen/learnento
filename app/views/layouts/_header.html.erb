@@ -1,22 +1,40 @@
-<nav class="navbar navbar-light bg-faded">
-  <% if !user_signed_in?%>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <%= link_to 'Learnento', root_path, class: 'navbar-brand', method:'get' %>
-      <form class="form-inline pull-xs-left">
-        <%= link_to 'Learners', users_path, class: 'btn btn-primary', method:'get', 'data-purpose':'learners_button' %>
-      </form>
-  <% else %>
-      <%= link_to 'Learnento', user_path(current_user), class: 'navbar-brand', method:'get' %>
-      <form class="form-inline pull-xs-left">
-        <%= link_to 'Learners', users_path, class: 'btn btn-primary', method:'get', 'data-purpose':'learners_button' %>
-      </form>
-  <% end %>
-  <form class="form-inline pull-xs-right">
-    <% if !user_signed_in? %>
-        <%= link_to 'Register', new_user_registration_path, class:'btn btn-primary btn', method:'get', 'data-purpose':'register_form'%>
-        <%= link_to 'Login', new_user_session_path, class:'btn btn-primary', method:'get', 'data-purpose':'login_form'%>
-    <% else %>
-        <%= link_to 'Profile', user_path(current_user), class: 'navbar-brand', method:'get', 'data-purpose': 'profile-button' %>
-        <%= link_to 'Logout', destroy_user_session_path, class: 'btn btn-primary btn', method: 'delete', 'data-purpose': 'disconnect_button' %>
-    <% end %>
-  </form>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav">
+        <% if user_signed_in?%>
+            <li><%= link_to 'Find Learners', users_path, class: 'btn btn-default', method:'get', 'data-purpose':'learners_button' %></li>
+        <% end %>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if !user_signed_in? %>
+            <li><%= link_to 'Register', new_user_registration_path, method:'get', 'data-purpose':'register_form'%></li>
+            <li><%= link_to 'Login', new_user_session_path, method:'get', 'data-purpose':'login_form'%></li>
+        <% else %>
+          <li class="dropdown">
+            <a href="#" data-purpose="menu-button" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= fa_icon "user" %><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Profile', user_path(current_user), method:'get', 'data-purpose': 'profile-button' %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to 'Logout', destroy_user_session_path, method: 'delete', 'data-purpose': 'disconnect_button' %></li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>

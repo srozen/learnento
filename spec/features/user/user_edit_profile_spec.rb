@@ -22,6 +22,7 @@ RSpec.feature 'Profile edition', '
   let!(:user){User.create(email: "foo@bar.com", password: "password")}
 
   def i_access_my_profile
+    header.access_menu
     header.access_profile_page
   end
 
