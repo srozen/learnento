@@ -1,6 +1,19 @@
+<h2>Friend Requests</h2>
 <% @friend_requests.each do |friend_request| %>
     <div data-purpose="friend-request">
       <p><%= friend_request.email %> has added you ! </p>
       <%= accept_request_button(friend_request) %>
     </div>
 <% end %>
+
+<h2>Pending Requests</h2>
+You've sent friend requests to : <br/>
+<ul>
+  <% @pending_requests.each do |pending_request| %>
+    <li>
+      <div data-purpose="pending-request">
+        <p><%= pending_request.email %></p>
+      </div>
+    </li>
+  <% end %>
+</ul>

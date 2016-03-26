@@ -2,6 +2,7 @@ class FriendRequestsController < ApplicationController
 
   def index
     @friend_requests = current_user.requested_friends
+    @pending_requests = current_user.pending_friends
   end
 
   def update
