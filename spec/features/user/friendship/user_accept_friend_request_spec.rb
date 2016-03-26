@@ -8,7 +8,7 @@ RSpec.feature 'User accept friend request', '
   scenario 'Registered user accepts a friend request' do
     as_user(user) do
       otheruser_send_me_a_friend_request
-      i_check_my_friend_requests_menu
+      i_check_my_friend_requests_page
       i_have_a_new_friend_request
       i_accept_the_friend_request
       i_go_on_my_friendlist
@@ -26,7 +26,7 @@ RSpec.feature 'User accept friend request', '
     otheruser.friend_request(user)
   end
 
-  def i_check_my_friend_requests_menu
+  def i_check_my_friend_requests_page
     header.access_friend_requests
   end
 
