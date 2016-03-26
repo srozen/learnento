@@ -13,6 +13,9 @@ RSpec.feature 'User send friend request', '
       i_add_this_user_as_friend
 
       my_friend_request_has_been_sent
+
+      i_go_on_my_friend_requests_page
+      i_have_a_pending_friend_request
     end
   end
 
@@ -39,5 +42,13 @@ RSpec.feature 'User send friend request', '
 
   def my_friend_request_has_been_sent
     expect(page).to have_selector('[data-purpose="pending-friend-request-button"]')
+  end
+
+  def i_go_on_my_friend_requests_page
+    header.access_friend_requests
+  end
+
+  def i_have_a_pending_friend_request
+    expect(page).to have_selector('[data-purpose="pending-request"]')
   end
 end
