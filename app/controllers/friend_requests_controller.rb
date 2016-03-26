@@ -16,4 +16,10 @@ class FriendRequestsController < ApplicationController
     current_user.friend_request(@user)
     redirect_to @user
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    current_user.decline_request(@user)
+    redirect_to friend_requests_path
+  end
 end
