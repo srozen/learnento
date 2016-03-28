@@ -14,4 +14,8 @@ module FriendRequestsHelper
   def decline_request_button(user)
     button_to 'Decline Request', friend_request_path(user), method: 'delete', class: 'btn btn-danger', 'data-purpose': 'decline-friend-request-button'
   end
+
+  def cancel_request_button(user)
+    button_to 'Cancel Request', friend_request_path(user), method: 'delete', class: 'btn btn-danger', 'data-purpose': 'cancel-friend-request-button'
+  end
 end

@@ -14,6 +14,7 @@ You've sent friend requests to : <br/>
     <li>
       <div data-purpose="pending-request">
         <p><%= pending_request.email %></p>
+        <%= cancel_request_button(pending_request) %>
       </div>
     </li>
   <% end %>
