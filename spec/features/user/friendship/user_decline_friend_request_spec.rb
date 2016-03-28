@@ -13,7 +13,7 @@ RSpec.feature 'Declining a friend request', '
       i_decline_the_friend_request
       i_go_on_my_friendlist
 
-      a_new_friend_has_been_added
+      my_friendlist_is_empty
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.feature 'Declining a friend request', '
     header.access_friendlist
   end
 
-  def a_new_friend_has_been_added
+  def my_friendlist_is_empty
     expect(page).to have_selector('[data-purpose="friendlist"]')
     expect(page).not_to have_selector('[data-purpose="friend"]')
   end
