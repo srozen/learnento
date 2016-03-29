@@ -32,6 +32,7 @@ RSpec.feature 'Delete a friend from friendlist', '
 
   def i_remove_otheruser_from_my_friendlist
     friendlist.remove_friend
+    friendlist.confirm_removal
   end
 
   def my_friendlist_is_empty
