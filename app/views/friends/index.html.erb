@@ -2,6 +2,6 @@
 <div data-purpose="friendlist">
   <% @friends.each do |friend| %>
     <p data-purpose="friend"><%= friend %></p>
-    <%= remove_friend_button(friend) %>
+    <%= remove_friend_modal(friend) %>
   <% end %>
 </div>
