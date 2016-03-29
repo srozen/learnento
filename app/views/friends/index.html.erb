@@ -1,5 +1,7 @@
+<h2>Friendlist</h2>
 <div data-purpose="friendlist">
   <% @friends.each do |friend| %>
     <p data-purpose="friend"><%= friend %></p>
+    <%= remove_friend_button(friend) %>
   <% end %>
 </div>
