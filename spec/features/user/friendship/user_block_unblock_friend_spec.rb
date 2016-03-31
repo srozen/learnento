@@ -39,7 +39,7 @@ RSpec.feature 'Blocking and unblocking a friend', '
     friendlist.confirm_blocking
   end
 
-  def my_friendlist_is_empty
+  def my_friendlist_contains_a_blocked_menu
     expect(page).not_to have_selector('[data-purpose="friend"]')
   end
 
@@ -49,6 +49,6 @@ RSpec.feature 'Blocking and unblocking a friend', '
   end
 
   def otheruser_is_in_my_friendlist
-    expect(page).to have_selector('[data-purpose="friend"]')
+    expect(page).not_to have_selector('[data-purpose="blocked"]')
   end
 end
