@@ -1,0 +1,13 @@
+<a class="btn btn-danger" role="button" data-toggle="collapse" data-purpose="blocked-friends-button" href="#blockedFriends" aria-expanded="false" aria-controls="collapseExample">
+  Link with href
+</a>
+<div class="collapse" id="blockedFriends">
+  <h2>Blocked Friends</h2>
+  <div data-purpose="blocked-friends">
+    <% blocked_friends.each do |blocked| %>
+        <p data-purpose="blocked"><%= blocked %></p>
+        <%= remove_friend_modal(blocked) %>
+        <%= unblock_friend_button(blocked) %>
+    <% end %>
+  </div>
+</div>
