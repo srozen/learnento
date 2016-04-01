@@ -39,6 +39,8 @@ RSpec.feature 'Cancelling friend request', '
 
   def i_add_this_user_as_friend
     profile.send_friend_request
+    profile.set_request_message('Hello buddy, accept me !')
+    profile.confirm_friend_request
   end
 
   def my_friend_request_has_been_sent
