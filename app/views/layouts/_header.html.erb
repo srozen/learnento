@@ -16,7 +16,11 @@
 
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
-            <li><%= link_to 'Find Learners', users_path, class: 'btn btn-default', method: 'get', 'data-purpose': 'learners_button' %></li>
+            <li>
+                <%= link_to users_path, class: 'btn btn-default', method: 'get', 'data-purpose': 'learners_button' do %>
+                  <%= '<i class="fa fa-search"></i> Find Learners'.html_safe %>
+                <% end %>
+            </li>
         <% end %>
       </ul>
 

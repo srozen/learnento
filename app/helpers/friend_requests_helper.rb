@@ -8,7 +8,7 @@ module FriendRequestsHelper
   end
 
   def display_request_message(user)
-    current_user.friendships.find_by(friend_id: user.id).message
+    simple_format current_user.friendships.find_by(friend_id: user.id).message
   end
 
   def accept_request_button(user)
