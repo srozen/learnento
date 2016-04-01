@@ -23,7 +23,7 @@ RSpec.feature 'User accept friend request', '
   let!(:otheruser){User.create(email: 'baz@bar.com', password: 'password', first_name: 'Jack', last_name: 'Bauer')}
 
   def otheruser_send_me_a_friend_request
-    otheruser.friend_request(user)
+    otheruser.friend_request(user, 'Squalala')
   end
 
   def i_check_my_friend_requests_page
@@ -32,6 +32,7 @@ RSpec.feature 'User accept friend request', '
 
   def i_have_a_new_friend_request
     expect(page).to have_selector('[data-purpose="friend-request"]')
+    expect(page).to have_selector('[data-purpose="friend-request-message"]')
   end
 
   def i_accept_the_friend_request
