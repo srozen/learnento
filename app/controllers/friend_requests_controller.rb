@@ -13,7 +13,7 @@ class FriendRequestsController < ApplicationController
 
   def create
     @user = User.find(params[:id])
-    current_user.friend_request(@user)
+    current_user.friend_request(@user, params[:message])
     redirect_to @user
   end
 
