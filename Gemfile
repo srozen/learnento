@@ -16,7 +16,7 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'coveralls', require: false
-gem 'has_friendship', path: '../has_friendship'
+gem 'has_friendship', path: './app/gems/has_friendship'
 
 
 source 'https://rails-assets.org' do
