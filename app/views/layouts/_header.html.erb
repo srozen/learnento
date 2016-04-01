@@ -39,9 +39,13 @@
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to 'Profile', user_path(current_user), method: 'get', 'data-purpose': 'profile-button' %></li>
-                <li><%= link_to 'Friends', friends_path(current_user), method: 'get', 'data-purpose': 'friendlist-button'%></li>
+                <li><%= link_to 'Friends', friends_path, method: 'get', 'data-purpose': 'friendlist-button'%></li>
                 <li role="separator" class="divider"></li>
-                <li><%= link_to 'Logout', destroy_user_session_path, method: 'delete', 'data-purpose': 'disconnect_button' %></li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: 'delete', 'data-purpose': 'disconnect_button' do %>
+                      <%= '<i class="fa fa-power-off"></i> Logout'.html_safe %>
+                  <% end %>
+                </li>
               </ul>
             </li>
         <% end %>
