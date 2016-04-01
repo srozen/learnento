@@ -7,6 +7,10 @@ module FriendRequestsHelper
     end
   end
 
+  def display_request_message(user)
+    current_user.friendships.find_by(friend_id: user.id).message
+  end
+
   def accept_request_button(user)
     link_to 'Accept Request', friend_request_path(user), method: 'put', class: 'btn btn-success', 'data-purpose': 'accept-friend-request-button'
   end

@@ -2,6 +2,11 @@
 <% @friend_requests.each do |friend_request| %>
     <div data-purpose="friend-request">
       <p><%= friend_request.email %> has added you ! </p>
+      <div class="panel panel-default">
+        <div class="panel-body" data-purpose="friend-request-message">
+          <%= display_request_message(friend_request) %>
+        </div>
+      </div>
       <%= accept_request_button(friend_request) %>
       <%= decline_request_button(friend_request) %>
     </div>
