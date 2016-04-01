@@ -12,11 +12,15 @@ module FriendRequestsHelper
   end
 
   def accept_request_button(user)
-    link_to 'Accept Request', friend_request_path(user), method: 'put', class: 'btn btn-success', 'data-purpose': 'accept-friend-request-button'
+    link_to friend_request_path(user), method: 'put', class: 'btn btn-success btn-xs', 'data-purpose': 'accept-friend-request-button' do
+      '<span class="fa fa-check"></span> Accept'.html_safe
+    end
   end
 
   def decline_request_button(user)
-    button_to 'Decline Request', friend_request_path(user), method: 'delete', class: 'btn btn-danger', 'data-purpose': 'decline-friend-request-button'
+    link_to friend_request_path(user), method: 'delete', class: 'btn btn-danger btn-xs', 'data-purpose': 'decline-friend-request-button' do
+      '<span class="fa fa-times"></span> Decline'.html_safe
+    end
   end
 
   def cancel_request_button(user)
