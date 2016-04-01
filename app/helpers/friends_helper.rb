@@ -4,11 +4,11 @@ module FriendsHelper
   end
 
   def block_friend_button(friend)
-    button_to 'Block Friend', friend_path(friend, block: 'true'), method: 'put', class: 'btn btn-warning', 'data-purpose': 'confirm-block-friend-button'
+    link_to 'Block Friend', friend_path(friend, block: 'true'), method: 'put', class: 'btn btn-warning', 'data-purpose': 'confirm-block-friend-button'
   end
 
   def unblock_friend_button(friend)
-    button_to 'Unblock Friend', friend_path(friend, block: 'false'), method: 'put', class: 'btn btn-xs btn-success', 'data-purpose': 'unblock-friend-button'
+    link_to 'Unblock Friend', friend_path(friend, block: 'false'), method: 'put', class: 'btn btn-xs btn-success', 'data-purpose': 'unblock-friend-button'
   end
 
   def remove_friend_modal(friend)

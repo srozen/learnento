@@ -1,11 +1,11 @@
 <h2>Friendlist</h2>
 <div data-purpose="friendlist">
   <% @friends.each do |friend| %>
-    <p data-purpose="friend"><%= friend %></p>
+    <span data-purpose="friend"><%= friend %></span>
     <%= remove_friend_modal(friend) %>
     <%= block_friend_modal(friend) %>
   <% end %>
-</div>
+</div><br/>
 
 <% if !@blocked_friends.nil? %>
   <%= blocked_friends_collapse(@blocked_friends) %>
