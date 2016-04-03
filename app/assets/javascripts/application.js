@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require tether
 //= require bootstrap-sprockets
+//= require messages
 // require turbolinks
 // require_tree .
