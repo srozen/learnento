@@ -1,4 +1,5 @@
 class FriendRequestsController < ApplicationController
+  include ActionController::Live
 
   def index
     @friend_requests = current_user.requested_friends
@@ -14,6 +15,7 @@ class FriendRequestsController < ApplicationController
   def create
     @user = User.find(params[:id])
     current_user.friend_request(@user, params[:message])
+    $redis.publish 'friend_requests', @user.email
     redirect_to @user
   end
 
