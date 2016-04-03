@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331185008) do
+ActiveRecord::Schema.define(version: 20160403142155) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "friendable_id"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20160331185008) do
     t.datetime "updated_at"
     t.integer  "blocker_id"
   end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

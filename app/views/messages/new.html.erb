@@ -1,0 +1,5 @@
+<%= form_for(@message) do |m| %>
+  <%= m.hidden_field :user_id, value: current_user.id %>
+  <%= m.text_field :content %>
+  <%= m.submit 'Submit' %>
+<% end %>

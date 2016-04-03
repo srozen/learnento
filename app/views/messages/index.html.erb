@@ -1,0 +1,14 @@
+<h2> Chatouille </h2>
+<ul id="messages">
+  <% @messages.each do |message| %>
+    <li><b><%= message.user.email %></b> : <%= message.content %></li>
+  <% end %>
+</ul>
+
+<br/>
+
+<%= form_tag('',id: 'messaging', :remote => true) do |m| %>
+    <%= hidden_field_tag :user_id, 'user_id', id: 'user_id', value: current_user.id %>
+    <%= text_field_tag :content, '' ,id: 'content'%>
+    <%= button_tag 'Submit', name: 'sendmessage', id: 'sendmessage' %>
+<% end %>
