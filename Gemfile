@@ -16,6 +16,9 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'coveralls', require: false
 gem 'has_friendship', path: './app/gems/has_friendship'
+gem 'redis', '~> 3.2', '>= 3.2.2'
+gem 'puma', '~> 3.1'
+gem 'active_model_serializers', '~> 0.8.0'
 
 
 source 'https://rails-assets.org' do
