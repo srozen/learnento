@@ -1,5 +1,6 @@
-PATH
-  remote: ./app/gems/has_friendship
+GIT
+  remote: git://github.com/srozen/has_friendship.git
+  revision: 8b65d77cb4e112b50e2887cfa5b70798a48bcbff
   specs:
     has_friendship (0.1.2)
       rails (~> 4.0)

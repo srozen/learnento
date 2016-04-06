@@ -15,7 +15,7 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'coveralls', require: false
-gem 'has_friendship', path: './app/gems/has_friendship'
+gem 'has_friendship', git: 'git://github.com/srozen/has_friendship.git'
 gem 'puma'
 
 
