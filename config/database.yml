@@ -3,8 +3,8 @@ defaults_pg: &defaults_pg
   host:     localhost
   encoding: unicode
   pool:     5
-  username: learnento
-  password: englishman
+  username: <%= ENV['USER'] %>
+  password:
 
 development:
   <<: *defaults_pg
