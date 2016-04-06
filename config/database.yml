@@ -1,0 +1,16 @@
+defaults_pg: &defaults_pg
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  pool:     5
+  username: learnento
+  password: englishman
+
+development:
+  <<: *defaults_pg
+  database: learnento_development
+
+test:
+  <<: *defaults_pg
+  database: learnento_test
+
