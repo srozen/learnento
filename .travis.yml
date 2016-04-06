@@ -1,14 +1,9 @@
+language: ruby
+rvm:
+ - 2.3.0
+
 services:
  - postgresql
 
 before_script:
- - psql -c 'create database learnento_test;' -U postgres
-
-before_install:
- - rvm install 2.3.0
- - bundle install
- - bundle exec rake
-
-language: ruby
-rvm:
- - 2.3.0
+ - psql -c 'create database learnento_test' -U postgres
