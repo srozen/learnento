@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 gem 'rails', '4.2.5'
-gem 'sqlite3'
+gem 'pg', '~> 0.18.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -16,6 +16,7 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'coveralls', require: false
 gem 'has_friendship', path: './app/gems/has_friendship'
+gem 'puma'
 
 
 source 'https://rails-assets.org' do
@@ -37,4 +38,14 @@ group :development do
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'capistrano', '~> 3.4', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rbenv', require: false
+  gem 'capistrano-db-tasks', require: false
+  gem 'capistrano3-puma', require: false
+  gem 'capistrano-maintenance', '~> 1.0', require: false
+  gem 'airbrussh', require: false
+  gem 'highline', require: false
+  gem 'capistrano-faster-assets', require: false
 end
