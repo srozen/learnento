@@ -17,6 +17,8 @@ gem 'coveralls', require: false
 gem 'has_friendship', git: 'git://github.com/srozen/has_friendship.git'
 gem 'puma'
 gem 'bower-rails', '~> 0.10.0'
+gem 'faker', '~> 1.6', '>= 1.6.3'
+
 
 
 source 'https://rails-assets.org' do

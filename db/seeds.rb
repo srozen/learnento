@@ -11,3 +11,12 @@ User.create([
                 {email: 'bob@gmail.com', password: 'password'},
                 {email: 'charlie@gmail.com', password: 'password'}
             ])
+
+200.times do |i|
+  User.create!(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      email: Faker::Internet.user_name + i.to_s +
+          "@#{Faker::Internet.domain_name}",
+      password: Faker::Internet.password(10, 20))
+end
