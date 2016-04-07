@@ -3,7 +3,16 @@ class UsersController < ApplicationController
   before_action :redirect_unless_owner!, only: [:edit]
 
   def index
-    @users = User.where.not(id: current_user.id)
+    if params[:keywords].present?
+      @keywords = params[:keywords]
+      user_searcher = UserSearcher.new(@keywords)
+      @users = User.where(
+                       user_searcher.where_clause,
+                       user_searcher.where_args).
+          order(user_searcher.order)
+    else
+      @users = User.where.not(id: current_user.id).limit(10)
+    end
   end
 
   def show

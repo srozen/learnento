@@ -1,7 +1,28 @@
 <h1 data-purpose="learners_index">Learners</h1>
 
-<div data-purpose="user-list">
-<% @users.each do |user|  %>
-  <%= link_to user.first_name, user_path(user)  %> <%= user.last_name %> - <%= user.email %> <br/>
-<% end %>
-</div>
+<header>
+  <h1 class="h2">Search</h1>
+</header>
+
+<section class="search-form">
+  <%= form_for :users, method: 'get' do |f| %>
+    <div class="input-group input-group-lg">
+      <%= label_tag :keywords, nil, class: 'sr-only' %>
+      <%= text_field_tag :keywords, nil, placeholder: 'Firstname or Lastname', class: 'form-control input-lg', 'data-purpose': 'search-user-input' %>
+      <span class="input-group-btn">
+        <%= submit_tag 'Find Learners', class: 'btn btn-primary btn-lg', 'data-purpose': 'search-user-button' %>
+      </span>
+    </div>
+  <% end %>
+</section>
+
+<section>
+  <header class="search-results">
+    <h1 class="h3">Results</h1>
+  </header>
+  <div data-purpose="user-list">
+    <% @users.each do |user|  %>
+        <span data-purpose="user"><%= link_to user.first_name, user_path(user)  %> <%= user.last_name %> - <%= user.email %></span> <br/>
+    <% end %>
+  </div>
+</section>
