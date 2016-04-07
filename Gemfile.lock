@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/srozen/has_friendship.git
-  revision: 8b65d77cb4e112b50e2887cfa5b70798a48bcbff
+  revision: 901797ca5b6adb72cd66ce56cf2f59fbc310ab33
   specs:
-    has_friendship (0.1.2)
+    has_friendship (0.1.3)
       rails (~> 4.0)
 
 GEM
