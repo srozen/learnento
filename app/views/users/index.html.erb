@@ -20,6 +20,7 @@
   <header class="search-results">
     <h1 class="h3">Results</h1>
   </header>
+  <%= render partial: 'pager', locals: {keywords: @keywords, page: @page} %>
   <div data-purpose="user-list">
     <ol class="list-group">
       <% @users.each do |user|  %>
@@ -34,4 +35,5 @@
       <% end %>
     </ol>
   </div>
+  <%= render partial: 'pager', locals: {keywords: @keywords, page: @page} %>
 </section>

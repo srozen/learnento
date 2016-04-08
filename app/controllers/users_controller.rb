@@ -2,9 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit, :update, :index]
   before_action :redirect_unless_owner!, only: [:edit]
 
-
+  PAGE_SIZE = 10
 
   def index
+    @page = (params[:page] || 0).to_i
+
     if params[:keywords].present?
       @keywords = params[:keywords]
       user_searcher = UserSearcher.new(@keywords, current_user.id)
@@ -13,9 +15,10 @@ class UsersController < ApplicationController
                        user_searcher.where_args).
                     where(user_searcher.exclude_clause,
                         user_searcher.exclude_args).
-                    order(user_searcher.order)
+                    order(user_searcher.order).
+                    offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     else
-      @users = User.where.not(id: current_user.id).limit(10)
+      @users = User.where.not(id: current_user.id).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     end
   end
 
