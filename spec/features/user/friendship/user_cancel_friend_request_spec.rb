@@ -34,7 +34,7 @@ RSpec.feature 'Cancelling friend request', '
   end
 
   def i_access_a_user_profile
-    user_list.access_user_profile(otheruser.first_name)
+    user_list.access_user_profile
   end
 
   def i_add_this_user_as_friend

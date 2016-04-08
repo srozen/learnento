@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'learners browsing', '
   As a registered user
   In order to begin to talk with someone
-  I want to access his profile' do
+  I want to access his profile', js: true do
 
   scenario 'Registered user wants to consult another user profile' do
     as_user(user) do
@@ -29,7 +29,7 @@ RSpec.feature 'learners browsing', '
   end
 
   def i_access_a_user_profile
-    user_list.access_user_profile(otheruser.first_name)
+    user_list.access_user_profile
   end
 
   def user_profile_is_displayed
