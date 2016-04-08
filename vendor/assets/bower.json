@@ -2,6 +2,10 @@
   "name": "dsl-generated dependencies",
   "dependencies": {
     "bootstrap-sass-official": "latest",
-    "font-awesome": "latest"
+    "font-awesome": "latest",
+    "angular": "~> 1.5.3"
+  },
+  "resolutions": {
+    "angular": "1.5.3"
   }
 }
