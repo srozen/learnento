@@ -20,6 +20,11 @@ class UsersController < ApplicationController
     else
       @users = User.where.not(id: current_user.id).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     end
+
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @users }
+    end
   end
 
   def show
