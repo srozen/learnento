@@ -2,15 +2,18 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit, :update, :index]
   before_action :redirect_unless_owner!, only: [:edit]
 
+
+
   def index
-    # TODO: Exclude current_user from results
     if params[:keywords].present?
       @keywords = params[:keywords]
-      user_searcher = UserSearcher.new(@keywords)
+      user_searcher = UserSearcher.new(@keywords, current_user.id)
       @users = User.where(
                        user_searcher.where_clause,
                        user_searcher.where_args).
-          order(user_searcher.order)
+                    where(user_searcher.exclude_clause,
+                        user_searcher.exclude_args).
+                    order(user_searcher.order)
     else
       @users = User.where.not(id: current_user.id).limit(10)
     end
