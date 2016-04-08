@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-## TODO !!
-
 RSpec.feature 'learners browsing', '
   As a registered user
   In order to begin to talk with someone

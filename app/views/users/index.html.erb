@@ -21,8 +21,17 @@
     <h1 class="h3">Results</h1>
   </header>
   <div data-purpose="user-list">
-    <% @users.each do |user|  %>
-        <span data-purpose="user"><%= link_to user.first_name, user_path(user)  %> <%= user.last_name %> - <%= user.email %></span> <br/>
-    <% end %>
+    <ol class="list-group">
+      <% @users.each do |user|  %>
+        <li class="list-group-item clearfix" data-purpose="user">
+          <h3 class="pull-right">
+            <small class="text-uppercase">Joined</small>
+            <%= l user.created_at.to_date %>
+          </h3>
+          <h2 class="h3"><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)  %></h2>
+          <h4><%= user.email %></h4>
+        </li>
+      <% end %>
+    </ol>
   </div>
 </section>

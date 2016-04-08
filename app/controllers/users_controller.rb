@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :redirect_unless_owner!, only: [:edit]
 
   def index
+    # TODO: Exclude current_user from results
     if params[:keywords].present?
       @keywords = params[:keywords]
       user_searcher = UserSearcher.new(@keywords)
