@@ -9,12 +9,7 @@
     <form>
       <div class="input-group input-group-lg">
         <label for="keywords" class="sr-only">Keywords</label>
-        <input type="text" name="keywords" class="form-control input-lg" placeholder="Firstname or Lastname" ng-model="keywords" data-purpose="search-user-input">
-      <span class="input-group-btn">
-        <button class="btn btn-primary btn-lg" ng-click="search(keywords)" data-purpose="search-user-button">
-          Find Learners
-        </button>
-      </span>
+        <input type="text" name="keywords" ng-change="search(keywords)" class="form-control input-lg" placeholder="Firstname or Lastname" ng-model="keywords" data-purpose="search-user-input">
       </div>
     </form>
     <h1 ng-if="searchedFor">
@@ -32,9 +27,9 @@
         <li class="list-group-item clearfix" ng-repeat="user in users" data-purpose="user">
           <h3 class="pull-right">
             <small class="text-uppercase">Joined</small>
-            {{user.created_at}}
+            {{user.created_at | date}}
           </h3>
-          <h2 class="h3"><a data-purpose="user-profile-button" href="/users/{{user.id}}">{{user.first_name}} {{user.last_name}}</a></h2>
+          <h2 class="h3"><a data-purpose="user-profile-button" href="{{userLink(user.id)}}">{{user.first_name}} {{user.last_name}}</a></h2>
           <h4>{{user.email}}</h4>
         </li>
       </ol>
