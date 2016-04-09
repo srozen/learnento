@@ -7,3 +7,7 @@ services:
 
 before_script:
  - psql -c 'create database learnento_test' -U postgres
+  - 'sh -e /etc/init.d/xvfb start'
+
+env:
+  - DISPLAY=":99.0"
