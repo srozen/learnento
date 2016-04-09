@@ -30,6 +30,8 @@ group :test do
   gem 'capybara'
   gem 'site_prism'
   gem 'capybara-screenshot'
+  gem 'database_cleaner', '~> 1.5', '>= 1.5.1'
+  gem 'selenium-webdriver', '~> 2.53'
 end
 
 group :development, :test do
