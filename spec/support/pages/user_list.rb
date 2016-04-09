@@ -10,7 +10,6 @@ module Spec
 
       def search_user(param)
         search_user_input.set(param)
-        search_user_button.click
       end
     end
   end
