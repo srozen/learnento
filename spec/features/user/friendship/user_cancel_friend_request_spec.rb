@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Cancelling friend request', '
   As a user
   In order to control my friend request
-  I want to be able to cancel a friend request I made' do
+  I want to be able to cancel a friend request I made', :js do
 
   scenario 'User cancel a friend request he just made' do
     as_user(user) do

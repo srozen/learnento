@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'User send friend request', '
   As a registered user
   In order to talk with people
-  I want to send a friend request to someone with a message' do
+  I want to send a friend request to someone with a message', :js do
 
   scenario 'Registered user send a friend request to another user' do
     as_user(user) do
