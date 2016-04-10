@@ -7,21 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="Learnento">
-  <%= render 'layouts/header' %>
-
+  <div ng-include="'navigation/_navbar.html'"></div>
   <div class="container">
-    <% if notice.present? %>
-        <aside class="alert alert-info">
-          <%= notice %>
-        </aside>
-    <% end %>
-    <% if alert.present? %>
-        <aside class="alert alert-danger">
-          <%= alert %>
-        </aside>
-    <% end %>
-    <%= yield %>
+    <ui-view></ui-view>
   </div>
-
 </body>
 </html>

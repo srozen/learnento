@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :edit, :update, :index]
-  before_action :redirect_unless_owner!, only: [:edit]
+  #before_action :authenticate_user!, only: [:show, :edit, :update, :index]
+  #before_action :redirect_unless_owner!, only: [:edit]
 
   PAGE_SIZE = 10
 
@@ -21,10 +21,7 @@ class UsersController < ApplicationController
       @users = User.where.not(id: current_user.id).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     end
 
-    respond_to do |format|
-      format.html {}
-      format.json { render json: @users }
-    end
+    respond_with @users
   end
 
   def show
