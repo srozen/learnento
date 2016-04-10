@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Delete a friend from friendlist', '
   As a user
   In order to control who are in my friendlist
-  I want to be able to delete a friend' do
+  I want to be able to delete a friend', :js do
 
   scenario 'User removes a friend from his friendlist' do
     as_user(user) do

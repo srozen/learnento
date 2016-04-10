@@ -2,8 +2,8 @@ module Spec
   module Pages
     class Root < SitePrism::Page
       # Register related elements
-      element :register_button, '[data-purpose="register_form"]'
-      element :login_button, '[data-purpose="login_form"]'
+      element :register_button, '[data-purpose="register-form"]'
+      element :login_button, '[data-purpose="login-form"]'
 
       def access_registration
         register_button.click

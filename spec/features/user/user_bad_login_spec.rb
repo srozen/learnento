@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'user logging in', '
   As a registered user
   In order to user Learnento service
-  I want to log in my account' do
+  I want to log in my account', :js do
 
   scenario 'Registered user wants to log in Pravatar' do
     i_am_on_root_page

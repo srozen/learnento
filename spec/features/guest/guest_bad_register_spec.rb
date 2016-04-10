@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Bad register informations', '
   As a guest
   In order to use Learnento service
-  I register an supply bad register infos' do
+  I register an supply bad register infos', :js do
 
   scenario 'Guest tries to register and gives wrong informations' do
     i_am_on_root_page

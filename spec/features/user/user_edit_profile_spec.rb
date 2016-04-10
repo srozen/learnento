@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Profile edition', '
   As a registered user
   In order to find people matching my profile
-  I want to edit my personnal informations' do
+  I want to edit my personnal informations', :js do
 
   scenario 'Registered user edit his profile' do
     as_user(user) do

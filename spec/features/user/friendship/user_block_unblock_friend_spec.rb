@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Blocking and unblocking a friend', '
   As a user
   In order to not being annoyed by some fools
-  I want to be able to block a friend' do
+  I want to be able to block a friend', :js do
 
   scenario 'User blocks a friend and then unblock him' do
     as_user(user) do

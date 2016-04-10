@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'user registration', '
   As a guest
   In order to use the Learnento service
-  I want to register' do
+  I want to register', :js do
 
   scenario 'Guest register with valid informations' do
     i_am_on_root_page

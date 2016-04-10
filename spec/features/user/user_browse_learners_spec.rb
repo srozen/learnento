@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Browse user list', '
   As a registered user
   In order to talk with other people
-  I want to know who else is using Learnento' do
+  I want to know who else is using Learnento', :js do
 
   scenario 'Registered user wants to see which people he could talk to' do
     as_user(user) do

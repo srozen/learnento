@@ -1,10 +1,10 @@
 module Spec
   module Pages
     class Register < SitePrism::Page
-      element :email_register, '[data-purpose="register_email"]'
-      element :password_register, '[data-purpose="register_password"]'
-      element :password_confirmation_register, '[data-purpose="register_password_confirmation"]'
-      element :confirm_register, '[data-purpose="register_confirmation"]'
+      element :email_register, '[data-purpose="register-email"]'
+      element :password_register, '[data-purpose="register-password"]'
+      element :password_confirmation_register, '[data-purpose="register-password-confirmation"]'
+      element :confirm_register, '[data-purpose="register-confirmation"]'
 
       def fill_register_form(email, password, password_confirmation)
         email_register.set(email)

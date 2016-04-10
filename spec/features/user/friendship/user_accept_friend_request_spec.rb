@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'User accept friend request', '
   As a user
   In order to chat with someone who sent me a friend request
-  I want to to be able to accept his request' do
+  I want to to be able to accept his request', :js do
 
   scenario 'Registered user accepts a friend request' do
     as_user(user) do

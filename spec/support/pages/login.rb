@@ -1,9 +1,9 @@
 module Spec
   module Pages
     class Login < SitePrism::Page
-      element :email_login, '[data-purpose="login_email"]'
-      element :password_login, '[data-purpose="login_password"]'
-      element :confirm_login, '[data-purpose="login_confirmation"]'
+      element :email_login, '[data-purpose="login-email"]'
+      element :password_login, '[data-purpose="login-password"]'
+      element :confirm_login, '[data-purpose="login-confirmation"]'
 
       def fill_login_form(email,password)
         email_login.set(email)

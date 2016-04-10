@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Declining a friend request', '
   As a user
   In order not to speak with people I dont like
-  I want to be able to decline a request' do
+  I want to be able to decline a request', :js do
 
   scenario 'User decline a friend request in his request page' do
     as_user(user) do

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Only profile owner can edit his info', '
   As a registered user
   In order to have a good experience
-  I dont want other users to be able to edit my account' do
+  I dont want other users to be able to edit my account', :js do
 
   scenario 'User tries to edit other user account' do
     as_user(user) do

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'User search engine', '
   As a registered user
   In order to find people to add as friend
-  I want to be able to search in the user list' do
+  I want to be able to search in the user list', :js do
 
   scenario 'Registered user search for a user in user index' do
     as_user(user) do
