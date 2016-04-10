@@ -3,6 +3,7 @@
   "dependencies": {
     "bootstrap-sass-official": "latest",
     "font-awesome": "latest",
+    "angular-mocks": "latest",
     "angular": "~> 1.5.3"
   },
   "resolutions": {
