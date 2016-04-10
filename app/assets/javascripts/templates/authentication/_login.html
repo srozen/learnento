@@ -1,0 +1,13 @@
+<h2>Log in</h2>
+
+<form ng-submit="login()">
+    <fieldset class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" autofocus="true" data-purpose="login-email" ng-model="user.email">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="password">Password</label>
+        <input type="password" autocomplete="off" class="form-control" data-purpose="login-password" ng-model="user.password">
+    </fieldset>
+    <input type="submit" class="btn btn-primary" data-purpose="login-confirmation" value="Login">
+</form>

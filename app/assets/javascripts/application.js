@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap-sass-official
 //= require angular
+//= require angular-ui-router
+//= require angular-rails-templates
+//= require angular-devise
+//= require_tree ./templates
 //= require_tree .
