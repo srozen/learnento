@@ -5,7 +5,8 @@
     "font-awesome": "latest",
     "angular-mocks": "latest",
     "angular": "~> 1.5.3",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "angular-devise": "latest"
   },
   "resolutions": {
     "angular": "1.5.3"

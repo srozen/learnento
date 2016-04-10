@@ -18,7 +18,8 @@ gem 'has_friendship', git: 'git://github.com/srozen/has_friendship.git'
 gem 'puma'
 gem 'bower-rails', '~> 0.10.0'
 gem 'faker', '~> 1.6', '>= 1.6.3'
-
+gem 'angular-rails-templates'
+gem 'sprockets', '2.12.3'
 
 
 
