@@ -1,4 +1,4 @@
-describe("UserSearchController", function() {
+describe("UsersIndexController", function() {
     describe("Initialization", function() {
 
         var scope       = null,
@@ -24,7 +24,7 @@ describe("UserSearchController", function() {
         beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
             scope       = $rootScope.$new();
             httpBackend = $httpBackend;
-            controller  = $controller("UserSearchController", {
+            controller  = $controller("UsersIndexController", {
                 $scope: scope
             });
         }));
@@ -65,7 +65,7 @@ describe("UserSearchController", function() {
         beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
             scope       = $rootScope.$new();
             httpBackend = $httpBackend;
-            controller  = $controller("UserSearchController", {
+            controller  = $controller("UsersIndexController", {
                 $scope: scope
             });
         }));

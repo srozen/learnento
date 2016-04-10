@@ -1,4 +1,4 @@
-angular.module('Learnento').controller('UserSearchController', ['$scope', 'User', function($scope, User){
+angular.module('Learnento').controller('UsersIndexController', ['$scope', 'User', function($scope, User){
     var page = 0;
 
     User.all().success(function(data){
