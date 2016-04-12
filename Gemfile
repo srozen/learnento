@@ -19,6 +19,8 @@ gem 'bower-rails', '~> 0.10.0'
 gem 'faker', '~> 1.6', '>= 1.6.3'
 gem 'angular-rails-templates'
 gem 'sprockets', '2.12.3'
+gem 'jwt'
+gem 'api-versions', '~> 1.2', '>= 1.2.1'
 
 
 

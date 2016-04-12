@@ -51,6 +51,9 @@ GEM
       railties (>= 3.1)
       sprockets (~> 2)
       tilt
+    api-versions (1.2.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
     arel (6.0.3)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -134,6 +137,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    jwt (1.5.4)
     launchy (2.4.3)
       addressable (~> 2.3)
     loofah (2.0.3)
@@ -262,6 +266,7 @@ PLATFORMS
 DEPENDENCIES
   airbrussh
   angular-rails-templates
+  api-versions (~> 1.2, >= 1.2.1)
   better_errors
   binding_of_caller
   bower-rails (~> 0.10.0)
@@ -284,6 +289,7 @@ DEPENDENCIES
   has_friendship!
   highline
   jquery-rails
+  jwt
   memoist (~> 0.14.0)
   pg (~> 0.18.4)
   phantomjs (~> 2.1, >= 2.1.1.0)
