@@ -1,5 +1,6 @@
 module UsualStepsHelper
 
+=begin
   def as_user(user)
     visit '/'
     root.access_login
@@ -8,6 +9,7 @@ module UsualStepsHelper
     expect(page).to have_selector('[data-purpose="user-details"]')
     yield
   end
+=end
 
 end
 
