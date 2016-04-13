@@ -11,6 +11,8 @@ module PagesObjectsHelper
   #Example Page Object
   #page_object :root_index, Spec::Pages::General::Index
 
+  page_object :navigation, Spec::Pages::Navigation
+
 end
 
 
