@@ -12,6 +12,8 @@ module PagesObjectsHelper
   #page_object :root_index, Spec::Pages::General::Index
 
   page_object :navigation, Spec::Pages::Navigation
+  page_object :register, Spec::Pages::Register
+  page_object :login, Spec::Pages::Login
 
 end
 

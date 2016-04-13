@@ -8,7 +8,13 @@ RSpec.feature 'Guest logs in', '
   scenario 'Guest logs into Learnento' do
     i_go_on_root_page
     i_access_login_page
+    i_fill_the_form_in
+    i_log_in
   end
+
+  private
+
+  let!(:user){User.create(email: 'foo@bar.com', password: 'password')}
 
   def i_go_on_root_page
     visit '/'
@@ -16,5 +22,13 @@ RSpec.feature 'Guest logs in', '
 
   def i_access_login_page
     navigation.access_login
+  end
+
+  def i_fill_the_form_in
+    login.fill_login_form(user.email, 'password')
+  end
+
+  def i_log_in
+    login.confirm_login_form
   end
 end
