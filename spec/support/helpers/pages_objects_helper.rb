@@ -11,16 +11,6 @@ module PagesObjectsHelper
   #Example Page Object
   #page_object :root_index, Spec::Pages::General::Index
 
-  page_object :root, Spec::Pages::Root
-  page_object :login, Spec::Pages::Login
-  page_object :register, Spec::Pages::Register
-  page_object :header, Spec::Pages::Header
-  page_object :profile, Spec::Pages::Profile
-  page_object :profile_edition, Spec::Pages::ProfileEdition
-  page_object :user_list, Spec::Pages::UserList
-  page_object :friend_requests, Spec::Pages::FriendRequests
-  page_object :friendlist, Spec::Pages::Friendlist
-
 end
 
 
