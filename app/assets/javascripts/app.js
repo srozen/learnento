@@ -1,1 +1,1 @@
-angular.module('Learnento', []);
+angular.module('Learnento', ['ui.router', 'templates']);
