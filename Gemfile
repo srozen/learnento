@@ -24,7 +24,6 @@ gem 'jwt'
 gem 'api-versions', '~> 1.2', '>= 1.2.1'
 
 
-
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end

@@ -3,10 +3,16 @@ class ApiController < ApplicationController
   include ActiveSupport::Rescuable
   rescue_from Authenticator::AuthenticationException, with: :render_unauthorized
   rescue_from ActiveRecord::RecordNotFound, with: :render_unauthorized
+  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable
 
   def authentify_user!(req)
     authenticator = Authenticator.new
     authenticator.validate_credentials!(req['data']['attributes']['email'], req['data']['attributes']['password'])
+  end
+
+  def create_user!(req)
+    authenticator = Authenticator.new
+    authenticator.validate_registration!(req)
   end
 
   def generate_jwt(id, email)
@@ -17,5 +23,9 @@ class ApiController < ApplicationController
 
   def render_unauthorized
     render json: {}, status: :unauthorized, content_type: 'application/vnd.learnento+json; version=1'
+  end
+
+  def render_unprocessable
+    render json: {}, status: :unprocessable_entity, content_type: 'application/vnd.learnento+json; version=1'
   end
 end

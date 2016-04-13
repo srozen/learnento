@@ -5,6 +5,12 @@ class Authenticator
     user
   end
 
+  def validate_registration!(req)
+    User.create!(email: req['data']['attributes']['email'],
+                 password: req['data']['attributes']['password'],
+                 password_confirmation: req['data']['attributes']['password_confirmation'])
+  end
+
   class AuthenticationException < StandardError; end
 
   private
