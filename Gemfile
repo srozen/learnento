@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'teaspoon-jasmine', '~> 2.2'
   gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
+  gem 'poltergeist', '~> 1.9'
 end
 
 group :development do
