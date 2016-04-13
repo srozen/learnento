@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="Learnento">
+  <div ng-include="'navigation/_navigation.html'"></div>
   <div class="container">
+    <ui-view></ui-view>
   </div>
 </body>
 </html>
