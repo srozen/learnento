@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+
+  api vendor_string: "learnento", default_version: 1 do
+    version 1 do
+        resources :sessions, only: [:create]
+        resources :users, only: [:create]
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
   # You can have the root of your site routed with "root"
   root 'angular#app'
 

@@ -10,7 +10,7 @@ angular.module('Learnento').config(['$stateProvider', '$urlRouterProvider', func
         })
         .state('register', {
             url: '/register',
-            templateUrl: 'index/register.html',
+            templateUrl: 'index/register.html'
         });
     $urlRouterProvider.otherwise('home');
 }]);
