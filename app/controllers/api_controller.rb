@@ -3,7 +3,7 @@ class ApiController < ApplicationController
   include ActiveSupport::Rescuable
   rescue_from Authenticator::AuthenticationException, with: :render_unauthorized
   rescue_from ActiveRecord::RecordNotFound, with: :render_unauthorized
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable
+  rescue_from ActiveRecord::RecordInvalid do |exception| render_unprocessable(exception.to_s) end
 
   def authenticate_token!
     authenticator = Authenticator.new
@@ -30,7 +30,7 @@ class ApiController < ApplicationController
     render json: {}, status: :unauthorized, content_type: 'application/vnd.learnento+json; version=1'
   end
 
-  def render_unprocessable
-    render json: {}, status: :unprocessable_entity, content_type: 'application/vnd.learnento+json; version=1'
+  def render_unprocessable(message = nil)
+    render json: {'error': message}, status: :unprocessable_entity, content_type: 'application/vnd.learnento+json; version=1'
   end
 end
