@@ -10,6 +10,8 @@ RSpec.feature 'Guest register to Learnento', '
     i_access_register_page
     i_fill_the_form_in
     i_create_my_account
+    my_session_is_active
+    clear_storage
   end
 
   def i_go_on_root_page
@@ -26,5 +28,9 @@ RSpec.feature 'Guest register to Learnento', '
 
   def i_create_my_account
     register.confirm_register_form
+  end
+
+  def my_session_is_active
+    expect(page).to have_selector('[data-purpose="learners-button"]')
   end
 end

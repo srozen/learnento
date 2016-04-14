@@ -1,17 +1,17 @@
 <h2>Register and Learn English Today !</h2>
 
-<form >
+<form ng-controller="RegisterController" ng-submit="handleRegister()">
     <fieldset class="form-group">
         <label for="email"><i class="fa fa-envelope"> Email</i></label>
-        <input type="email" autofocus="true" class="form-control" data-purpose="register-email" >
+        <input type="email" autofocus="true" class="form-control" data-purpose="register-email" ng-model="email">
     </fieldset>
     <fieldset class="form-group">
         <label for="password"><i class="fa fa-lock"></i> Password</label>
-        <input type="password" class="form-control" data-purpose="register-password" >
+        <input type="password" class="form-control" data-purpose="register-password" ng-model="password">
     </fieldset>
     <fieldset class="form-group">
         <label for=""><i class="fa fa-lock"></i> Password Confirmation</label>
-        <input type="password" class="form-control" data-purpose="register-password-confirmation">
+        <input type="password" class="form-control" data-purpose="register-password-confirmation" ng-model="password_confirmation">
     </fieldset>
     <input type="submit" class="btn btn-primary" data-purpose="register-confirmation" value="Register">
 </form>

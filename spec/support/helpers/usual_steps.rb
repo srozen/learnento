@@ -11,6 +11,11 @@ module UsualStepsHelper
   end
 =end
 
+
+  def clear_storage
+    page.execute_script("localStorage.clear()")
+  end
+
 end
 
 RSpec.configure { |c| c.include UsualStepsHelper, type: :feature }
