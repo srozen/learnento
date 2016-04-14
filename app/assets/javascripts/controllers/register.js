@@ -17,8 +17,8 @@ angular.module('Learnento').controller('RegisterController', ['Authentication', 
         };
         Authentication.register(data).then(function(){
             $location.path('home');
-        }, function(){
-            $location.path('login');
+        }, function(response){
+            $scope.error_message = response.data.error;
         })
     }
 }]);

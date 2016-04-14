@@ -16,7 +16,7 @@ angular.module('Learnento').controller('LoginController', ['Authentication', '$l
         Authentication.login(data).then(function(){
             $location.path('home');
         }, function(){
-            $location.path('login');
+            $scope.error_message = "Bad Login/Password"
         })
     }
 }]);
