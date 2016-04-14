@@ -5,7 +5,12 @@ class ApiController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_unauthorized
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable
 
-  def authentify_user!(req)
+  def authenticate_token!
+    authenticator = Authenticator.new
+    @current_user = authenticator.analyse_token_from_request(request)
+  end
+
+  def authenticate_user!(req)
     authenticator = Authenticator.new
     authenticator.validate_credentials!(req['data']['attributes']['email'], req['data']['attributes']['password'])
   end

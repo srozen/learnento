@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   api vendor_string: "learnento", default_version: 1 do
     version 1 do
         resources :sessions, only: [:create]
-        resources :users, only: [:create]
+        resources :users, only: [:create, :show]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
