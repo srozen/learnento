@@ -10,7 +10,8 @@ RSpec.feature 'Guest logs in', '
     i_access_login_page
     i_fill_the_form_in
     i_log_in
-    my_session_is_active
+
+    my_profile_is_displayed
     clear_storage
   end
 
@@ -34,9 +35,8 @@ RSpec.feature 'Guest logs in', '
     login.confirm_login_form
   end
 
-  def my_session_is_active
-    expect(page).to have_selector('[data-purpose="learners-button"]')
+  def my_profile_is_displayed
+    expect(page).to have_content(user.email)
   end
-
 
 end
