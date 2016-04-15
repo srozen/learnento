@@ -13,6 +13,11 @@ angular.module('Learnento').config(['$stateProvider', '$urlRouterProvider', func
             url: '/register',
             templateUrl: 'index/register.html',
             controller: 'RegisterController'
+        })
+        .state('profile', {
+            url: '/users/:id',
+            templateUrl: 'users/show.html',
+            controller: 'UsersShowController'
         });
     $urlRouterProvider.otherwise('home');
 }]);
