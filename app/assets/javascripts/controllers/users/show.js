@@ -1,4 +1,8 @@
-angular.module('Learnento').controller('UsersShowController', ['$stateParams', 'User', '$location', '$scope', function($stateParams, User, $location, $scope) {
+angular.module('Learnento').controller('UsersShowController', ['$stateParams', 'User', '$location', '$scope', 'Authentication', function($stateParams, User, $location, $scope, Authentication) {
+    if(!Authentication.loggedIn()){
+        $location.path('home');
+    }
+
     User.show($stateParams.id).then(function(response){
         $scope.user = response.data;
     }, function(error){

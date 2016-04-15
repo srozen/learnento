@@ -57,7 +57,8 @@ CREATE TABLE users (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     first_name character varying,
-    last_name character varying
+    last_name character varying,
+    avatar character varying
 );
 
 
@@ -141,4 +142,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160413113248');
 INSERT INTO schema_migrations (version) VALUES ('20160413113712');
 
 INSERT INTO schema_migrations (version) VALUES ('20160415094834');
+
+INSERT INTO schema_migrations (version) VALUES ('20160415111731');
 
