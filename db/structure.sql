@@ -117,6 +117,20 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: users_lower_first_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX users_lower_first_name ON users USING btree (lower((first_name)::text) varchar_pattern_ops);
+
+
+--
+-- Name: users_lower_last_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX users_lower_last_name ON users USING btree (lower((last_name)::text) varchar_pattern_ops);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -125,4 +139,6 @@ SET search_path TO "$user",public;
 INSERT INTO schema_migrations (version) VALUES ('20160413113248');
 
 INSERT INTO schema_migrations (version) VALUES ('20160413113712');
+
+INSERT INTO schema_migrations (version) VALUES ('20160415094834');
 

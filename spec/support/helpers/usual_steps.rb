@@ -1,15 +1,16 @@
 module UsualStepsHelper
 
-=begin
+
   def as_user(user)
     visit '/'
-    root.access_login
+    navigation.access_login
     login.fill_login_form(user.email, 'password')
     login.confirm_login_form
     expect(page).to have_selector('[data-purpose="user-details"]')
     yield
+    clear_storage
   end
-=end
+
 
 
   def clear_storage

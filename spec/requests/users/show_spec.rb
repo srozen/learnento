@@ -14,6 +14,15 @@ RSpec.describe 'User request other user through the API', type: :request do
     end
   end
 
+  context 'Request with a valid JWT but invalid user' do
+    it 'returns a 401 unauthorized' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJlbWFpbCI6ImJvbG9zQGdtYWlsLmNvbSJ9.0cxTQ_O3m_7NkInlw_-fadBzToLbT9grrbKaeg5rRTI'
+      get '/api/users/1',request_headers
+      expect(response.status).to eq 401
+    end
+  end
+
   context 'Request with an invalid JWT' do
     it 'returns a 401 unauthorized' do
       headers = request_headers
@@ -31,10 +40,6 @@ RSpec.describe 'User request other user through the API', type: :request do
   end
 
   private
-
-  def response_body
-    JSON.parse(response.body)
-  end
 
   def request_headers
     {
