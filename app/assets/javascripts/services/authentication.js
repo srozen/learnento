@@ -7,7 +7,7 @@
             return $window.localStorage['learnenToken'];
         };
         var logout = function(){
-            $window.localStorage.removeItem('learnenToken')
+            $window.localStorage.removeItem('learnenToken');
             $rootScope.$broadcast('logout');
         };
         var loggedIn = function() {
@@ -35,9 +35,9 @@
                     'Content-Type': 'application/vnd.learnento+json; version=1',
                     'Accept': 'application/vnd.learnento+json; version=1'
                 }
-            }).then(function(data){
+            }).then(function(response){
                 $rootScope.$broadcast('login');
-                saveToken(data.token);
+                saveToken(response.data.token);
             });
         };
 
@@ -50,9 +50,9 @@
                     'Content-Type': 'application/vnd.learnento+json; version=1',
                     'Accept': 'application/vnd.learnento+json; version=1'
                 }
-            }).then(function(data) {
+            }).then(function(response) {
                 $rootScope.$broadcast('login');
-                saveToken(data.token);
+                saveToken(response.data.token);
             });
         };
 
