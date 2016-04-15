@@ -18,7 +18,7 @@ RSpec.describe 'User request other user through the API', type: :request do
     it 'returns a 401 unauthorized' do
       headers = request_headers
       headers[:'HTTP_AUTHORIZATION'] = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJlbWFpbCI6ImJvbG9zQGdtYWlsLmNvbSJ9.0cxTQ_O3m_7NkInlw_-fadBzToLbT9grrbKaeg5rRTI'
-      get '/api/users/1',request_headers
+      get '/api/users/1', headers
       expect(response.status).to eq 401
     end
   end
