@@ -1,4 +1,7 @@
 angular.module('Learnento').controller('RegisterController', ['Authentication', '$location', '$scope', function(Authentication, $location, $scope){
+    if(Authentication.loggedIn()){
+        $location.path('home');
+    }
 
     $scope.email = '';
     $scope.password = '';
@@ -16,7 +19,7 @@ angular.module('Learnento').controller('RegisterController', ['Authentication', 
             }
         };
         Authentication.register(data).then(function(){
-            $location.path('home');
+            $location.path('/users/'+Authentication.currentUser().id);
         }, function(response){
             $scope.error_message = response.data.error;
         })
