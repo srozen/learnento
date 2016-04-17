@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     version 1 do
         resources :sessions, only: [:create]
         resources :users, only: [:create, :show, :index]
+        resources :friend_requests, only: [:index, :create, :update, :destroy]
+        resources :friends, only: [:index, :update, :destroy]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -30,6 +30,42 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: friendships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE friendships (
+    id integer NOT NULL,
+    friendable_id integer,
+    friendable_type character varying,
+    friend_id integer,
+    status character varying,
+    message character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    blocker_id integer
+);
+
+
+--
+-- Name: friendships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE friendships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: friendships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE friendships_id_seq OWNED BY friendships.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -85,7 +121,22 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY friendships ALTER COLUMN id SET DEFAULT nextval('friendships_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: friendships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY friendships
+    ADD CONSTRAINT friendships_pkey PRIMARY KEY (id);
 
 
 --
@@ -144,4 +195,8 @@ INSERT INTO schema_migrations (version) VALUES ('20160413113712');
 INSERT INTO schema_migrations (version) VALUES ('20160415094834');
 
 INSERT INTO schema_migrations (version) VALUES ('20160415111731');
+
+INSERT INTO schema_migrations (version) VALUES ('20160417104258');
+
+INSERT INTO schema_migrations (version) VALUES ('20160417104259');
 
