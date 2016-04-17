@@ -16,6 +16,7 @@ class Api::V1::UsersController < ApiController
     render json: user, content_type: 'application/vnd.learnento+json; version=1'
   end
 
+  # TODO: update
 
 
   def index

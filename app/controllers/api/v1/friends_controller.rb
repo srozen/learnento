@@ -1,5 +1,8 @@
 class Api::V1::FriendsController < ApiController
   before_filter :authenticate_token!, only: [:index]
+
+  # TODO: Better cases exploration
+
   def index
     current_user = authenticate_token!
     friends = current_user.friends
