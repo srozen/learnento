@@ -10,7 +10,7 @@ class Api::V1::FriendsController < ApiController
     render json: {
         friends: friends,
         blocked_friends: blocked_friends
-    }, content_type: 'application/vnd.learnento+json; version=1'
+    }
   end
 
   def update
@@ -22,15 +22,14 @@ class Api::V1::FriendsController < ApiController
     else
       current_user.unblock_friend(friend)
     end
-    render json: '', content_type: 'application/vnd.learnento+json; version=1'
+    render json: ''
   end
 
   def destroy
-    req = JSON.parse request.body.read
     current_user = authenticate_token!
     friend = User.find(params[:id])
     current_user.remove_friend(friend)
-    render json: '', content_type: 'application/vnd.learnento+json; version=1'
+    render json: ''
   end
 
 end

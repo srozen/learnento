@@ -11,6 +11,7 @@ RSpec.describe 'User request other user through the API', type: :request do
       headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
       get '/api/users/1', '', headers
       expect(response.status).to eq 200
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
     end
   end
 

@@ -4,10 +4,10 @@
 # Mime::Type.register "text/richtext", :rtf
 
 api_mime_types = %W(
-  application/vnd.learnento+json
+  application/vnd.learnento+json; version=1
   text/x-json
   application/json
 )
 
 Mime::Type.unregister :json
-Mime::Type.register 'application/json', :json, api_mime_types
+Mime::Type.register 'application/vnd.learnento+json; version=1', :json, api_mime_types

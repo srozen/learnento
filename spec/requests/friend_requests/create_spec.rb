@@ -14,6 +14,7 @@ RSpec.describe 'Create a friend request', type: :request do
       post '/api/friend_requests', request_body(otheruser.id, 'Hello accept me !'), headers
       expect(response.status).to eq 200
       expect(otheruser.requested_friends.first.id).to equal(user.id)
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
     end
   end
 

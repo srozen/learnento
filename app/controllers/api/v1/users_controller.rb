@@ -8,12 +8,12 @@ class Api::V1::UsersController < ApiController
     user = create_user!(req)
     render json: {
         'token': generate_jwt(user.id, user.email)
-    }, content_type: 'application/vnd.learnento+json; version=1'
+    }
   end
 
   def show
     user = User.find(params[:id])
-    render json: user, content_type: 'application/vnd.learnento+json; version=1'
+    render json: user
   end
 
   # TODO: update
@@ -36,7 +36,7 @@ class Api::V1::UsersController < ApiController
       users = User.where.not(id: current_user.id).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     end
 
-    render json: users, content_type: 'application/vnd.learnento+json; version=1'
+    render json: users
   end
 
 end

@@ -21,6 +21,7 @@ RSpec.describe 'User request his friends index through the API', type: :request 
       expect(response.status).to eq 200
       expect(response_body).to include('friends')
       expect(response_body).to include('blocked_friends')
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
     end
   end
 

@@ -16,6 +16,7 @@ RSpec.describe 'Accept a friend request', type: :request do
       expect(response.status).to eq 200
       expect(user.friends.first.id).to equal(otheruser.id)
       expect(otheruser.friends.first.id).to equal(user.id)
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
     end
   end
 

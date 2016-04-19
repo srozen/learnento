@@ -7,6 +7,7 @@ RSpec.describe 'User register through the API', type: :request do
       post '/api/users', request_body('alice@gmail.com', 'password', 'password'), request_headers
       expect(response.status).to eq 200
       expect(response_body).to include('token')
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
     end
   end
 

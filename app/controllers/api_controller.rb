@@ -7,7 +7,7 @@ class ApiController < ApplicationController
 
   def authenticate_token!
     authenticator = Authenticator.new
-    @current_user = authenticator.analyse_token_from_request(request)
+    current_user = authenticator.analyse_token_from_request(request)
   end
 
   def authenticate_user!(req)

@@ -20,6 +20,7 @@ RSpec.describe 'Remove a friend', type: :request do
       expect(response.status).to eq 200
       expect(user.friends).to be_empty
       expect(otheruser.friends).to be_empty
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
     end
   end
 

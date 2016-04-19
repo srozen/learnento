@@ -19,6 +19,7 @@ RSpec.describe 'User request other user through the API', type: :request do
       expect(response.status).to eq 200
       expect(response_body).to include('friend_requests')
       expect(response_body).to include('pending_requests')
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
     end
   end
 

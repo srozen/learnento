@@ -16,6 +16,7 @@ RSpec.describe 'Decline a friend request', type: :request do
       expect(response.status).to eq 200
       expect(user.requested_friends).to be_empty
       expect(otheruser.pending_friends).to be_empty
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
     end
   end
 

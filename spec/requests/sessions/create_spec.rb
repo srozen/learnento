@@ -9,6 +9,7 @@ RSpec.describe 'User authenticate through the API', type: :request do
       post '/api/sessions', request_body(user.email, user.password), request_headers
       expect(response.status).to eq 200
       expect(response_body).to include('token')
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
     end
   end
 
