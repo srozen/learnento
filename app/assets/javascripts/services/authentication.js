@@ -30,11 +30,7 @@
             return $http({
                 method: 'POST',
                 url: '/api/users',
-                data: registerData,
-                headers: {
-                    'Content-Type': 'application/vnd.learnento+json; version=1',
-                    'Accept': 'application/vnd.learnento+json; version=1'
-                }
+                data: registerData
             }).then(function(response){
                 $rootScope.$broadcast('login');
                 saveToken(response.data.token);
@@ -45,11 +41,7 @@
             return $http({
                 method: 'POST',
                 url: '/api/sessions',
-                data: loginData,
-                headers: {
-                    'Content-Type': 'application/vnd.learnento+json; version=1',
-                    'Accept': 'application/vnd.learnento+json; version=1'
-                }
+                data: loginData
             }).then(function(response) {
                 $rootScope.$broadcast('login');
                 saveToken(response.data.token);
