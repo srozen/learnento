@@ -19,6 +19,11 @@ angular.module('Learnento').config(['$stateProvider', '$urlRouterProvider', func
             templateUrl: 'users/show.html',
             controller: 'UsersShowController'
         })
+        .state('edit_profile', {
+            url: '/users/edit/:id',
+            templateUrl: 'users/edit.html',
+            controller: 'UsersEditController'
+        })
         .state('users', {
             url: '/users',
             templateUrl: 'users/index.html',
