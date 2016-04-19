@@ -4,11 +4,8 @@ class Api::V1::UsersController < ApiController
   PAGE_SIZE = 10
 
   def create
-    req = JSON.parse request.body.read
-    user = create_user!(req)
-    render json: {
-        'token': generate_jwt(user.id, user.email)
-    }
+    user = create_user!(JSON.parse request.body.read)
+    render json: {'token': generate_jwt(user.id, user.email)}
   end
 
   def show

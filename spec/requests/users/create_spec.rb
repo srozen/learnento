@@ -16,7 +16,6 @@ RSpec.describe 'User register through the API', type: :request do
       post '/api/users', request_body('alice@gmail.com', 'password', 'passwooords'), request_headers
       expect(response.status).to eq 422
       expect(response_body).to include('error')
-      puts response_body['error']
     end
   end
 
@@ -25,7 +24,6 @@ RSpec.describe 'User register through the API', type: :request do
       post '/api/users', request_body('alice', 'password', 'passwooords'), request_headers
       expect(response.status).to eq 422
       expect(response_body).to include('error')
-      puts response_body['error']
     end
   end
 

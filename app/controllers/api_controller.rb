@@ -27,10 +27,11 @@ class ApiController < ApplicationController
   private
 
   def render_unauthorized
-    render json: {}, status: :unauthorized, content_type: 'application/vnd.learnento+json; version=1'
+    render json: {}, status: :unauthorized
   end
 
   def render_unprocessable(message = nil)
-    render json: {'error': message}, status: :unprocessable_entity, content_type: 'application/vnd.learnento+json; version=1'
+    render json: {'error': message}, status: :unprocessable_entity
   end
+
 end
