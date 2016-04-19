@@ -28,7 +28,7 @@
                     <a href="" data-purpose="menu-button" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#/users/{{user.id}}" data-purpose="profile-button">Profile</a></li>
+                        <li><a href="#/users/{{currentUser.id}}" data-purpose="profile-button">Profile</a></li>
                         <li><a href="" data-purpose="friendlist-button">Friends</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#/home" ng-click="logout()" data-purpose="disconnect-button"><i class="fa fa-power-off"> Logout</i></a></li>

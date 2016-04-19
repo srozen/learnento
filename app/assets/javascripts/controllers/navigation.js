@@ -1,6 +1,6 @@
 angular.module('Learnento').controller('NavigationController', ['Authentication', '$scope', '$rootScope', function(Authentication, $scope, $rootScope){
     $scope.loggedIn = Authentication.loggedIn();
-    $scope.user = Authentication.currentUser();
+    $scope.currentUser = Authentication.currentUser();
     $scope.logout = function(){
         Authentication.logout();
     };
@@ -10,5 +10,7 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
     });
     $rootScope.$on('login', function(){
         $scope.loggedIn = true;
+        $scope.currentUser = $rootScope.currentUser;
+        $scope.$apply();
     });
 }]);

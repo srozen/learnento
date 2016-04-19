@@ -25,12 +25,24 @@ angular.module('Learnento').service('Authentication', ['$http', '$window', '$roo
         }
     };
 
+    var isOwner = function(id){
+        return (loggedIn() && (id == currentUser().id))
+    };
+
     var register = function(registerData) {
         return $http({
             method: 'POST',
             url: '/api/users',
             data: registerData
         }).then(function(response){
+            var token = response.data.token;
+            var payload = token.split('.')[1];
+            payload = $window.atob(payload);
+            payload = JSON.parse(payload);
+            $rootScope.currentUser = {
+                id: payload.id,
+                email: payload.email
+            };
             $rootScope.$broadcast('login');
             saveToken(response.data.token);
         });
@@ -42,6 +54,14 @@ angular.module('Learnento').service('Authentication', ['$http', '$window', '$roo
             url: '/api/sessions',
             data: loginData
         }).then(function(response) {
+            var token = response.data.token;
+            var payload = token.split('.')[1];
+            payload = $window.atob(payload);
+            payload = JSON.parse(payload);
+            $rootScope.currentUser = {
+                id: payload.id,
+                email: payload.email
+            };
             $rootScope.$broadcast('login');
             saveToken(response.data.token);
         });
@@ -54,6 +74,7 @@ angular.module('Learnento').service('Authentication', ['$http', '$window', '$roo
         loggedIn: loggedIn,
         currentUser: currentUser,
         register: register,
-        login: login
+        login: login,
+        isOwner: isOwner
     }
 }]);
