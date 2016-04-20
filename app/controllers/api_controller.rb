@@ -1,6 +1,7 @@
 class ApiController < ApplicationController
   protect_from_forgery with: :null_session
   include ActiveSupport::Rescuable
+  rescue_from Authenticator::AuthorizationException, with: :render_forbidden
   rescue_from Authenticator::AuthenticationException, with: :render_unauthorized
   rescue_from ActiveRecord::RecordNotFound, with: :render_unauthorized
   rescue_from ActiveRecord::RecordInvalid do |exception| render_unprocessable(exception.to_s) end
@@ -28,6 +29,10 @@ class ApiController < ApplicationController
 
   def render_unauthorized
     render json: {}, status: :unauthorized
+  end
+
+  def render_forbidden
+    render json: {}, status: :forbidden
   end
 
   def render_unprocessable(message = nil)

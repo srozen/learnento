@@ -13,7 +13,17 @@ class Api::V1::UsersController < ApiController
     render json: user
   end
 
-  # TODO: update
+  def update
+    current_user = authenticate_token!
+    is_owner?(current_user.id, params[:id])
+    req = JSON.parse request.body.read
+    current_user.update!(
+        avatar: Avatar.base64_to_imagefile(req['data']['attributes']['avatar']['data'], req['data']['attributes']['avatar']['name']),
+        first_name: req['data']['attributes']['first_name'],
+        last_name: req['data']['attributes']['last_name']
+    )
+    render json: {}
+  end
 
 
   def index
@@ -34,6 +44,14 @@ class Api::V1::UsersController < ApiController
     end
 
     render json: users
+  end
+
+  private
+
+  def is_owner?(token_id, user_id)
+    if token_id != user_id.to_i
+      raise Authenticator::AuthorizationException
+    end
   end
 
 end

@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :avatar, AvatarUploader
   has_friendship
+
+  validates :first_name, length: { maximum: 20 }
+  validates :last_name, length: { maximum: 20 }
 end

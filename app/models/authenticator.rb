@@ -25,6 +25,8 @@ class Authenticator
 
   class AuthenticationException < StandardError; end
 
+  class AuthorizationException < StandardError; end
+
   private
 
   def raise_authentication_error

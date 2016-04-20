@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   api vendor_string: "learnento", default_version: 1 do
     version 1 do
         resources :sessions, only: [:create]
-        resources :users, only: [:create, :show, :index]
+        resources :users, only: [:create, :show, :index, :update]
         resources :friend_requests, only: [:index, :create, :update, :destroy]
         resources :friends, only: [:index, :update, :destroy]
     end
