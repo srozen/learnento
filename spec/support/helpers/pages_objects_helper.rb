@@ -16,6 +16,7 @@ module PagesObjectsHelper
   page_object :login, Spec::Pages::Login
   page_object :user_list, Spec::Pages::UserList
   page_object :profile, Spec::Pages::Profile
+  page_object :profile_edition, Spec::Pages::ProfileEdition
 
 end
 

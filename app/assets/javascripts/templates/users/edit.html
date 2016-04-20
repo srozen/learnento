@@ -1,3 +1,23 @@
 <section data-purpose="profile-edition">
-    <h1>Edit your profile {{user.email}}</h1>
+    <h2>Edit your profile</h2>
+
+    <div ng-if="success_message" data-purpose="success-message" class="alert alert-success" role="alert">
+        <ul>{{success_message}}</ul>
+    </div>
+
+    <form ng-submit="handleEdit()">
+        <fieldset class="form-group">
+            <label for="first-name">First name</label>
+            <input type="text" class="form-control" autofocus="true" data-purpose="first-name-input" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="last-name">Last name</label>
+            <input type="text" class="form-control" data-purpose="last-name-input" >
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="avatar">Avatar</label>
+            <input type="file" name="avatar" class="file" data-purpose="avatar-input" >
+        </fieldset>
+        <input type="submit" class="btn btn-primary" data-purpose="" value="Edit">
+    </form>
 </section>
