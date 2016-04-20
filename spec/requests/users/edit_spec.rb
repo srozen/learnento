@@ -6,19 +6,46 @@ RSpec.describe 'User profile edition', type: :request do
   let!(:jwt){JWT.encode({'id': user.id, 'email': user.email}, Rails.application.secrets.json_web_token_secret, 'HS256')}
 
   context 'User edit profile with right infos and valid token' do
-
+    it 'returns a valid status with a success message' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      put "/api/users/#{user.id}", request_body('Alice', 'Liddell'), headers
+      expect(response.status).to eq 200
+      expect(User.find(1).first_name).to eq('Alice')
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+    end
   end
 
   context 'User edit with invalid infos' do
-
+    it 'returns an unprocessable entity status with error message' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      put "/api/users/#{user.id}", request_body('AliceAliceAliceAliceA', 'Liddell'), headers
+      expect(response.status).to eq 422
+      expect(User.find(1).first_name).to eq(nil)
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+      puts response_body['error']
+    end
   end
 
   context 'User edit with invalid token' do
-
+    it 'returns an unauthorized status' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = 'Bearer falsetokennotvalidatall000'
+      put "/api/users/#{user.id}", request_body('AliceAliceAliceAliceA', 'Liddell'), headers
+      expect(response.status).to eq 401
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+    end
   end
 
   context 'User try to edit other profile' do
-
+    it 'returns an unauthorized status' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      put '/api/users/2', request_body('Alice', 'Liddell'), headers
+      expect(response.status).to eq 403
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+    end
   end
 
   private
@@ -27,13 +54,13 @@ RSpec.describe 'User profile edition', type: :request do
     JSON.parse(response.body)
   end
 
-  def request_body(email, password, password_confirmation)
+  def request_body(firstname, lastname)
     {
         'data':{
             'type': 'user',
             'attributes': {
-                'first-name': email,
-                'last-name': password,
+                'first_name': firstname,
+                'last_name': lastname,
                 'avatar' => {
                     'data' => Base64.encode64(File.open(resources_path('images', 'default.jpg'), 'rb').read),
                     'name' => 'default.jpg'
