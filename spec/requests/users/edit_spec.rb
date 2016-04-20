@@ -24,7 +24,6 @@ RSpec.describe 'User profile edition', type: :request do
       expect(response.status).to eq 422
       expect(User.find(1).first_name).to eq(nil)
       expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
-      puts response_body['error']
     end
   end
 
