@@ -3,4 +3,6 @@ angular.module('Learnento').controller('UsersEditController', ['$stateParams', '
         $location.path('home');
     }
     $scope.user = Authentication.currentUser();
+
+    $scope.handleEdit = function(){}
 }]);

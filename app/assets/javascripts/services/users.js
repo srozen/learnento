@@ -18,6 +18,14 @@ angular.module('Learnento').service('User', ['$http', 'Authentication', function
                 params: params,
                 headers: headers
             })
+        },
+        update: function(id, editData){
+            return $http({
+                method: 'PUT',
+                url: '/api/users/'+id,
+                data: editData,
+                headers: headers
+            })
         }
     }
 }]);

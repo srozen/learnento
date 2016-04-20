@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApiController
-  before_filter :authenticate_token!, only: [:show, :index]
+  before_filter :authenticate_token!, only: [:show, :index, :update]
 
   PAGE_SIZE = 10
 
