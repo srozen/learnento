@@ -32,4 +32,8 @@ angular.module('Learnento').controller('UsersIndexController', ['$scope', 'User'
         page++;
         $scope.search($scope.keywords, page);
     };
+
+    $scope.zeroPage = function(){
+        return (page == 0);
+    }
 }]);

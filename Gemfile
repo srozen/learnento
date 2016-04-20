@@ -45,7 +45,7 @@ group :development, :test do
 end
 
 group :development do
-  #gem 'spring'  // May badly interact with Angular
+  gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capistrano', '~> 3.4', require: false

@@ -4,6 +4,9 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
             <a href="#/home" class="navbar-brand">Learnento</a>
         </div>
@@ -12,7 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li ng-show="loggedIn">
-                    <a href="#/users" class="btn btn-default" data-purpose="access-learners-button"><i class="fa fa-search"> Find Learners</i></a>
+                    <a href="#/users" class="btn btn-default" data-purpose="access-learners-button"><i class="fa fa-search"></i> Find Learners</a>
                 </li>
             </ul>
 
@@ -31,7 +34,7 @@
                         <li><a href="#/users/{{currentUser.id}}" data-purpose="profile-button">Profile</a></li>
                         <li><a href="" data-purpose="friendlist-button">Friends</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#/home" ng-click="logout()" data-purpose="disconnect-button"><i class="fa fa-power-off"> Logout</i></a></li>
+                        <li><a href="#/home" ng-click="logout()" data-purpose="disconnect-button"><i class="fa fa-power-off"></i> Logout</a></li>
                     </ul>
                 </li>
             </ul>
