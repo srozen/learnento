@@ -61,9 +61,9 @@ RSpec.describe 'User profile edition', type: :request do
             'attributes': {
                 'first_name': firstname,
                 'last_name': lastname,
-                'avatar' => {
-                    'data' => Base64.encode64(File.open(resources_path('images', 'default.jpg'), 'rb').read),
-                    'name' => 'default.jpg'
+                'avatar': {
+                    'data': Base64.encode64(File.open(resources_path('images', 'pepe.jpg'), 'rb').read),
+                    'name': 'pepe.jpg'
                 }
             }
         }

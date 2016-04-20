@@ -8,16 +8,16 @@
     <form ng-submit="handleEdit()">
         <fieldset class="form-group">
             <label for="first-name">First name</label>
-            <input type="text" class="form-control" autofocus="true" data-purpose="first-name-input" >
+            <input type="text" class="form-control" autofocus="true" data-purpose="first-name-input" ng-model="firstname">
         </fieldset>
         <fieldset class="form-group">
             <label for="last-name">Last name</label>
-            <input type="text" class="form-control" data-purpose="last-name-input" >
+            <input type="text" class="form-control" data-purpose="last-name-input" ng-model="lastname">
         </fieldset>
         <fieldset class="form-group">
             <label for="avatar">Avatar</label>
-            <input type="file" name="avatar" class="file" data-purpose="avatar-input" >
+            <input type="file" name="avatar" class="file" ng-model="avatar" data-purpose="avatar-input" base-sixty-four-input>
         </fieldset>
-        <input type="submit" class="btn btn-primary" data-purpose="" value="Edit">
+        <input type="submit" class="btn btn-primary" data-purpose="confirm-edition-button" value="Edit">
     </form>
 </section>

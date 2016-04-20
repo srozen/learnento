@@ -11,9 +11,8 @@ RSpec.feature 'Profile edition', '
       i_access_my_profile_edition_page
       i_am_on_my_profile_edition_page
       i_fill_the_form_in
-      #i_confirm_the_edition
-
-      #my_informations_have_been_updated
+      i_confirm_the_edition
+      my_informations_have_been_updated
     end
   end
 
@@ -45,6 +44,6 @@ RSpec.feature 'Profile edition', '
   end
 
   def my_informations_have_been_updated
-    expect(page).to have_selector('[data-purpose="success-message"]')
+    expect(page).to have_selector('[data-purpose="user-details"]')
   end
 end
