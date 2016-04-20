@@ -3,7 +3,7 @@ class ApiController < ApplicationController
   include ActiveSupport::Rescuable
   rescue_from Authenticator::AuthorizationException, with: :render_forbidden
   rescue_from Authenticator::AuthenticationException, with: :render_unauthorized
-  rescue_from ActiveRecord::RecordNotFound, with: :render_unauthorized
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   rescue_from ActiveRecord::RecordInvalid do |exception| render_unprocessable(exception.to_s) end
 
   def authenticate_token!
@@ -26,6 +26,10 @@ class ApiController < ApplicationController
   end
 
   private
+
+  def render_not_found
+    render json: {}, status: :not_found
+  end
 
   def render_unauthorized
     render json: {}, status: :unauthorized

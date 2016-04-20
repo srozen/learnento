@@ -11,26 +11,40 @@ RSpec.describe 'Update a friendship', type: :request do
   }
 
 
-  context 'Blocking friend with vaild JWT' do
+  context 'Blocking/Unblocking friend with valid JWT' do
     it 'returns a valid status' do
       headers = request_headers
       headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
-      put "/api/friends/#{otheruser.id}", request_body(otheruser.id), headers
+      put "/api/friends/#{otheruser.id}", request_body(otheruser.id, 'block'), headers
       expect(response.status).to eq 200
       expect(user.blocked_friends.first.id).to equal(otheruser.id)
       expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+
+      put "/api/friends/#{otheruser.id}", request_body(otheruser.id, 'unblock'), headers
+      expect(response.status).to eq 200
+      expect(user.blocked_friends).to be_empty
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+    end
+  end
+
+  context 'Unblocking a non-blocked user with valid JWT' do
+    it 'returns a not found status' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      put "/api/friends/#{otheruser.id}", request_body(otheruser.id, 'unblock'), headers
+      expect(response.status).to eq 404
     end
   end
 
   private
 
-  def request_body(id)
+  def request_body(id, action)
     {
         'data':{
             'type': 'friend_request',
             'attributes': {
                 'id': id,
-                'action': 'block'
+                'action': action
             }
         }
     }.to_json
