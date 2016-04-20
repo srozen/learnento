@@ -16,5 +16,6 @@
 //= require angular
 //= require angular-ui-router
 //= require angular-rails-templates
+//= require angular-base64-upload
 //= require_tree ./templates
 //= require_tree .

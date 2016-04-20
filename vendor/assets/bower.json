@@ -5,7 +5,8 @@
     "font-awesome": "latest",
     "angular-mocks": "latest",
     "angular": "~> 1.5.3",
-    "angular-ui-router": "latest"
+    "angular-ui-router": "latest",
+    "angular-base64-upload": "latest"
   },
   "resolutions": {
     "angular": "1.5.3"
