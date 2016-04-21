@@ -16,6 +16,17 @@ RSpec.describe 'User profile edition', type: :request do
     end
   end
 
+  context 'User edit profile with no avatar given and valid token' do
+    it 'returns a valid status with a success message' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      put "/api/users/#{user.id}", partial_request_body('Alice', 'Liddell'), headers
+      expect(response.status).to eq 200
+      expect(User.find(1).first_name).to eq('Alice')
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+    end
+  end
+
   context 'User edit with invalid infos' do
     it 'returns an unprocessable entity status with error message' do
       headers = request_headers
@@ -65,6 +76,19 @@ RSpec.describe 'User profile edition', type: :request do
                     'data': Base64.encode64(File.open(resources_path('images', 'pepe.jpg'), 'rb').read),
                     'name': 'pepe.jpg'
                 }
+            }
+        }
+    }.to_json
+  end
+
+  def partial_request_body(firstname, lastname)
+    {
+        'data':{
+            'type': 'user',
+            'attributes': {
+                'first_name': firstname,
+                'last_name': lastname,
+                'avatar': nil
             }
         }
     }.to_json

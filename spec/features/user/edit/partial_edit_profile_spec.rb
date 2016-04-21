@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Profile edition', '
+RSpec.feature 'Profile edition with only some fields', '
   As a registered user
   In order to find people matching my profile
   I want to edit my personnal informations', :js do
@@ -18,16 +18,11 @@ RSpec.feature 'Profile edition', '
 
   private
 
-  let!(:user){User.create(email: "foo@bar.com", password: "password", first_name: "Foofoo", last_name: "Barbar")}
-  let!(:previousname){String.new}
+  let!(:user){User.create(email: "foo@bar.com", password: "password")}
 
   def i_access_my_profile
     navigation.access_menu
     navigation.access_profile
-  end
-
-  def i_check_my_first_name
-    previousname = profile.get_first_name
   end
 
   def i_access_my_profile_edition_page
@@ -40,8 +35,6 @@ RSpec.feature 'Profile edition', '
 
   def i_fill_the_form_in
     profile_edition.fill_first_name("Samuel")
-    profile_edition.fill_last_name("Monroe")
-    profile_edition.upload_avatar(Rails.root+'public/images/pepe.jpg')
   end
 
   def i_confirm_the_edition
@@ -50,6 +43,5 @@ RSpec.feature 'Profile edition', '
 
   def my_informations_have_been_updated
     expect(page).to have_selector('[data-purpose="user-details"]')
-    expect(previousname).not_to eq profile.get_first_name
   end
 end

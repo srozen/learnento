@@ -2,19 +2,32 @@ angular.module('Learnento').controller('UsersEditController', ['$stateParams', '
     if(!Authentication.isOwner($stateParams.id)){
         $location.path('home');
     }
-    $scope.user = Authentication.currentUser();
+    $scope.currentUser = Authentication.currentUser();
+
+    User.show($stateParams.id).then(function(response){
+        $scope.user = response.data;
+        $scope.firstname = response.data.first_name;
+        $scope.lastname = response.data.last_name;
+    }, function(error){
+        $location.path('home');
+    });
 
     $scope.handleEdit = function(){
+        if ($scope.avatar != null){
+            var avatar = {
+                'data': $scope.avatar.base64,
+                'name': $scope.avatar.filename
+            };
+        } else {
+            var avatar = null;
+        }
         var data = {
             'data': {
                 'type': 'user',
                 'attributes': {
                     'first_name': $scope.firstname,
                     'last_name': $scope.lastname,
-                    'avatar': {
-                        'data': $scope.avatar.base64,
-                        'name': $scope.avatar.filename
-                    }
+                    'avatar': avatar
                 }
             }
         };

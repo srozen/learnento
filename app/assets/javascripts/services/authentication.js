@@ -7,6 +7,7 @@ angular.module('Learnento').service('Authentication', ['$http', '$window', '$roo
     };
     var logout = function(){
         $window.localStorage.removeItem('learnenToken');
+        $rootScope.currentUser = null;
         $rootScope.$broadcast('logout');
     };
     var loggedIn = function() {

@@ -8,11 +8,11 @@
     <form ng-submit="handleEdit()">
         <fieldset class="form-group">
             <label for="first-name">First name</label>
-            <input type="text" class="form-control" autofocus="true" data-purpose="first-name-input" ng-model="firstname">
+            <input type="text" ng-value="firstname" class="form-control" autofocus="true" data-purpose="first-name-input" ng-model="firstname">
         </fieldset>
         <fieldset class="form-group">
             <label for="last-name">Last name</label>
-            <input type="text" class="form-control" data-purpose="last-name-input" ng-model="lastname">
+            <input type="text" class="form-control" ng-value="lastname" data-purpose="last-name-input" ng-model="lastname">
         </fieldset>
         <fieldset class="form-group">
             <label for="avatar">Avatar</label>

@@ -17,8 +17,14 @@ class Api::V1::UsersController < ApiController
     current_user = authenticate_token!
     is_owner?(current_user.id, params[:id])
     req = JSON.parse request.body.read
+
+    if !req['data']['attributes']['avatar'].nil?
+      current_user.update!(
+          avatar: Avatar.base64_to_imagefile(req['data']['attributes']['avatar']['data'], req['data']['attributes']['avatar']['name'])
+      )
+    end
+
     current_user.update!(
-        avatar: Avatar.base64_to_imagefile(req['data']['attributes']['avatar']['data'], req['data']['attributes']['avatar']['name']),
         first_name: req['data']['attributes']['first_name'],
         last_name: req['data']['attributes']['last_name']
     )
