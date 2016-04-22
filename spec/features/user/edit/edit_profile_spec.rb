@@ -52,5 +52,7 @@ RSpec.feature 'Profile edition', '
   def my_informations_have_been_updated
     expect(page).to have_selector('[data-purpose="user-details"]')
     expect(previousname).not_to eq profile.get_first_name
+    user.reload
+    expect(user.first_name).to eq profile.get_first_name
   end
 end

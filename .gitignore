@@ -22,6 +22,7 @@ db/*.sqlite3
 /tmp/*
 
 # various artifacts
+screensh*
 **.war
 *.rbc
 *.sassc
