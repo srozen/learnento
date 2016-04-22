@@ -2,7 +2,7 @@ module UsualStepsHelper
 
 
   def as_user(user)
-    visit '/'
+    visit '/#/home'
     navigation.access_login
     login.fill_login_form(user.email, 'password')
     login.confirm_login_form
