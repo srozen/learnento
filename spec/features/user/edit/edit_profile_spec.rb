@@ -20,7 +20,7 @@ RSpec.feature 'Profile edition', '
   private
 
   let!(:user){User.create(email: "foo@bar.com", password: "password", first_name: "Foofoo", last_name: "Barbar")}
-  let!(:previousname){String.new}
+  let(:@previousname){String.new}
 
   def i_access_my_profile
     navigation.access_menu
@@ -28,7 +28,7 @@ RSpec.feature 'Profile edition', '
   end
 
   def i_check_my_first_name
-    previousname = profile.get_first_name
+    @previousname = profile.get_first_name
   end
 
   def i_access_my_profile_edition_page
@@ -51,6 +51,6 @@ RSpec.feature 'Profile edition', '
 
   def my_informations_have_been_updated
     expect(page).to have_selector('[data-purpose="user-details"]')
-    expect(previousname).not_to eq profile.get_first_name
+    expect(@previousname).not_to eq profile.get_first_name
   end
 end
