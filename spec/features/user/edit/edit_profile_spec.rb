@@ -28,6 +28,7 @@ RSpec.feature 'Profile edition', '
   end
 
   def i_check_my_first_name
+    sleep 0.5
     @previousname = profile.get_first_name
   end
 
@@ -50,6 +51,7 @@ RSpec.feature 'Profile edition', '
   end
 
   def my_informations_have_been_updated
+    sleep 0.5
     expect(page).to have_selector('[data-purpose="user-details"]')
     expect(@previousname).not_to eq profile.get_first_name
   end
