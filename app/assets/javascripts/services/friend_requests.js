@@ -10,6 +10,14 @@ angular.module('Learnento').service('FriendRequest', ['$http', 'Authentication',
                 data: '',
                 headers: headers
             })
+        },
+        show: function(id){
+            return $http({
+                method: 'GET',
+                url: '/api/friend_requests/'+id,
+                data: '',
+                headers: headers
+            })
         }
     }
 }]);

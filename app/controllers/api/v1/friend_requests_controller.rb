@@ -1,5 +1,5 @@
 class Api::V1::FriendRequestsController < ApiController
-  before_filter :authenticate_token!, only: [:index, :create, :update, :destroy]
+  before_filter :authenticate_token!, only: [:index, :create, :update, :destroy, :show]
 
   def index
     current_user = authenticate_token!
@@ -8,6 +8,15 @@ class Api::V1::FriendRequestsController < ApiController
     render json: {
         friend_requests: friend_requests,
         pending_requests: pending_requests
+    }
+  end
+
+  def show
+    current_user = authenticate_token!
+    user = User.find(params[:id])
+    message = current_user.friendships.find_by(friend_id: user.id).message
+    render json: {
+        message: message
     }
   end
 
@@ -32,5 +41,9 @@ class Api::V1::FriendRequestsController < ApiController
     current_user.decline_request(user)
     render json: ''
   end
+
+  private
+
+
 
 end

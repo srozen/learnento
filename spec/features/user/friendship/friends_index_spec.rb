@@ -15,6 +15,10 @@ RSpec.feature 'User brows his friends requests', '
   private
 
   let!(:user){User.create(email: 'foo@bar.com', password: 'password', first_name: 'John', last_name: 'Foo')}
+  let!(:puser){User.create(email: 'charlie@gmail.com', password: 'password')}
+  let!(:friending){
+    puser.friend_request(user, 'Hello add me ! ')
+  }
 
   def i_access_my_friend_request_page
     navigation.access_friend_requests
@@ -22,6 +26,12 @@ RSpec.feature 'User brows his friends requests', '
 
   def my_friend_request_page_is_displayed
     expect(page).to have_selector('[data-purpose="friend-requests"]')
+  end
+
+  def someone_requested_me_as_friend
+    expect(page).to have_selector('[data-purpose="friend-request"]')
+    expect(page).to have_content(puser.email)
+    expect(page).to have_content('Hello add me! ')
   end
 
 end

@@ -7,5 +7,10 @@ angular.module('Learnento').controller('FriendRequestsIndexController', ['$scope
     FriendRequest.all().success(function(data){
         $scope.requests = data.friend_requests;
         $scope.pendings = data.pending_requests;
+        angular.forEach($scope.requests, function(request){
+            FriendRequest.show(request.id).success(function(data){
+                request.message = data.message;
+            });
+        });
     })
 }]);

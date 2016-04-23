@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     version 1 do
         resources :sessions, only: [:create]
         resources :users, only: [:create, :show, :index, :update]
-        resources :friend_requests, only: [:index, :create, :update, :destroy]
+        resources :friend_requests, only: [:index, :create, :update, :destroy, :show]
         resources :friends, only: [:index, :update, :destroy]
     end
   end
