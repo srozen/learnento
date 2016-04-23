@@ -9,6 +9,7 @@ RSpec.feature 'User brows his friends requests', '
     as_user(user) do
       i_access_my_friend_request_page
       my_friend_request_page_is_displayed
+      someone_requested_me_as_friend
     end
   end
 
@@ -31,7 +32,7 @@ RSpec.feature 'User brows his friends requests', '
   def someone_requested_me_as_friend
     expect(page).to have_selector('[data-purpose="friend-request"]')
     expect(page).to have_content(puser.email)
-    expect(page).to have_content('Hello add me! ')
+    expect(page).to have_content('Hello add me ! ')
   end
 
 end
