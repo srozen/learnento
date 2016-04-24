@@ -8,6 +8,8 @@
                {{request.message}}
             </div>
         </div>
+        <a ng-click="acceptRequest($index, request.id)" class="btn btn-success btn-xs" data-purpose="accept-friend-request-button"><span class="fa fa-check"></span> Accept </a>
+        <a ng-click="declineRequest($index, request.id)" class="btn btn-danger btn-xs" data-purpose="decline-friend-request-button"><span class="fa fa-times"></span> Decline </a>
     </div>
 
     <h2>Pending Requests</h2>

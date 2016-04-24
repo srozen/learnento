@@ -18,6 +18,22 @@ angular.module('Learnento').service('FriendRequest', ['$http', 'Authentication',
                 data: '',
                 headers: headers
             })
+        },
+        accept: function(id, data){
+            return $http({
+                method: 'PUT',
+                url: 'api/friend_requests/'+id,
+                data: data,
+                headers: headers
+            })
+        },
+        destroy: function(id, data){
+            return $http({
+                method: 'DELETE',
+                url: 'api/friend_requests/'+id,
+                data: data,
+                headers: headers
+            })
         }
     }
 }]);
