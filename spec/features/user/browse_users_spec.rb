@@ -24,7 +24,7 @@ RSpec.feature 'Browse user list', '
   end
 
   def profiles_are_displayed
-    expect(page).to have_selector('[data-purpose="learners_index"]')
+    expect(page).to have_selector('[data-purpose="learners-index"]')
   end
 
   def my_profile_is_not_listed

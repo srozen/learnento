@@ -25,7 +25,7 @@ RSpec.feature 'learners browsing', '
   end
 
   def profiles_are_displayed
-    expect(page).to have_selector('[data-purpose="learners_index"]')
+    expect(page).to have_selector('[data-purpose="learners-index"]')
   end
 
   def i_access_a_user_profile
