@@ -7,6 +7,7 @@ module Spec
       element :access_login_button, '[data-purpose="access-login-button"]'
       element :access_learners_button, '[data-purpose="access-learners-button"]'
       element :friend_requests_button, '[data-purpose="friend-requests-button"]'
+      element :friendlist_button, '[data-purpose="friendlist-button"]'
 
       def access_menu
         access_menu_button.click
@@ -30,6 +31,10 @@ module Spec
 
       def access_friend_requests
         friend_requests_button.click
+      end
+
+      def access_friendlist
+        friendlist_button.click
       end
     end
   end

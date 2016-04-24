@@ -11,7 +11,7 @@ RSpec.feature 'User accept friend request', '
       i_check_my_friend_requests_page
       i_have_a_new_friend_request
       i_accept_the_friend_request
-
+      sleep 0.5
       the_request_disappeared
     end
   end
