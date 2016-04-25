@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe 'Check requested_friends statuses through the api', type: :request do
+RSpec.describe 'Check pending_friends statuses through the api', type: :request do
 
   let!(:user){User.create(email: 'alice@gmail.com', password: 'password')}
   let!(:jwt){JWT.encode({'id': user.id, 'email': user.email}, Rails.application.secrets.json_web_token_secret, 'HS256')}
   let!(:puser){User.create(email: 'charlie@gmail.com', password: 'password')}
   let!(:friending){
-    puser.friend_request(user, 'Hello add me pls')
+    user.friend_request(puser, 'Hello add me pls')
 
   }
   let!(:otheruser){User.create(email: 'bob@gmail.com', password: 'password')}
@@ -15,7 +15,7 @@ RSpec.describe 'Check requested_friends statuses through the api', type: :reques
     it 'returns true' do
       headers = request_headers
       headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
-      get "/api/requested_friends/#{puser.id}", '', headers
+      get "/api/pending_friends/#{puser.id}", '', headers
       expect(response.status).to eq 200
       expect(response_body).to include('status')
       expect(response_body['status']).to eq(true)
@@ -27,7 +27,7 @@ RSpec.describe 'Check requested_friends statuses through the api', type: :reques
     it 'returns false' do
       headers = request_headers
       headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
-      get "/api/requested_friends/#{otheruser.id}", '', headers
+      get "/api/pending_friends/#{otheruser.id}", '', headers
       expect(response.status).to eq 200
       expect(response_body).to include('status')
       expect(response_body['status']).to eq(false)
