@@ -9,4 +9,5 @@
         <img ng-src="{{user.avatar.url}}" alt="" height="100" width="100">
     </div>
     <a data-purpose="edit-profile-button" ng-show="editButton" class="btn btn-primary" href="#/users/edit/{{user.id}}"> Edit </a>
+    <a data-purpose="pending-friend-request-button" ng-show="pendingButton" class="btn btn-primary disabled" >Pending</a>
 </section>

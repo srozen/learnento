@@ -8,8 +8,8 @@ angular.module('Learnento').controller('UsersShowController', ['$stateParams', '
         $scope.editButton = Authentication.isOwner($stateParams.id);
         if(!Authentication.isOwner($stateParams.id)){
             PendingFriend.show($scope.user.id).success(function(data){
-                console.log(data);
-            })
+                $scope.pendingButton = data.status;
+            });
         }
     }, function(error){
         $location.path('home');
