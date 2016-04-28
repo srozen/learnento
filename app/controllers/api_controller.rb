@@ -13,6 +13,7 @@ class ApiController < ApplicationController
 
   def authenticate_user!(req)
     authenticator = Authenticator.new
+    puts req
     authenticator.validate_credentials!(req['data']['attributes']['email'], req['data']['attributes']['password'])
   end
 
