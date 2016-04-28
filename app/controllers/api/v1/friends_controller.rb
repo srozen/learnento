@@ -1,5 +1,5 @@
 class Api::V1::FriendsController < ApiController
-  before_filter :authenticate_token!, only: [:index, :update, :destroy]
+  before_filter :authenticate_token!, only: [:index, :update, :destroy, :show]
 
   def index
     current_user = authenticate_token!
@@ -8,6 +8,15 @@ class Api::V1::FriendsController < ApiController
     render json: {
         friends: friends,
         blocked_friends: blocked_friends
+    }
+  end
+
+  def show
+    current_user = authenticate_token!
+    friend = User.find(params[:id])
+    status = current_user.friends_with?(friend)
+    render json: {
+        status: status
     }
   end
 

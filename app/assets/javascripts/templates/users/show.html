@@ -10,4 +10,27 @@
     </div>
     <a data-purpose="edit-profile-button" ng-show="editButton" class="btn btn-primary" href="#/users/edit/{{user.id}}"> Edit </a>
     <a data-purpose="pending-friend-request-button" ng-show="pendingButton" class="btn btn-primary disabled" >Pending</a>
+
+    <div ng-show="addFriendButton">
+        <!-- Button trigger modal -->
+        <button type="button" class='btn btn-primary' data-toggle="modal" data-target="#add-friend" data-purpose="send-friend-request-button">
+            <i class="fa fa-user-plus"></i> Add User </button>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="add-friend" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        Send {{user.first_name}} a friend request !
+                        <form>
+                            <textarea name="message" class="form-control" data-purpose="friend-request-message">Hello {{user.first_name}}, I'd like to add you as friend !</textarea><br/>
+                            <input type="submit" value="Send" class="btn btn-success" data-purpose="confirm-friend-request-button">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

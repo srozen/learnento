@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         resources :friend_requests, only: [:index, :create, :update, :destroy, :show]
         resources :requested_friends, only: [:show]
         resources :pending_friends, only: [:show]
-        resources :friends, only: [:index, :update, :destroy]
+        resources :friends, only: [:index, :update, :destroy, :show]
     end
   end
 
