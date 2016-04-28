@@ -22,7 +22,7 @@ angular.module('Learnento').service('FriendRequest', ['$http', 'Authentication',
         accept: function(id, data){
             return $http({
                 method: 'PUT',
-                url: 'api/friend_requests/'+id,
+                url: '/api/friend_requests/'+id,
                 data: data,
                 headers: headers
             })
@@ -30,7 +30,15 @@ angular.module('Learnento').service('FriendRequest', ['$http', 'Authentication',
         destroy: function(id, data){
             return $http({
                 method: 'DELETE',
-                url: 'api/friend_requests/'+id,
+                url: '/api/friend_requests/'+id,
+                data: data,
+                headers: headers
+            })
+        },
+        create: function(id, data){
+            return $http({
+                method: 'POST',
+                url: '/api/friend_requests/',
                 data: data,
                 headers: headers
             })

@@ -24,8 +24,8 @@
                     <div class="modal-body">
                         Send {{user.first_name}} a friend request !
                         <form>
-                            <textarea name="message" class="form-control" data-purpose="friend-request-message">Hello {{user.first_name}}, I'd like to add you as friend !</textarea><br/>
-                            <input type="submit" value="Send" class="btn btn-success" data-purpose="confirm-friend-request-button">
+                            <textarea ng-model="requestMessage" ng-value="requestMessage" name="message" class="form-control" data-purpose="friend-request-message"></textarea><br/>
+                            <input type="submit" value="Send" class="btn btn-success" data-purpose="confirm-friend-request-button" data-dismiss="modal" ng-click="handleFriendRequest()">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </form>
                     </div>
