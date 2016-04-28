@@ -30,6 +30,8 @@ class Api::V1::FriendsController < ApiController
     else
       current_user.blocked_friends.find_by!(id: user.id)
       current_user.unblock_friend(user)
+      current_user.friend_request(user)
+      user.accept_request(current_user)
     end
     render json: ''
   end

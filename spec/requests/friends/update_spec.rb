@@ -23,6 +23,7 @@ RSpec.describe 'Update a friendship', type: :request do
       put "/api/friends/#{otheruser.id}", request_body(otheruser.id, 'unblock'), headers
       expect(response.status).to eq 200
       expect(user.blocked_friends).to be_empty
+      expect(user.friends_with?(otheruser)).to eq true
       expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
     end
   end

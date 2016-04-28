@@ -26,6 +26,14 @@ angular.module('Learnento').service('Friend', ['$http', 'Authentication', functi
                 data: '',
                 headers: headers
             })
+        },
+        update: function(id, data){
+            return $http({
+                method: 'PUT',
+                url: '/api/friends/'+id,
+                data: data,
+                headers: headers
+            })
         }
     }
 }]);

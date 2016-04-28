@@ -1,8 +1,8 @@
 <h2>Friendlist</h2>
 <div data-purpose="friendlist">
     <div ng-repeat="friend in friends">
-        <span data-purpose="friend">{{friend}}</span><br/>
-        <section>
+        <span data-purpose="friend">{{friend.first_name}} {{friend.last_name}}</span>
+        <span>
             <!-- Button trigger modal -->
             <button type="button" class='btn btn-danger btn-xs' data-toggle="modal" data-target="#remove-friend" data-purpose="remove-friend-button">
                 <span class="fa fa-times"></span> Delete </button>
@@ -24,6 +24,47 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </span>
+
+        <span>
+            <!-- Button trigger modal -->
+            <button type="button" class='btn btn-warning btn-xs' data-toggle="modal" data-target="#block-friend" data-purpose="block-friend-button">
+                <span class="fa fa-times"></span> Block </button>
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="block-friend" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            Are you sure you want to block this friend?
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-warning" data-purpose="confirm-block-friend-button" data-dismiss="modal" ng-click="blockFriend($index, friend.id)">Block</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+
+    <br/>
+
+
+    <div>
+        <button class="btn btn-default btn-xs" role="button" data-toggle="collapse" data-target="#blockedFriends" data-purpose="blocked-friends-button" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fa fa-arrow-down"></i> Show Blocked Users
+        </button>
+        <div class="collapse" id="blockedFriends">
+            <h2>Blocked Friends</h2>
+            <div data-purpose="blocked-friends">
+                <div ng-repeat="blocked in blockeds">
+                    <span data-purpose="blocked">{{blocked.first_name}} {{blocked.last_name}}</span>
+                    <button class="btn btn-success btn-xs" data-purpose="unblock-friend-button" ng-click="unblockFriend($index, blocked.id)">Unblock</button>
+                    <button class="btn btn-danger btn-xs" data-purpose="delete-blocked-button" ng-click="deleteFriend($index, blocked.id)">Delete</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div><br/>
