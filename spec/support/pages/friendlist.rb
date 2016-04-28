@@ -21,20 +21,12 @@ module Spec
         confirm_remove_friend_button.click
       end
 
-      def cancel_removal
-        cancel_remove_friend_button.click
-      end
-
       def block_friend
         block_friend_button.click
       end
 
       def confirm_blocking
         confirm_block_friend_button.click
-      end
-
-      def cancel_blocking
-        cancel_block_friend_button.click
       end
 
       def show_blocked
