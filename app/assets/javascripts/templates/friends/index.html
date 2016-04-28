@@ -1,6 +1,29 @@
 <h2>Friendlist</h2>
 <div data-purpose="friendlist">
     <div ng-repeat="friend in friends">
-        <span data-purpose="friend">{{friend}}</span>
+        <span data-purpose="friend">{{friend}}</span><br/>
+        <section>
+            <!-- Button trigger modal -->
+            <button type="button" class='btn btn-danger btn-xs' data-toggle="modal" data-target="#remove-friend" data-purpose="remove-friend-button">
+                <span class="fa fa-times"></span> Delete </button>
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="remove-friend" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            Are you sure you want to delete {{friend.first_name}} from your friendlist?
+                        </div>
+                        <div class="modal-footer">
+                            <form>
+                                <input type="submit" value="Remove" class="btn btn-danger" data-purpose="confirm-remove-friend-button" data-dismiss="modal" ng-click="deleteFriend($index, friend.id)" />
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </div><br/>

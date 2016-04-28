@@ -18,6 +18,14 @@ angular.module('Learnento').service('Friend', ['$http', 'Authentication', functi
                 data: '',
                 headers: headers
             })
+        },
+        delete: function(id){
+            return $http({
+                method: 'DELETE',
+                url: '/api/friends/'+id,
+                data: '',
+                headers: headers
+            })
         }
     }
 }]);

@@ -44,7 +44,7 @@ angular.module('Learnento').controller('FriendRequestsIndexController', ['$scope
         FriendRequest.destroy(id, data).success(function(){
             $scope.pendings.splice(idx, 1);
         })
-    }
+    };
 
     FriendRequest.all().success(function(data){
         $scope.requests = data.friend_requests;
