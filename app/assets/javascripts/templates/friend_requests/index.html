@@ -18,6 +18,7 @@
             <div data-purpose="pending-request">
                 <p>{{pending.email}}</p>
             </div>
+            <a ng-click="cancelRequest($index, pending.id)" class="btn btn-danger btn-xs" data-purpose="cancel-friend-request-button"><span class="fa fa-times"></span> Cancel</a>
         </li>
     </ul>
 </section>

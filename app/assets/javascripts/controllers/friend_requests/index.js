@@ -32,6 +32,20 @@ angular.module('Learnento').controller('FriendRequestsIndexController', ['$scope
         })
     };
 
+    $scope.cancelRequest = function(idx, id){
+        var data = {
+            data: {
+                'type': 'friend_request',
+                'attributes': {
+                    'id': id
+                }
+            }
+        };
+        FriendRequest.destroy(id, data).success(function(){
+            $scope.pendings.splice(idx, 1);
+        })
+    }
+
     FriendRequest.all().success(function(data){
         $scope.requests = data.friend_requests;
         $scope.pendings = data.pending_requests;
