@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sass-official
+//= require socket.io
 //= require angular
 //= require angular-ui-router
 //= require angular-rails-templates
