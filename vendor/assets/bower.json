@@ -6,7 +6,8 @@
     "angular-mocks": "latest",
     "angular": "~> 1.5.3",
     "angular-ui-router": "latest",
-    "angular-base64-upload": "latest"
+    "angular-base64-upload": "latest",
+    "socket.io": "~> 1.4.5"
   },
   "resolutions": {
     "angular": "1.5.3"

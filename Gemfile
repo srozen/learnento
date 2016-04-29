@@ -22,6 +22,7 @@ gem 'angular-rails-templates'
 gem 'sprockets', '2.12.3'
 gem 'jwt'
 gem 'api-versions', '~> 1.2', '>= 1.2.1'
+gem 'redis', '~> 3.2', '>= 3.2.2'
 
 
 source 'https://rails-assets.org' do
