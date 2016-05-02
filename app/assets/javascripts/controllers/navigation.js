@@ -3,6 +3,10 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
     $scope.loggedIn = Authentication.loggedIn();
     $scope.currentUser = Authentication.currentUser();
 
+    var addFriendNotification = function(num){
+        $scope.friendNotification = num;
+    };
+
     var connectSocket = function(){
         if($scope.loggedIn){
             $rootScope.socket = io.connect('http://localhost:5001');
@@ -12,11 +16,10 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
             });
 
             $rootScope.socket.on('friendRequest', function(data){
-                console.log('fooooo')
-                $scope.friendNotification = true;
+                $scope.$apply(addFriendNotification(1));
             })
         }
-    }
+    };
 
     connectSocket();
 
@@ -25,8 +28,10 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
     };
 
     $scope.clearFriendNotification = function(){
-        $scope.friendNotification = false;
-    }
+        $scope.friendNotification = 0;
+    };
+
+
 
     $rootScope.$on('logout', function(){
         $scope.loggedIn = false;
