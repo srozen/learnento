@@ -10,6 +10,10 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
             $rootScope.socket.on('connect', function(data){
                 $rootScope.socket.emit('storeUserId', {id: $scope.currentUser.id})
             });
+
+            $rootScope.socket.on('friendRequest', function(data){
+                alert(data.message);
+            })
         }
     }
 
