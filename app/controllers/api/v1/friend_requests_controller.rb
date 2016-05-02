@@ -28,7 +28,7 @@ class Api::V1::FriendRequestsController < ApiController
 
     data = {
       id: user.id,
-      message: current_user.first_name + ' vous a envoyé une demande d\'amitié ! '
+      message: "#{current_user.first_name} vous a envoyé une demande d'amitié ! "
     }
     $redis.publish "notify#{user.id}", data.to_json
 
