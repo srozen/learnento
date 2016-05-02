@@ -15,7 +15,7 @@ before_install:
 before_script:
  - psql -c 'create database learnento_test' -U postgres
  - 'sh -e /etc/init.d/xvfb start'
- - node nodeserver/server.js
+ - node nodeserver/server.js &
 
 env:
   - DISPLAY=":99.0"
