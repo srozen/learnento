@@ -4,6 +4,7 @@ rvm:
 
 services:
  - postgresql
+ - redis-server
 
 before_install:
  - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
@@ -14,6 +15,7 @@ before_install:
 before_script:
  - psql -c 'create database learnento_test' -U postgres
  - 'sh -e /etc/init.d/xvfb start'
+ - node nodeserver/server.js
 
 env:
   - DISPLAY=":99.0"
