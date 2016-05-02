@@ -9,6 +9,7 @@ angular.module('Learnento').service('Authentication', ['$http', '$window', '$roo
         $window.localStorage.removeItem('learnenToken');
         $rootScope.currentUser = null;
         $rootScope.$broadcast('logout');
+        $rootScope.socket.disconnect();
     };
     var loggedIn = function() {
         return getToken();
