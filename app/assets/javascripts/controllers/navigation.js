@@ -12,7 +12,8 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
             });
 
             $rootScope.socket.on('friendRequest', function(data){
-                alert(data.message);
+                console.log('fooooo')
+                $scope.friendNotification = true;
             })
         }
     }
@@ -22,6 +23,10 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
     $scope.logout = function(){
         Authentication.logout();
     };
+
+    $scope.clearFriendNotification = function(){
+        $scope.friendNotification = false;
+    }
 
     $rootScope.$on('logout', function(){
         $scope.loggedIn = false;

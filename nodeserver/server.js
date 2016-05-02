@@ -5,7 +5,7 @@ var clients = {};
 
 io.on('connection', function(socket){
     console.log('Client ', socket.id, ' logged in.');
-    var subFrienships = require('redis').createClient();
+    var subFriendships = require('redis').createClient();
 
     socket.on('storeUserId', function(data){
         clients[data.id] = socket.id;

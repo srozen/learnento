@@ -1,0 +1,28 @@
+*.icon-blue {color: #0088cc}
+*.icon-grey {color: grey}
+
+i {
+  text-align:center;
+  vertical-align:middle;
+}
+
+.fa {
+  position: relative;
+}
+
+.notification {
+  font-size: .7em;
+
+  display: block;
+  position: absolute;
+  top: -1.3em;
+  right: -1.3em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  border-radius: 50%;
+  text-align: center;
+
+  color: #fff;
+  background: rgba(255,0,0,0.8);
+}
