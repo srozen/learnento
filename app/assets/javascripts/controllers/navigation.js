@@ -1,16 +1,17 @@
 angular.module('Learnento').controller('NavigationController', ['Authentication', '$scope', '$rootScope', function(Authentication, $scope, $rootScope){
 
+    $scope.loggedIn = Authentication.loggedIn();
+    $scope.currentUser = Authentication.currentUser();
+
     var connectSocket = function(){
         if($scope.loggedIn){
             $rootScope.socket = io.connect('http://localhost:5001');
-            $rootScope.socket.on('message', function(message) {
-                alert('Le serveur a un message pour vous : ' + message.content);
-            })
+
+            $rootScope.socket.on('connect', function(data){
+                $rootScope.socket.emit('storeUserId', {id: $scope.currentUser.id})
+            });
         }
     }
-
-    $scope.loggedIn = Authentication.loggedIn();
-    $scope.currentUser = Authentication.currentUser();
 
     connectSocket();
 

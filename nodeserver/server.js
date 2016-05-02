@@ -3,15 +3,27 @@ var io = require('socket.io').listen(5001),
 
 redis.subscribe('rt-change');
 
+
+var clients = {};
+
 io.on('connection', function(socket){
-    console.log('Un client est connecté !');
-    redis.on('message', function(channel, message){
-        socket.emit('rt-change', JSON.parse(message));
-    });
+    console.log('Client ', socket.id, ' logged in.');
+
+    socket.on('storeUserId', function(data){
+        clients[data.id] = socket.id;
+        clients[socket.id] = data.id;
+
+        // Subsribe to user specific notification channel
+        redis.subscribe('notify' + data.id)
+        console.log(clients)
+    })
     socket.on('disconnect', function(){
-        console.log('Un client est déconnecté ! ');
+        // Unsub to user specific notification channel
+        redis.unsubscribe('notify' + clients[socket.id]);
+        console.log('Client ', socket.id, ' logged out.');
+        delete clients[clients[socket.id]];
+        delete clients[socket.id];
+        console.log(clients)
     });
 
-    socket.emit('message', {content: 'Vous etes bien connecté !'})
-    socket.broadcast.emit('message', {content: 'Un autre client vient de se connecter ! '});
 });
