@@ -7,14 +7,6 @@ RSpec.feature 'Realtime friend requests notifications', '
 
   scenario 'Registered sees growing notifications counter when requested as friend' do
 
-    in_browser(:alice) do
-      visit '/#/home'
-      navigation.access_login
-      login.fill_login_form(alice.email, 'password')
-      login.confirm_login_form
-      expect(page).to have_selector('[data-purpose="user-details"]')
-    end
-
     in_browser(:bob) do
       as_user(bob) do
         i_go_on_learners_page
@@ -24,10 +16,16 @@ RSpec.feature 'Realtime friend requests notifications', '
       end
     end
 
+    sleep 0.5
+
     in_browser(:alice) do
-      a_notification_appeared
-      notification_counter_is_at(1)
+      as_user(alice) do
+        a_notification_appeared
+        notification_counter_is_at(1)
+      end
     end
+
+    sleep 0.5
 
     in_browser(:charlie) do
       as_user(charlie) do
@@ -38,11 +36,14 @@ RSpec.feature 'Realtime friend requests notifications', '
       end
     end
 
+    sleep 0.5
+
     in_browser(:alice) do
-      notification_counter_is_at(2)
-      i_check_my_friend_requests_page
-      notification_marker_disapeared
-      clear_storage
+      as_user(alice) do
+        notification_counter_is_at(2)
+        i_check_my_friend_requests_page
+        notification_marker_disapeared
+      end
     end
   end
 
