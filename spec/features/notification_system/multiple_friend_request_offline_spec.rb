@@ -8,6 +8,7 @@ RSpec.feature 'Offline friend requests notifications', '
   scenario 'Registered user sees a notification counter when he logs in' do
 
     in_browser(:bob) do
+      sleep 0.5
       as_user(bob) do
         i_go_on_learners_page
         profiles_are_displayed
