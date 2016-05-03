@@ -27,7 +27,7 @@
                 <li ng-show="loggedIn">
                     <a href="#/friend_requests" data-purpose="friend-requests-button" ng-click="clearFriendNotification()">
                         <i class="fa fa-users icon-grey">
-                            <span data-purpose="friend-notification" ng-show="friendNotification > 0" class="notification">1</span>
+                            <span data-purpose="friend-notification" ng-show="friendNotification > 0" class="notification">{{friendNotification}}</span>
                         </i>
                     </a>
                 </li>

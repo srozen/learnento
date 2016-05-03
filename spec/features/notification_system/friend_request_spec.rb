@@ -25,6 +25,7 @@ RSpec.feature 'Notification on friend_request panel', '
 
     in_browser(:one) do
         a_notification_appeared
+        notification_counter_is_at(1)
         clear_storage
     end
   end
@@ -34,6 +35,9 @@ RSpec.feature 'Notification on friend_request panel', '
   let!(:user){User.create(email: 'foo@bar.com', password: 'password', first_name: 'John', last_name: 'Foo')}
   let!(:otheruser){User.create(email: 'baz@bar.com', password: 'password', first_name: 'Jack', last_name: 'Bauer')}
 
+  def notification_counter_is_at(num)
+    expect(find('[data-purpose="friend-notification"]')).to have_content(num)
+  end
 
   def a_notification_appeared
     expect(page).to have_selector('[data-purpose="friend-notification"]')

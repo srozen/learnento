@@ -4,6 +4,7 @@ module Spec
       element :search_user_input, '[data-purpose="search-user-input"]'
       element :search_user_button, '[data-purpose="search-user-button"]'
       element :user_profile_button, '[data-purpose="user-profile-button"]'
+
       def access_user_profile
         user_profile_button.click
       end

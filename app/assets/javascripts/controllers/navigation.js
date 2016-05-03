@@ -1,7 +1,9 @@
-angular.module('Learnento').controller('NavigationController', ['Authentication', '$scope', '$rootScope', function(Authentication, $scope, $rootScope){
+angular.module('Learnento').controller('NavigationController', ['Authentication', '$scope', '$rootScope', 'Notification', function(Authentication, $scope, $rootScope, Notification){
 
     $scope.loggedIn = Authentication.loggedIn();
     $scope.currentUser = Authentication.currentUser();
+    $scope.friendNotification = 0;
+
 
     var addFriendNotification = function(num){
         $scope.friendNotification = num;
@@ -9,17 +11,23 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
 
     var connectSocket = function(){
         if($scope.loggedIn){
+
             $rootScope.socket = io.connect('http://localhost:5001');
 
             $rootScope.socket.on('connect', function(data){
                 $rootScope.socket.emit('storeUserId', {id: $scope.currentUser.id})
+
+                Notification.activeFriendNotifications().success(function(data){
+                    $scope.friendNotification = data.number;
+                });
             });
 
             $rootScope.socket.on('friendRequest', function(data){
-                $scope.$apply(addFriendNotification(1));
+                $scope.$apply($scope.friendNotification++);
             })
         }
     };
+
 
     connectSocket();
 
@@ -28,16 +36,16 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
     };
 
     $scope.clearFriendNotification = function(){
-        $scope.friendNotification = 0;
+        Notification.clearFriendNotifications($scope.currentUser.id).success(function(data){
+            $scope.friendNotification = data.number;
+        });
     };
-
-
 
     $rootScope.$on('logout', function(){
         $scope.loggedIn = false;
     });
     $rootScope.$on('login', function(){
-        $scope.loggedIn = true;
+        $scope.loggedIn = Authentication.loggedIn();
         $scope.currentUser = $rootScope.currentUser;
         connectSocket();
     });

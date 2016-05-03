@@ -5,12 +5,17 @@ module Spec
       element :access_profile_button, '[data-purpose="profile-button"]'
       element :access_register_button, '[data-purpose="access-register-button"]'
       element :access_login_button, '[data-purpose="access-login-button"]'
+      element :access_logout_button, '[data-purpose="disconnect-button"]'
       element :access_learners_button, '[data-purpose="access-learners-button"]'
       element :friend_requests_button, '[data-purpose="friend-requests-button"]'
       element :friendlist_button, '[data-purpose="friendlist-button"]'
 
       def access_menu
         access_menu_button.click
+      end
+
+      def access_logout
+        access_logout_button.click
       end
 
       def access_profile

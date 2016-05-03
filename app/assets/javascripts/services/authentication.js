@@ -1,6 +1,6 @@
-angular.module('Learnento').service('Authentication', ['$http', '$window', '$rootScope', function AuthenticationService($http, $window, $rootScope){
+angular.module('Learnento').service('Authentication', ['$http', '$window', '$rootScope', '$q', function AuthenticationService($http, $window, $rootScope, $q){
     var saveToken = function(token){
-        $window.localStorage['learnenToken'] = token;
+        return $q.when($window.localStorage['learnenToken'] = token);
     };
     var getToken = function(){
         return $window.localStorage['learnenToken'];
@@ -45,8 +45,9 @@ angular.module('Learnento').service('Authentication', ['$http', '$window', '$roo
                 id: payload.id,
                 email: payload.email
             };
-            $rootScope.$broadcast('login');
-            saveToken(response.data.token);
+            saveToken(response.data.token).then(function(){
+                $rootScope.$broadcast('login');
+            });
         });
     };
 
@@ -64,8 +65,9 @@ angular.module('Learnento').service('Authentication', ['$http', '$window', '$roo
                 id: payload.id,
                 email: payload.email
             };
-            $rootScope.$broadcast('login');
-            saveToken(response.data.token);
+            saveToken(response.data.token).then(function(){
+                $rootScope.$broadcast('login');
+            });
         });
     };
 
