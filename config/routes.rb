@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         resources :requested_friends, only: [:show]
         resources :pending_friends, only: [:show]
         resources :friends, only: [:index, :update, :destroy, :show]
+        resources :active_friend_notifications, only: [:index, :create, :destroy]
     end
   end
 

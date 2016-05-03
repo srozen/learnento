@@ -25,10 +25,12 @@ class Api::V1::FriendRequestsController < ApiController
     current_user = authenticate_token!
     user = User.find(req['data']['attributes']['id'])
     current_user.friend_request(user, req['data']['attributes']['message'])
+    user.active_friend_notifications += 1
+    user.save
 
     data = {
       id: user.id,
-      message: "#{current_user.first_name} vous a envoyé une demande d'amitié ! "
+      message: "#{current_user.first_name} sent you a friend request ! "
     }
     $redis.publish "notify#{user.id}", data.to_json
 
