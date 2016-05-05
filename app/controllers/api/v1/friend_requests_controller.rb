@@ -40,6 +40,7 @@ class Api::V1::FriendRequestsController < ApiController
     current_user = authenticate_token!
     user = User.find(params[:id])
     current_user.accept_request(user)
+    create_conversation(user.id, current_user.id)
     render json: ''
   end
 
@@ -52,6 +53,11 @@ class Api::V1::FriendRequestsController < ApiController
 
   private
 
+  def create_conversation(user_id, current_user_id)
+    if !Conversation.between(user_id, current_user_id).present?
+      @conversation = Conversation.create!(sender_id: user_id, recipient_id: current_user_id)
+    end
+  end
 
 
 end
