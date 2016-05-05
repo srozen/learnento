@@ -28,7 +28,9 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
 
             $rootScope.socket.on('friendRequest', function(data){
                 $scope.$apply($scope.friendNotification++);
-                ngAudio.play('sounds/navigationNotification.mp3');
+                <% if !Rails.env.test? %>
+                  ngAudio.play('sounds/navigationNotification.mp3');
+                <% end %>
             })
         }
     };
