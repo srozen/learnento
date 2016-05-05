@@ -25,8 +25,7 @@ class Api::V1::FriendRequestsController < ApiController
     current_user = authenticate_token!
     user = User.find(req['data']['attributes']['id'])
     current_user.friend_request(user, req['data']['attributes']['message'])
-    user.active_friend_notifications += 1
-    user.save
+    user.increment!(:active_friend_notifications, by= 1)
 
     data = {
       id: user.id,
