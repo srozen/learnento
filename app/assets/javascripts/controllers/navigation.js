@@ -12,10 +12,10 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
     var connectSocket = function(){
         if($scope.loggedIn){
 
-            $rootScope.socket = io.connect('http://localhost:5001');
+            $rootScope.socket = io.connect('http://46.101.155.249:5001');
 
             $rootScope.socket.on('connect', function(data){
-                $rootScope.socket.emit('storeUserId', {id: $scope.currentUser.id})
+                $rootScope.socket.emit('storeUserId', {id: $scope.currentUser.id});
 
                 Notification.activeFriendNotifications().success(function(data){
                     $scope.friendNotification = data.number;
