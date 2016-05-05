@@ -23,6 +23,15 @@ RSpec.describe 'Fetch active friend notifications counter through the API', type
     end
   end
 
+  context 'Request with an invalid JWT' do
+    it 'returns a 401 unauthorized' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer dingdong"
+      delete "/api/active_friend_notifications/#{user.id}", '', headers
+      expect(response.status).to eq 401
+    end
+  end
+
   private
 
   def request_body(id, message)

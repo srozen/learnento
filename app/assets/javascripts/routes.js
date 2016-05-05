@@ -38,6 +38,11 @@ angular.module('Learnento').config(['$stateProvider', '$urlRouterProvider', func
             url: '/friends',
             templateUrl: 'friends/index.html',
             controller: 'FriendsIndexController'
+        })
+        .state('messaging', {
+            url: '/messaging',
+            templateUrl: 'messaging/index.html',
+            controller: 'MessagingIndexController'
         });
     $urlRouterProvider.otherwise('home');
 }]);

@@ -7,8 +7,9 @@ module Spec
       element :access_login_button, '[data-purpose="access-login-button"]'
       element :access_logout_button, '[data-purpose="disconnect-button"]'
       element :access_learners_button, '[data-purpose="access-learners-button"]'
-      element :friend_requests_button, '[data-purpose="friend-requests-button"]'
-      element :friendlist_button, '[data-purpose="friendlist-button"]'
+      element :access_friend_requests_button, '[data-purpose="friend-requests-button"]'
+      element :access_friendlist_button, '[data-purpose="friendlist-button"]'
+      element :access_messaging_page_button, '[data-purpose="messaging-page-button"]'
 
       def access_menu
         access_menu_button.click
@@ -35,11 +36,15 @@ module Spec
       end
 
       def access_friend_requests
-        friend_requests_button.click
+        access_friend_requests_button.click
       end
 
       def access_friendlist
-        friendlist_button.click
+        access_friendlist_button.click
+      end
+
+      def access_messaging_page
+        access_messaging_page_button.click
       end
     end
   end
