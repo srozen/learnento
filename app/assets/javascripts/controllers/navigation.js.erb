@@ -12,10 +12,11 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
     var connectSocket = function(){
         if($scope.loggedIn){
 
-            // Production
-            //$rootScope.socket = io.connect('http://46.101.155.249:5001');
-            // Development
-            $rootScope.socket = io.connect('http://localhost:5001');
+            <% if Rails.env.production? %>
+              $rootScope.socket = io.connect('http://46.101.155.249:5001');
+            <% else %>
+              $rootScope.socket = io.connect('http://localhost:5001');
+            <% end %>
 
             $rootScope.socket.on('connect', function(data){
                 $rootScope.socket.emit('storeUserId', {id: $scope.currentUser.id});
