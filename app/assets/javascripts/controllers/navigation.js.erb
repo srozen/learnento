@@ -1,4 +1,4 @@
-angular.module('Learnento').controller('NavigationController', ['Authentication', '$scope', '$rootScope', 'Notification', function(Authentication, $scope, $rootScope, Notification){
+angular.module('Learnento').controller('NavigationController', ['Authentication', '$scope', '$rootScope', 'Notification', 'ngAudio', function(Authentication, $scope, $rootScope, Notification, ngAudio){
 
     $scope.loggedIn = Authentication.loggedIn();
     $scope.currentUser = Authentication.currentUser();
@@ -28,6 +28,7 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
 
             $rootScope.socket.on('friendRequest', function(data){
                 $scope.$apply($scope.friendNotification++);
+                ngAudio.play('sounds/navigationNotification.mp3');
             })
         }
     };
