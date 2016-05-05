@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :avatar, AvatarUploader
   has_friendship
+  has_many :conversations, :foreign_key => :sender_id
 
   validates :first_name, length: { maximum: 20 }
   validates :last_name, length: { maximum: 20 }
