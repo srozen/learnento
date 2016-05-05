@@ -95,7 +95,8 @@ CREATE TABLE users (
     first_name character varying,
     last_name character varying,
     avatar character varying,
-    active_friend_notifications integer DEFAULT 0
+    active_friend_notifications integer DEFAULT 0,
+    active_messaging_notifications integer DEFAULT 0
 );
 
 
@@ -202,4 +203,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160417104258');
 INSERT INTO schema_migrations (version) VALUES ('20160417104259');
 
 INSERT INTO schema_migrations (version) VALUES ('20160503085247');
+
+INSERT INTO schema_migrations (version) VALUES ('20160505125652');
 

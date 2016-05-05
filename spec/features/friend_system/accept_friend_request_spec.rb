@@ -13,7 +13,7 @@ RSpec.feature 'User accept friend request', '
       i_accept_the_friend_request
       sleep 1
       i_go_on_my_friendlist
-      sleep 0.5
+      sleep 1
       a_new_friend_has_been_added
     end
   end

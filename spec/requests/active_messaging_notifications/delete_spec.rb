@@ -7,27 +7,11 @@ RSpec.describe 'Fetch active friend notifications counter through the API', type
   let!(:puser){User.create(email: 'charlie@gmail.com', password: 'password')}
   let!(:puserjwt){JWT.encode({'id': puser.id, 'email': puser.email}, Rails.application.secrets.json_web_token_secret, 'HS256')}
 
-  context 'Request with a valid JWT with one notification' do
-    it 'returns the amount of active friend notifications' do
-      headers = request_headers
-      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{puserjwt}"
-      post '/api/friend_requests', request_body(user.id, 'Hello accept me !'), headers
-
+  context 'Request with a valid JWT' do
+    it 'returns an number of 0 notifications' do
       headers = request_headers
       headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
-      get '/api/active_friend_notifications', '', headers
-      expect(response.status).to eq 200
-      expect(response_body).to include('number')
-      expect(response_body['number']).to eq 1
-      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
-    end
-  end
-
-  context 'Request with a valid JWT with no notifications' do
-    it 'returns the amount of active friend notifications' do
-      headers = request_headers
-      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
-      get '/api/active_friend_notifications', '', headers
+      delete "/api/active_messaging_notifications/#{user.id}", '', headers
       expect(response.status).to eq 200
       expect(response_body).to include('number')
       expect(response_body['number']).to eq 0
@@ -35,19 +19,16 @@ RSpec.describe 'Fetch active friend notifications counter through the API', type
     end
   end
 
-  private
-
-  def request_body(id, message)
-    {
-        'data':{
-            'type': 'friend_request',
-            'attributes': {
-                'id': id,
-                'message': message
-            }
-        }
-    }.to_json
+  context 'Request with an invalid JWT' do
+    it 'returns a 401 unauthorized' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer dingdong"
+      delete "/api/active_messaging_notifications/#{user.id}", '', headers
+      expect(response.status).to eq 401
+    end
   end
+
+  private
 
   def response_body
     JSON.parse(response.body)
