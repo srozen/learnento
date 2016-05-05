@@ -10,7 +10,7 @@ RSpec.feature 'Delete a friend from friendlist', '
       i_am_friend_with_otheruser
       i_go_on_my_friendlist
       i_remove_otheruser_from_my_friendlist
-
+      sleep 1
       my_friendlist_is_empty
     end
   end

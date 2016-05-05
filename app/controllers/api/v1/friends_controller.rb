@@ -39,8 +39,18 @@ class Api::V1::FriendsController < ApiController
   def destroy
     current_user = authenticate_token!
     friend = User.find(params[:id])
+    destroy_conversation(friend.id, current_user.id)
     current_user.remove_friend(friend)
     render json: ''
+  end
+
+  private
+
+  def destroy_conversation(user_id, current_user_id)
+      if Conversation.between(user_id, current_user_id).present?
+        conv = Conversation.between(user_id, current_user_id)
+        Conversation.destroy(conv)
+      end
   end
 
 end
