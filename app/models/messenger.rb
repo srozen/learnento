@@ -1,11 +1,14 @@
 class Messenger
 
   def validate_save_message!(user, friend, message)
+    validate_friendship!(user, friend)
+    conversation = Conversation.between(user.id, friend.id).first
+    conversation.messages.create!(user_id: user.id, content: message)
+  end
+
+  def validate_friendship!(user, friend)
     if !user.friends_with?(friend)
       raise_authorization_error
-    else
-      conversation = Conversation.between(user.id, friend.id).first
-      conversation.messages.create!(user_id: user.id, content: message)
     end
   end
 

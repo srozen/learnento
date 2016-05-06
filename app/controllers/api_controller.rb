@@ -10,6 +10,7 @@ class ApiController < ApplicationController
   def authenticate_token!
     authenticator = Authenticator.new
     current_user = authenticator.analyse_token_from_request(request)
+    current_user
   end
 
   def authenticate_user!(req)
@@ -25,6 +26,11 @@ class ApiController < ApplicationController
   def create_message!(user, friend, message)
     messenger = Messenger.new
     messenger.validate_save_message!(user, friend, message)
+  end
+
+  def validate_friendship!(user, friend)
+    messenger = Messenger.new
+    messenger.validate_friendship!(user, friend)
   end
 
   def generate_jwt(id, email)
