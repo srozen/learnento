@@ -13,17 +13,25 @@ RSpec.describe 'User send a message to his friend', type: :request do
       headers = request_headers
       headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
       put "/api/friend_requests/#{otheruser.id}", friend_request_body(otheruser.id), headers
-      expect(response.status).to eq 200
-      expect(user.friends.first.id).to equal(otheruser.id)
-      expect(otheruser.friends.first.id).to equal(user.id)
-      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
 
-      expect(Conversation.between(user.id, otheruser.id).present?).to eq true
-
+      conv_last_update = user.conversation_with(otheruser).updated_at
       post '/api/messages', message_request_body(user.id, otheruser.id, "Wassup bro?"), headers
       expect(response.status).to eq 200
       expect(user.conversation_with(otheruser).messages.first.content).to eq 'Wassup bro?'
       expect(user.conversation_with(otheruser).messages.first.user_id).to eq user.id
+      expect(user.conversation_with(otheruser).updated_at).not_to eq conv_last_update
+    end
+  end
+
+  context 'User sends a message to a friend' do
+    it 'updates the conversation timestamp' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      put "/api/friend_requests/#{otheruser.id}", friend_request_body(otheruser.id), headers
+      conv_last_update = user.conversation_with(otheruser).updated_at
+      post '/api/messages', message_request_body(user.id, otheruser.id, "Wassup bro?"), headers
+
+      expect(user.conversation_with(otheruser).updated_at).not_to eq conv_last_update
     end
   end
 

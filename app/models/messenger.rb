@@ -4,6 +4,7 @@ class Messenger
     validate_friendship!(user, friend)
     conversation = Conversation.between(user.id, friend.id).first
     conversation.messages.create!(user_id: user.id, content: message)
+    conversation.touch(:updated_at)
   end
 
   def validate_friendship!(user, friend)
