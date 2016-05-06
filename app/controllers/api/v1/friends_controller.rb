@@ -48,8 +48,8 @@ class Api::V1::FriendsController < ApiController
 
   def destroy_conversation(user_id, current_user_id)
       if Conversation.between(user_id, current_user_id).present?
-        conv = Conversation.between(user_id, current_user_id)
-        Conversation.destroy(conv)
+        conv = Conversation.between(user_id, current_user_id).first
+        Conversation.destroy(conv.id)
       end
   end
 
