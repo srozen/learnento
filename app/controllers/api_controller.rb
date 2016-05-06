@@ -3,6 +3,7 @@ class ApiController < ApplicationController
   include ActiveSupport::Rescuable
   rescue_from Authenticator::AuthorizationException, with: :render_forbidden
   rescue_from Authenticator::AuthenticationException, with: :render_unauthorized
+  rescue_from Messenger::AuthorizationException, with: :render_forbidden
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   rescue_from ActiveRecord::RecordInvalid do |exception| render_unprocessable(exception.to_s) end
 
@@ -19,6 +20,11 @@ class ApiController < ApplicationController
   def create_user!(req)
     authenticator = Authenticator.new
     authenticator.validate_registration!(req)
+  end
+
+  def create_message!(user, friend, message)
+    messenger = Messenger.new
+    messenger.validate_save_message!(user, friend, message)
   end
 
   def generate_jwt(id, email)

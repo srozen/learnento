@@ -12,6 +12,7 @@ RSpec.feature 'Profile edition with only some fields', '
       i_am_on_my_profile_edition_page
       i_fill_the_form_in
       i_confirm_the_edition
+      sleep 0.5
       my_informations_have_been_updated
     end
   end

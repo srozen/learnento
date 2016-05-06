@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
 
   validates :first_name, length: { maximum: 20 }
   validates :last_name, length: { maximum: 20 }
+
+  def conversation_with(friend_id)
+    Conversation.between(self.id, friend_id).first
+  end
 end
