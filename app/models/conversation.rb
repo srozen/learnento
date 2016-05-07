@@ -9,7 +9,7 @@ class Conversation < ActiveRecord::Base
   # Used to fetch all conversations where user is involved
 
   scope :involving, -> (user) do
-    where("conversations.sender_id =? OR conversations.recipient_id =?",user.id,user.id)
+    where("conversations.sender_id =? OR conversations.recipient_id =?",user.id,user.id).order('updated_at DESC')
   end
 
   # Used to check if a conversation between A and B already exists
