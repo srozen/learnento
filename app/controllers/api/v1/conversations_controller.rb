@@ -1,5 +1,5 @@
 class Api::V1::ConversationsController < ApiController
-  before_filter :authenticate_token!, only: [:show]
+  before_filter :authenticate_token!, only: [:show, :index]
 
   def show
     current_user = authenticate_token!
@@ -10,6 +10,14 @@ class Api::V1::ConversationsController < ApiController
 
     render json: {
         messages: messages
+    }
+  end
+
+  def index
+    current_user = authenticate_token!
+    conversations = Conversation.involving(current_user)
+    render json: {
+        conversations: conversations
     }
   end
 

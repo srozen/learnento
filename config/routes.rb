@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         resources :active_friend_notifications, only: [:index, :destroy]
         resources :active_messaging_notifications, only: [:index, :destroy]
         resources :messages, only: [:create]
-        resources :conversations, only: [:show]
+        resources :conversations, only: [:show, :index]
     end
   end
 
