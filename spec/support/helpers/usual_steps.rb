@@ -11,6 +11,14 @@ module UsualStepsHelper
     clear_storage
   end
 
+  def befriend(user, friend)
+    user.friend_request(friend)
+    friend.accept_request(user)
+    if !Conversation.between(user.id, friend.id).present?
+      Conversation.create!(sender_id: user.id, recipient_id: friend.id)
+    end
+  end
+
 
 
   def clear_storage

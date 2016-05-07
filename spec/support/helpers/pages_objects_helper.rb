@@ -19,6 +19,7 @@ module PagesObjectsHelper
   page_object :profile_edition, Spec::Pages::ProfileEdition
   page_object :friend_requests, Spec::Pages::FriendRequests
   page_object :friendlist, Spec::Pages::Friendlist
+  page_object :messaging, Spec::Pages::Messaging
 
 end
 
