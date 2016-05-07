@@ -18,7 +18,8 @@ RSpec.describe 'User fetch a conversation through the API', type: :request do
       post '/api/messages', message_request_body(user.id, otheruser.id, "Wassup bro?"), headers
       post '/api/messages', message_request_body(user.id, otheruser.id, "Wassup bro?"), headers
 
-      get "/api/conversations/#{otheruser.id}", '', headers
+      conversation_id = user.conversation_with(otheruser).id
+      get "/api/conversations/#{conversation_id}", '', headers
       expect(response.status).to eq 200
       expect(response_body).to include('messages')
       expect(response_body['messages'].count).to eq 4
@@ -26,11 +27,11 @@ RSpec.describe 'User fetch a conversation through the API', type: :request do
   end
 
   context 'User asks for a non existing conversation with a user with valid JWT' do
-    it 'returns a forbidden 403 status' do
+    it 'returns a forbidden 404 not found' do
       headers = request_headers
       headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
       get "/api/conversations/#{otheruser.id}", '', headers
-      expect(response.status).to eq 403
+      expect(response.status).to eq 404
     end
   end
 
