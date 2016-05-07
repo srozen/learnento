@@ -25,9 +25,9 @@
                 <li ng-hide="loggedIn"><a href="#/login" data-purpose="access-login-button">Login</a></li>
                 <!-- Logged User-->
                 <li ng-show="loggedIn">
-                    <a href="#/messaging" data-purpose="messaging-page-button">
+                    <a href="#/messaging" data-purpose="messaging-page-button" ng-click="clearMessagingNotification()">
                         <i class="fa fa-comments icon-grey">
-                            <span data-purpose="message-notification"></span>
+                            <span data-purpose="messaging-notification"  ng-show="messagingNotification > 0" class="notification">{{messagingNotification}}</span>
                         </i>
                     </a>
                 </li>

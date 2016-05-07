@@ -22,6 +22,28 @@ angular.module('Learnento').service('Notification', ['$http', 'Authentication', 
                 data: '',
                 headers: headers
             })
+        },
+        activeMessagingNotifications: function(){
+            var headers = {
+                Authorization: 'Bearer '+ Authentication.getToken()
+            };
+            return $http({
+                method: 'GET',
+                url: 'api/active_messaging_notifications',
+                data: '',
+                headers: headers
+            })
+        },
+        clearMessagingNotifications: function(id){
+            var headers = {
+                Authorization: 'Bearer '+ Authentication.getToken()
+            };
+            return $http({
+                method: 'DELETE',
+                url: 'api/active_messaging_notifications/' + id,
+                data: '',
+                headers: headers
+            })
         }
     }
 }])

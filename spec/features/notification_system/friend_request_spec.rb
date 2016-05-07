@@ -6,14 +6,9 @@ RSpec.feature 'Notification on friend_request panel', '
   I want to have a visual information that this happened', :js do
 
   scenario 'Registered sees a notification when requested as friend' do
-    in_browser(:one) do
-      sleep 0.5
-      as_user(user) do
-        sleep 0.5
-      end
-    end
 
     in_browser(:two) do
+      sleep 1
       as_user(otheruser) do
         i_go_on_learners_page
         profiles_are_displayed
@@ -24,9 +19,12 @@ RSpec.feature 'Notification on friend_request panel', '
     end
 
     in_browser(:one) do
+      sleep 1
+      as_user(user) do
         a_notification_appeared
         notification_counter_is_at(1)
         clear_storage
+      end
     end
   end
 

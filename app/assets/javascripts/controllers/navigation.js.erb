@@ -3,11 +3,7 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
     $scope.loggedIn = Authentication.loggedIn();
     $scope.currentUser = Authentication.currentUser();
     $scope.friendNotification = 0;
-
-
-    var addFriendNotification = function(num){
-        $scope.friendNotification = num;
-    };
+    $scope.messagingNotification = 0;
 
     var connectSocket = function(){
         if($scope.loggedIn){
@@ -24,6 +20,10 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
                 Notification.activeFriendNotifications().success(function(data){
                     $scope.friendNotification = data.number;
                 });
+
+                Notification.activeMessagingNotifications().success(function(data){
+                    $scope.messagingNotification = data.number;
+                })
             });
 
             $rootScope.socket.on('friendRequest', function(data){
@@ -31,7 +31,14 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
                 <% if !Rails.env.test? %>
                   ngAudio.play('sounds/navigationNotification.mp3');
                 <% end %>
-            })
+            });
+
+            $rootScope.socket.on('messaging', function(data){
+              $scope.$apply($scope.messagingNotification++);
+              <% if !Rails.env.test? %>
+                ngAudio.play('sounds/navigationNotification.mp3');
+              <% end %>
+            });
         }
     };
 
@@ -47,6 +54,12 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
             $scope.friendNotification = data.number;
         });
     };
+
+  $scope.clearMessagingNotification = function(){
+    Notification.clearMessagingNotifications($scope.currentUser.id).success(function(data){
+      $scope.messagingNotification = data.number;
+    });
+  };
 
     $rootScope.$on('logout', function(){
         $scope.loggedIn = false;
