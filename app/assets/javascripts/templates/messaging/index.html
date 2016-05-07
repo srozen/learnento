@@ -1,3 +1,30 @@
 <section data-purpose="messaging-page">
     <h1>Messaging Page</h1>
+    <div>
+        User id = {{currentUser.id}}
+    </div>
+    <div ng-repeat="conversation in conversations">
+        <ul>
+            <li>{{conversation.friend.first_name}}</li>
+            <a ng-click="switchConversation($index)"> Change Conv</a>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Active Conv : </h2>
+        <div data-purpose="active-conversation-header">
+            {{activeConversation.friend.first_name}}
+        </div>
+        <h3>Messages : </h3>
+        <div data-purpose="active-conversation-messages">
+            {{activeMessages}}
+        </div>
+
+        <div>
+            <form ng-submit="sendMessage()">
+                <input type="text" ng-model="message" data-purpose="message-input"/>
+                <input type="submit" class="btn btn-primary" value="Submit" data-purpose="send-message-button">
+            </form>
+        </div>
+    </div>
 </section>
