@@ -19,5 +19,6 @@
 //= require angular-rails-templates
 //= require angular-base64-upload
 //= require ngAudio
+//= require angular-scroll-glue
 //= require_tree ./templates
 //= require_tree .

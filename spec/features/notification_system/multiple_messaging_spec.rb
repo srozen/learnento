@@ -26,7 +26,7 @@ RSpec.feature 'Messaging otification on navigation panel', '
         i_am_on_the_messaging_page
         sleep 0.5
         a_conversation_is_active
-        i_send_a_message('Foooooo')
+        i_send_a_message('Fiiiiizzzz')
         sleep 1
       end
     end

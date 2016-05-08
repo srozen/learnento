@@ -1,4 +1,4 @@
-angular.module('Learnento').controller('NavigationController', ['Authentication', '$scope', '$rootScope', 'Notification', 'ngAudio', function(Authentication, $scope, $rootScope, Notification, ngAudio){
+angular.module('Learnento').controller('NavigationController', ['Authentication', '$scope', '$rootScope', 'Notification', 'ngAudio', '$state', function(Authentication, $scope, $rootScope, Notification, ngAudio, $state){
 
     $scope.loggedIn = Authentication.loggedIn();
     $scope.currentUser = Authentication.currentUser();
@@ -27,16 +27,30 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
             });
 
             $rootScope.socket.on('friendRequest', function(data){
-                $scope.$apply($scope.friendNotification++);
+                if(!$state.is('friend_requests')){
+                  $scope.$apply($scope.friendNotification++);
+                } else {
+                  $scope.clearFriendNotification();
+                }
+
                 <% if !Rails.env.test? %>
-                  ngAudio.play('sounds/navigationNotification.mp3');
+                    if (document.hidden) {
+                        ngAudio.play('sounds/navigationNotification.mp3');
+                    }
                 <% end %>
             });
 
             $rootScope.socket.on('messaging', function(data){
-              $scope.$apply($scope.messagingNotification++);
+              if(!$state.is('messaging')){
+                $scope.$apply($scope.messagingNotification++);
+              } else {
+                $scope.clearMessagingNotification();
+              }
+
               <% if !Rails.env.test? %>
-                ngAudio.play('sounds/navigationNotification.mp3');
+                  if (document.hidden) {
+                      ngAudio.play('sounds/messagingNotification.mp3');
+                  }
               <% end %>
             });
         }

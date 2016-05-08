@@ -71,9 +71,9 @@ RSpec.describe 'User send a message to his friend', type: :request do
         'data':{
             'type': 'message',
             'attributes': {
-                'senderId': user_id,
+                'user_id': user_id,
                 'recipientId': friend_id,
-                'message': message
+                'content': message
             }
         }
     }.to_json

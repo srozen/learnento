@@ -1,4 +1,4 @@
-angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'Authentication', '$location', '$document', 'Messaging', 'User', function($scope, Authentication, $location, $document, Messaging, User){
+angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'Authentication', '$location', '$document', 'Messaging', 'User', '$rootScope', function($scope, Authentication, $location, $document, Messaging, User, $rootScope){
 
     if(!Authentication.loggedIn()){
         $location.path('home');
@@ -25,6 +25,12 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
         })
     });
 
+    $rootScope.socket.on('messaging', function(data){
+        if($scope.activeConversation.id == data.message.conversation_id){
+            $scope.activeMessages.push(data.message);
+        }
+    });
+
     $scope.switchConversation = function(index){
             $scope.activeConversation = $scope.conversations[index];
             Messaging.show($scope.activeConversation.id).success(function(data){
@@ -45,16 +51,21 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
             'data':{
                 'type': 'message',
                 'attributes': {
-                    'senderId': $scope.currentUser.id,
+                    'user_id': $scope.currentUser.id,
                     'recipientId': $scope.activeConversation.friend.id,
-                    'message': $scope.message
+                    'content': $scope.message
                 }
             }
         };
 
+        var msg = data.data.attributes;
+
+        $scope.activeMessages.push(msg);
+
         Messaging.create(data).success(function(data){
             $scope.message = '';
         })
+
     }
 
 }]);

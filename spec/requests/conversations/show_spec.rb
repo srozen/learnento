@@ -57,9 +57,9 @@ RSpec.describe 'User fetch a conversation through the API', type: :request do
         'data':{
             'type': 'message',
             'attributes': {
-                'senderId': user_id,
+                'user_d': user_id,
                 'recipientId': friend_id,
-                'message': message
+                'content': message
             }
         }
     }.to_json
