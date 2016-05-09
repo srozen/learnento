@@ -7,6 +7,7 @@
         <ul>
             <li>{{conversation.friend.first_name}}</li>
             <a ng-click="switchConversation($index)"> Change Conv</a><br>
+            <b ng-if="conversation.newMessage">[NEW]</b>
             <em data-purpose="conversation-last-message">{{conversation.lastMessage.content}}</em>
         </ul>
     </div>

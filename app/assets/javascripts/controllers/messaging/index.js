@@ -40,12 +40,15 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
     $rootScope.socket.on('messaging', function(data){
         if($scope.activeConversation.id == data.message.conversation_id){
             $scope.activeMessages.push(data.message);
-            angular.forEach($scope.conversations, function(conversation){
-                if(conversation.id == $scope.activeConversation.id){
-                    conversation['lastMessage'] = data.message;
-                }
-            });
         }
+        angular.forEach($scope.conversations, function(conversation){
+            if(conversation.id == data.message.conversation_id){
+                conversation['lastMessage'] = data.message;
+                if($scope.activeConversation.id != data.message.conversation_id){
+                    conversation['newMessage'] = true;
+                }
+            }
+        });
     });
 
     $scope.switchConversation = function(index){
@@ -53,6 +56,7 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
             Messaging.show($scope.activeConversation.id).success(function(data){
                 $scope.activeMessages = data.messages;
             });
+            $scope.conversations[index]['newMessage'] = false;
     };
 
     var getFriendId = function(conv, currentUserId){
