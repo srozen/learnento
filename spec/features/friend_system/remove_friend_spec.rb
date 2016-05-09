@@ -12,6 +12,10 @@ RSpec.feature 'Delete a friend from friendlist', '
       i_remove_otheruser_from_my_friendlist
       sleep 1
       my_friendlist_is_empty
+      i_go_on_messaging_page
+      i_am_on_the_messaging_page
+      sleep 0.5
+      there_is_no_conversation
     end
   end
 
@@ -38,5 +42,18 @@ RSpec.feature 'Delete a friend from friendlist', '
   def my_friendlist_is_empty
     expect(page).to have_selector('[data-purpose="friendlist"]')
     expect(page).not_to have_selector('[data-purpose="friend"]')
+  end
+
+  def i_go_on_messaging_page
+    navigation.access_messaging_page
+  end
+
+  def i_am_on_the_messaging_page
+    expect(page).to have_selector('[data-purpose="messaging-page"]')
+  end
+
+  def there_is_no_conversation
+    expect(page).not_to have_selector('[data-purpose="active-conversation-header"]')
+    expect(page).not_to have_selector('[data-purpose="active-conversation-messages"]')
   end
 end

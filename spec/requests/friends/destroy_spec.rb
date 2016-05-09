@@ -8,6 +8,7 @@ RSpec.describe 'Remove a friend', type: :request do
   let!(:createrequest){
     otheruser.friend_request(user)
     user.accept_request(otheruser)
+    Conversation.create!(sender_id: user.id, recipient_id: otheruser.id)
   }
 
 
@@ -18,9 +19,24 @@ RSpec.describe 'Remove a friend', type: :request do
       headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
       delete "/api/friends/#{otheruser.id}", request_body(otheruser.id), headers
       expect(response.status).to eq 200
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+    end
+
+    it 'removes the friendships' do
+      expect(user.friends).to_not be_empty
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      delete "/api/friends/#{otheruser.id}", request_body(otheruser.id), headers
       expect(user.friends).to be_empty
       expect(otheruser.friends).to be_empty
-      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+    end
+
+    it 'deletes the conversations' do
+      expect(user.friends).to_not be_empty
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      delete "/api/friends/#{otheruser.id}", request_body(otheruser.id), headers
+      expect(Conversation.between(user.id, otheruser.id).first).to eq nil
     end
   end
 

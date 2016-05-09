@@ -15,6 +15,11 @@ RSpec.feature 'User accept friend request', '
       i_go_on_my_friendlist
       sleep 1
       a_new_friend_has_been_added
+
+      i_go_on_messaging_page
+      i_am_on_the_messaging_page
+      sleep 0.5
+      a_conversation_is_active
     end
   end
 
@@ -48,5 +53,18 @@ RSpec.feature 'User accept friend request', '
   def a_new_friend_has_been_added
     expect(page).to have_selector('[data-purpose="friendlist"]')
     expect(page).to have_selector('[data-purpose="friend"]')
+  end
+
+  def i_go_on_messaging_page
+    navigation.access_messaging_page
+  end
+
+  def i_am_on_the_messaging_page
+    expect(page).to have_selector('[data-purpose="messaging-page"]')
+  end
+
+  def a_conversation_is_active
+    expect(page).to have_selector('[data-purpose="active-conversation-header"]')
+    expect(page).to have_selector('[data-purpose="active-conversation-messages"]')
   end
 end
