@@ -15,6 +15,10 @@ RSpec.feature 'Messaging notification on navigation panel', '
         sleep 0.5
         a_conversation_is_active
         i_send_a_message('Foooooo')
+        sleep 0.5
+
+        the_message_appeared_in_conversation_panel('Foooooo')
+        the_message_appeared_in_active_conversation('Foooooo')
         sleep 1
       end
     end
@@ -58,6 +62,16 @@ RSpec.feature 'Messaging notification on navigation panel', '
   def i_send_a_message(message)
     messaging.send_message(message)
   end
+
+  def the_message_appeared_in_conversation_panel(message)
+    expect(find('[data-purpose="conversation-last-message"]').text).to eq message
+  end
+
+  def the_message_appeared_in_active_conversation(message)
+    expect(page).to have_selector('[data-purpose="message"]')
+    expect(find('[data-purpose="message"]').text).to eq message
+  end
+
 
   def i_have_a_message(message)
     expect(page).to have_selector('[data-purpose="message"]')

@@ -17,6 +17,11 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
             User.show(getFriendId(conversation, $scope.currentUser.id)).success(function(data){
                 conversation['friend'] = data;
             })
+
+            Messaging.show(conversation.id).success(function(data){
+                conversation['lastMessage'] = data.messages[data.messages.length - 1];
+            });
+
         });
 
         $scope.userHasConversations = ($scope.conversations.length != 0);
@@ -35,6 +40,11 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
     $rootScope.socket.on('messaging', function(data){
         if($scope.activeConversation.id == data.message.conversation_id){
             $scope.activeMessages.push(data.message);
+            angular.forEach($scope.conversations, function(conversation){
+                if(conversation.id == $scope.activeConversation.id){
+                    conversation['lastMessage'] = data.message;
+                }
+            });
         }
     });
 
@@ -68,6 +78,12 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
         var msg = data.data.attributes;
 
         $scope.activeMessages.push(msg);
+
+        angular.forEach($scope.conversations, function(conversation){
+            if(conversation.id == $scope.activeConversation.id){
+                conversation['lastMessage'] = msg;
+            }
+        });
 
         Messaging.create(data).success(function(data){
             $scope.message = '';
