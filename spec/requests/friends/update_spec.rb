@@ -8,6 +8,7 @@ RSpec.describe 'Update a friendship', type: :request do
   let!(:createrequest){
     otheruser.friend_request(user)
     user.accept_request(otheruser)
+    Conversation.create!(sender_id: user.id, recipient_id: otheruser.id)
   }
 
 
@@ -25,6 +26,21 @@ RSpec.describe 'Update a friendship', type: :request do
       expect(user.blocked_friends).to be_empty
       expect(user.friends_with?(otheruser)).to eq true
       expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+    end
+
+    it 'deletes the associated conversation' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      put "/api/friends/#{otheruser.id}", request_body(otheruser.id, 'block'), headers
+      expect(user.conversation_with(otheruser.id)).to eq nil
+    end
+
+    it 'recreates a conversation' do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      put "/api/friends/#{otheruser.id}", request_body(otheruser.id, 'block'), headers
+      put "/api/friends/#{otheruser.id}", request_body(otheruser.id, 'unblock'), headers
+      expect(user.conversation_with(otheruser.id)).not_to eq nil
     end
   end
 

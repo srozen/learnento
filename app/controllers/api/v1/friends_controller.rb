@@ -27,11 +27,13 @@ class Api::V1::FriendsController < ApiController
     if req['data']['attributes']['action'] == 'block'
       current_user.friends.find(user.id)
       current_user.block_friend(user)
+      destroy_conversation(user.id, current_user.id)
     else
       current_user.blocked_friends.find_by!(id: user.id)
       current_user.unblock_friend(user)
       current_user.friend_request(user)
       user.accept_request(current_user)
+      Conversation.create!(sender_id: user.id, recipient_id: current_user.id)
     end
     render json: ''
   end
