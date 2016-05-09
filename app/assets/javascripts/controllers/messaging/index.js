@@ -18,11 +18,18 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
                 conversation['friend'] = data;
             })
         });
-        $scope.activeConversation = $scope.conversations['0'];
 
-        Messaging.show($scope.activeConversation.id).success(function(data){
-            $scope.activeMessages = data.messages;
-        })
+        $scope.userHasConversations = ($scope.conversations.length != 0);
+
+        if($scope.userHasConversations){
+
+            $scope.activeConversation = $scope.conversations['0'];
+
+            Messaging.show($scope.activeConversation.id).success(function(data){
+                $scope.activeMessages = data.messages;
+            });
+        }
+
     });
 
     $rootScope.socket.on('messaging', function(data){
@@ -66,6 +73,14 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
             $scope.message = '';
         })
 
+    };
+
+    $scope.messageClass = function(id){
+        if($scope.currentUser.id == id){
+            return 'message-current';
+        } else {
+            return 'message-other';
+        }
     }
 
 }]);

@@ -3,3 +3,13 @@
   height: 200px; // Set this height to the appropriate size
   overflow-y: scroll; // Only add scroll to vertical column
 }
+
+.message-current
+{
+  text-align: right;
+}
+
+.message-other
+{
+  text-align: left;
+}

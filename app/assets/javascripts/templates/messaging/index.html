@@ -10,7 +10,7 @@
         </ul>
     </div>
 
-    <div>
+    <div ng-show="userHasConversations">
         <h2>Active Conv : </h2>
         <div data-purpose="active-conversation-header">
             {{activeConversation.friend.first_name}}
@@ -18,7 +18,7 @@
         <h3>Messages : </h3>
         <div data-purpose="active-conversation-messages" class="active-conversation" scroll-glue>
             <div ng-repeat="message in activeMessages">
-                <p>{{message.content}}</p>
+                <p ng-class="messageClass(message.user_id)" data-purpose="message">{{message.content}}</p>
             </div>
         </div>
 
@@ -28,5 +28,9 @@
                 <input type="submit" class="btn btn-primary" value="Submit" data-purpose="send-message-button">
             </form>
         </div>
+    </div>
+    <div ng-hide="userHasConversations" data-purpose="no-conversations-advice">
+        You seem to have no conversations ! <br>
+        Make some friends <a href="#/users">here</a> !
     </div>
 </section>
