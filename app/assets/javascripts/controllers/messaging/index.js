@@ -12,7 +12,7 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
     Messaging.all().success(function(data){
         // Fetch the conversations
         $scope.conversations = data.conversations;
-        // Fetch the associated friend
+        // Fetch the associated friend, lastMessage and notificationState
         angular.forEach($scope.conversations, function(conversation){
             User.show(getFriendId(conversation, $scope.currentUser.id)).success(function(data){
                 conversation['friend'] = data;
@@ -25,7 +25,6 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
         });
 
         $scope.userHasConversations = ($scope.conversations.length != 0);
-
         if($scope.userHasConversations){
 
             $scope.activeConversation = $scope.conversations['0'];
@@ -37,6 +36,8 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
 
     });
 
+
+    // New message handling
     $rootScope.socket.on('messaging', function(data){
         if($scope.activeConversation.id == data.message.conversation_id){
             $scope.activeMessages.push(data.message);
@@ -51,6 +52,7 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
         });
     });
 
+    // Switching conversation
     $scope.switchConversation = function(index){
             $scope.activeConversation = $scope.conversations[index];
             Messaging.show($scope.activeConversation.id).success(function(data){
