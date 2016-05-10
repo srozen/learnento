@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   has_friendship
   has_many :conversations, :foreign_key => :sender_id
+  has_many :conversation_notifications
 
   validates :first_name, length: { maximum: 20 }
   validates :last_name, length: { maximum: 20 }

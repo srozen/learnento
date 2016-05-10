@@ -34,6 +34,39 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: conversation_notifications; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE conversation_notifications (
+    id integer NOT NULL,
+    user_id integer,
+    conversation_id integer,
+    status boolean,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: conversation_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE conversation_notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: conversation_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE conversation_notifications_id_seq OWNED BY conversation_notifications.id;
+
+
+--
 -- Name: conversations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -192,6 +225,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY conversation_notifications ALTER COLUMN id SET DEFAULT nextval('conversation_notifications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY conversations ALTER COLUMN id SET DEFAULT nextval('conversations_id_seq'::regclass);
 
 
@@ -214,6 +254,14 @@ ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq':
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: conversation_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY conversation_notifications
+    ADD CONSTRAINT conversation_notifications_pkey PRIMARY KEY (id);
 
 
 --
@@ -246,6 +294,20 @@ ALTER TABLE ONLY messages
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_conversation_notifications_on_conversation_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_conversation_notifications_on_conversation_id ON conversation_notifications USING btree (conversation_id);
+
+
+--
+-- Name: index_conversation_notifications_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_conversation_notifications_on_user_id ON conversation_notifications USING btree (user_id);
 
 
 --
@@ -328,6 +390,22 @@ ALTER TABLE ONLY messages
 
 
 --
+-- Name: fk_rails_8a67f04c2c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY conversation_notifications
+    ADD CONSTRAINT fk_rails_8a67f04c2c FOREIGN KEY (conversation_id) REFERENCES conversations(id);
+
+
+--
+-- Name: fk_rails_afc0a2a5ec; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY conversation_notifications
+    ADD CONSTRAINT fk_rails_afc0a2a5ec FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -352,4 +430,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160505125652');
 INSERT INTO schema_migrations (version) VALUES ('20160505151435');
 
 INSERT INTO schema_migrations (version) VALUES ('20160505162420');
+
+INSERT INTO schema_migrations (version) VALUES ('20160510083413');
 
