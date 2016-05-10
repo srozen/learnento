@@ -5,8 +5,9 @@
     </div>
     <div ng-repeat="conversation in conversations">
         <ul>
-            <li>{{conversation.friend.first_name}}</li>
-            <a ng-click="switchConversation($index)"> Change Conv</a><br>
+            <li>
+                <a href="" ng-click="switchConversation($index)">{{conversation.friend.first_name}}</a>
+            </li>
             <b ng-if="conversation.newMessage">[NEW]</b>
             <em data-purpose="conversation-last-message">{{conversation.lastMessage.content}}</em>
         </ul>
