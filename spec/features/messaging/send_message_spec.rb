@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.feature 'Messaging notification on navigation panel', '
+RSpec.feature 'Sending a message to a friend', '
   As a registered user
   In order to see whenever someone sends me a message
   I want to have a visual information that this happened', :js do
 
-  scenario 'Registered sees a notification when messaged' do
+  scenario 'Registered sees a message that someone sent to him' do
 
     in_browser(:two) do
       sleep 1

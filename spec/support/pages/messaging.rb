@@ -9,6 +9,10 @@ module Spec
         message_input.set(message)
         send_message_button.click
       end
+
+      def access_conversation(first_name)
+        click_link(first_name)
+      end
     end
   end
 end

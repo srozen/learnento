@@ -9,12 +9,7 @@
 
 ### Messaging
 
-* Testing case on conversation deletion
-* Remove/recreate conversation on block/unblock
 * Implement conversation-notifications list
-* Style with users data
-* Style
-
 
 ## What is it?
 Learnento is an english learning platform by correspondence.   
