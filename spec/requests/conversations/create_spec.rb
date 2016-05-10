@@ -9,16 +9,28 @@ RSpec.describe 'Accept a friend creates a conversation between the users', type:
 
 
   context 'Accept friend request to valid user with valid JWT creates a conversation' do
-    it 'returns a valid status' do
+    before(:each) do
       headers = request_headers
       headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
       put "/api/friend_requests/#{otheruser.id}", request_body(otheruser.id), headers
+    end
+
+    it 'returns a valid status' do
       expect(response.status).to eq 200
+      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
+    end
+
+    it 'creates a Conversation between the users' do
       expect(user.friends.first.id).to equal(otheruser.id)
       expect(otheruser.friends.first.id).to equal(user.id)
-      expect(response.headers['Content-Type']). to eq('application/vnd.learnento+json; version=1; charset=utf-8')
-
       expect(Conversation.between(user.id, otheruser.id).present?).to eq true
+    end
+
+    it 'creates an associated ConversationNotification for the users' do
+      conversation = Conversation.between(user.id, otheruser.id).first
+
+      expect(user.conversation_notifications.first.conversation_id).to eq conversation.id
+      expect(otheruser.conversation_notifications.first.conversation_id).to eq conversation.id
     end
   end
 

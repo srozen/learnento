@@ -55,8 +55,14 @@ class Api::V1::FriendRequestsController < ApiController
 
   def create_conversation(user_id, current_user_id)
     if !Conversation.between(user_id, current_user_id).present?
-      @conversation = Conversation.create!(sender_id: user_id, recipient_id: current_user_id)
+      conversation = Conversation.create!(sender_id: user_id, recipient_id: current_user_id)
+      create_conversation_notifications(user_id, current_user_id, conversation.id)
     end
+  end
+
+  def create_conversation_notifications(user_id, current_user_id, conversation_id)
+    ConversationNotification.create!(user_id: user_id, conversation_id: conversation_id)
+    ConversationNotification.create!(user_id: current_user_id, conversation_id: conversation_id)
   end
 
 
