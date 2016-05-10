@@ -5,7 +5,11 @@ RSpec.describe 'Accept a friend creates a conversation between the users', type:
   let!(:user){User.create(email: 'alice@gmail.com', password: 'password')}
   let!(:jwt){JWT.encode({'id': user.id, 'email': user.email}, Rails.application.secrets.json_web_token_secret, 'HS256')}
   let!(:otheruser){User.create(email: 'bob@gmail.com', password: 'password')}
-  let!(:createrequest){otheruser.friend_request(user)}
+  let!(:charlie){User.create(email: 'charlie@gmail.com', password: 'password')}
+  let!(:createrequest){
+    otheruser.friend_request(user)
+    charlie.friend_request(user)
+  }
 
 
   context 'Accept friend request to valid user with valid JWT creates a conversation' do
@@ -31,6 +35,24 @@ RSpec.describe 'Accept a friend creates a conversation between the users', type:
 
       expect(user.conversation_notifications.first.conversation_id).to eq conversation.id
       expect(otheruser.conversation_notifications.first.conversation_id).to eq conversation.id
+    end
+  end
+
+  context 'User accept multiple friend requests' do
+    before(:each) do
+      headers = request_headers
+      headers[:'HTTP_AUTHORIZATION'] = "Bearer #{jwt}"
+      put "/api/friend_requests/#{otheruser.id}", request_body(otheruser.id), headers
+      put "/api/friend_requests/#{charlie.id}", request_body(charlie.id), headers
+    end
+
+    it 'creates to ConversationNotifications items for user' do
+      expect(user.conversation_notifications.count).to eq 2
+    end
+
+    it 'creates a single ConversationNotification item for the others' do
+      expect(otheruser.conversation_notifications.count).to eq 1
+      expect(charlie.conversation_notifications.count).to eq 1
     end
   end
 
