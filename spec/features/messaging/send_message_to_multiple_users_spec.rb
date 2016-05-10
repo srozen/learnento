@@ -39,8 +39,8 @@ RSpec.feature 'Sending a message to two friends', '
     end
 
     in_browser(:three) do
+      sleep 1
       as_user(randomuser) do
-        sleep 0.5
         i_go_on_messaging_page
         i_am_on_the_messaging_page
         sleep 0.5
@@ -59,10 +59,14 @@ RSpec.feature 'Sending a message to two friends', '
   let!(:friending){
     user.friend_request(otheruser)
     otheruser.accept_request(user)
-    Conversation.create!(sender_id: user.id, recipient_id: otheruser.id)
+    conv = Conversation.create!(sender_id: user.id, recipient_id: otheruser.id)
+    ConversationNotification.create!(user_id: user.id, conversation_id: conv.id, status: false)
+    ConversationNotification.create!(user_id: otheruser.id, conversation_id: conv.id, status: false)
     user.friend_request(randomuser)
     randomuser.accept_request(user)
-    Conversation.create!(sender_id: user.id, recipient_id: randomuser.id)
+    conv = Conversation.create!(sender_id: user.id, recipient_id: randomuser.id)
+    ConversationNotification.create!(user_id: user.id, conversation_id: conv.id, status: false)
+    ConversationNotification.create!(user_id: randomuser.id, conversation_id: conv.id, status: false)
   }
 
   def i_go_on_messaging_page

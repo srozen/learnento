@@ -5,6 +5,7 @@ class Messenger
     conversation = Conversation.between(user.id, friend.id).first
     message = conversation.messages.create!(user_id: user.id, content: message)
     conversation.touch(:updated_at)
+    friend.conversation_notifications.find_by(conversation_id: conversation.id).update(status: true)
     message
   end
 

@@ -48,11 +48,15 @@ RSpec.feature 'Messaging otification on navigation panel', '
   let!(:friending){
     user.friend_request(otheruser)
     otheruser.accept_request(user)
-    Conversation.create!(sender_id: user.id, recipient_id: otheruser.id)
+    conv = Conversation.create!(sender_id: user.id, recipient_id: otheruser.id)
+    ConversationNotification.create!(user_id: user.id, conversation_id: conv.id, status: false)
+    ConversationNotification.create!(user_id: otheruser.id, conversation_id: conv.id, status: false)
 
     user.friend_request(pepito)
     pepito.accept_request(user)
-    Conversation.create!(sender_id: user.id, recipient_id: pepito.id)
+    conv = Conversation.create!(sender_id: user.id, recipient_id: pepito.id)
+    ConversationNotification.create!(user_id: user.id, conversation_id: conv.id, status: false)
+    ConversationNotification.create!(user_id: pepito.id, conversation_id: conv.id, status: false)
   }
 
   def i_go_on_messaging_page

@@ -61,8 +61,8 @@ class Api::V1::FriendRequestsController < ApiController
   end
 
   def create_conversation_notifications(user_id, current_user_id, conversation_id)
-    ConversationNotification.create!(user_id: user_id, conversation_id: conversation_id)
-    ConversationNotification.create!(user_id: current_user_id, conversation_id: conversation_id)
+    ConversationNotification.create!(user_id: user_id, conversation_id: conversation_id, status: false)
+    ConversationNotification.create!(user_id: current_user_id, conversation_id: conversation_id, status: false)
   end
 
 

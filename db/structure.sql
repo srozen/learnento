@@ -41,7 +41,7 @@ CREATE TABLE conversation_notifications (
     id integer NOT NULL,
     user_id integer,
     conversation_id integer,
-    status boolean,
+    status boolean DEFAULT false NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
