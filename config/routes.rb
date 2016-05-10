@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         resources :active_messaging_notifications, only: [:index, :destroy]
         resources :messages, only: [:create]
         resources :conversations, only: [:show, :index]
-        resources :conversation_notifications, only: [:show, :index]
+        resources :conversation_notifications, only: [:show, :index, :update]
     end
   end
 
