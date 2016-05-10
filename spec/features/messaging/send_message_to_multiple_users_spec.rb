@@ -86,10 +86,6 @@ RSpec.feature 'Sending a message to two friends', '
     messaging.send_message(message)
   end
 
-  def the_message_appeared_in_conversation_panel(message)
-    expect(find('[data-purpose="conversation-last-message"]').text).to eq message
-  end
-
   def the_message_appeared_in_active_conversation(message)
     expect(page).to have_selector('[data-purpose="message"]')
     expect(find('[data-purpose="message"]').text).to eq message
