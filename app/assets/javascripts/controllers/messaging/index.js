@@ -1,4 +1,4 @@
-angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'Authentication', '$location', '$document', 'Messaging', 'User', '$rootScope', function($scope, Authentication, $location, $document, Messaging, User, $rootScope){
+angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'Authentication', '$location', '$document', 'Messaging', 'User', '$rootScope', 'Notification', function($scope, Authentication, $location, $document, Messaging, User, $rootScope, Notification){
 
     if(!Authentication.loggedIn()){
         $location.path('home');
@@ -12,15 +12,20 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
     Messaging.all().success(function(data){
         // Fetch the conversations
         $scope.conversations = data.conversations;
-        // Fetch the associated friend, lastMessage and notificationState
+        // Fetch the associated friend, lastMessage and newMessage
         angular.forEach($scope.conversations, function(conversation){
+            // associated friend
             User.show(getFriendId(conversation, $scope.currentUser.id)).success(function(data){
                 conversation['friend'] = data;
-            })
-
+            });
+            // last message
             Messaging.show(conversation.id).success(function(data){
                 conversation['lastMessage'] = data.messages[data.messages.length - 1];
             });
+            // new message notification
+            Notification.activeConversationNotification(conversation.id).success(function(data){
+                conversation['newMessage'] = data.status;
+            })
 
         });
 
@@ -32,6 +37,11 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
             Messaging.show($scope.activeConversation.id).success(function(data){
                 $scope.activeMessages = data.messages;
             });
+
+            Notification.clearConversationNotification($scope.activeConversation.id).success(function(data){
+                $scope.activeConversation['newMessage'] = data.status;
+            })
+
         }
 
     });
@@ -47,6 +57,10 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
                 conversation['lastMessage'] = data.message;
                 if($scope.activeConversation.id != data.message.conversation_id){
                     conversation['newMessage'] = true;
+                } else {
+                    Notification.clearConversationNotification($scope.activeConversation.id).success(function(data){
+                        $scope.activeConversation['newMessage'] = data.status;
+                    })
                 }
             }
         });
@@ -54,11 +68,13 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
 
     // Switching conversation
     $scope.switchConversation = function(index){
-            $scope.activeConversation = $scope.conversations[index];
-            Messaging.show($scope.activeConversation.id).success(function(data){
-                $scope.activeMessages = data.messages;
-            });
-            $scope.conversations[index]['newMessage'] = false;
+        $scope.activeConversation = $scope.conversations[index];
+        Messaging.show($scope.activeConversation.id).success(function(data){
+            $scope.activeMessages = data.messages;
+        });
+        Notification.clearConversationNotification($scope.activeConversation.id).success(function(data){
+            $scope.activeConversation['newMessage'] = data.status;
+        })
     };
 
     var getFriendId = function(conv, currentUserId){

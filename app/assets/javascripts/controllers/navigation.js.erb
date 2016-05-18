@@ -34,9 +34,7 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
                 }
 
                 <% if !Rails.env.test? %>
-                    if (document.hidden) {
-                        ngAudio.play('sounds/navigationNotification.mp3');
-                    }
+                  ngAudio.play('sounds/navigationNotification.mp3');
                 <% end %>
             });
 

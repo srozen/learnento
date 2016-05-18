@@ -2,16 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.0
--- Dumped by pg_dump version 9.5.0
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 --
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
@@ -34,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: conversation_notifications; Type: TABLE; Schema: public; Owner: -
+-- Name: conversation_notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE conversation_notifications (
@@ -67,7 +63,7 @@ ALTER SEQUENCE conversation_notifications_id_seq OWNED BY conversation_notificat
 
 
 --
--- Name: conversations; Type: TABLE; Schema: public; Owner: -
+-- Name: conversations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE conversations (
@@ -99,7 +95,7 @@ ALTER SEQUENCE conversations_id_seq OWNED BY conversations.id;
 
 
 --
--- Name: friendships; Type: TABLE; Schema: public; Owner: -
+-- Name: friendships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE friendships (
@@ -135,7 +131,7 @@ ALTER SEQUENCE friendships_id_seq OWNED BY friendships.id;
 
 
 --
--- Name: messages; Type: TABLE; Schema: public; Owner: -
+-- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE messages (
@@ -168,7 +164,7 @@ ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
@@ -177,7 +173,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE users (
@@ -257,7 +253,7 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: conversation_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: conversation_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY conversation_notifications
@@ -265,7 +261,7 @@ ALTER TABLE ONLY conversation_notifications
 
 
 --
--- Name: conversations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: conversations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY conversations
@@ -273,7 +269,7 @@ ALTER TABLE ONLY conversations
 
 
 --
--- Name: friendships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: friendships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY friendships
@@ -281,7 +277,7 @@ ALTER TABLE ONLY friendships
 
 
 --
--- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY messages
@@ -289,7 +285,7 @@ ALTER TABLE ONLY messages
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
@@ -297,77 +293,77 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_conversation_notifications_on_conversation_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_conversation_notifications_on_conversation_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_conversation_notifications_on_conversation_id ON conversation_notifications USING btree (conversation_id);
 
 
 --
--- Name: index_conversation_notifications_on_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_conversation_notifications_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_conversation_notifications_on_user_id ON conversation_notifications USING btree (user_id);
 
 
 --
--- Name: index_conversations_on_recipient_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_conversations_on_recipient_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_conversations_on_recipient_id ON conversations USING btree (recipient_id);
 
 
 --
--- Name: index_conversations_on_sender_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_conversations_on_sender_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_conversations_on_sender_id ON conversations USING btree (sender_id);
 
 
 --
--- Name: index_messages_on_conversation_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_messages_on_conversation_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_messages_on_conversation_id ON messages USING btree (conversation_id);
 
 
 --
--- Name: index_messages_on_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_messages_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_messages_on_user_id ON messages USING btree (user_id);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
 
 
 --
--- Name: users_lower_first_name; Type: INDEX; Schema: public; Owner: -
+-- Name: users_lower_first_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX users_lower_first_name ON users USING btree (lower((first_name)::text) varchar_pattern_ops);
 
 
 --
--- Name: users_lower_last_name; Type: INDEX; Schema: public; Owner: -
+-- Name: users_lower_last_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX users_lower_last_name ON users USING btree (lower((last_name)::text) varchar_pattern_ops);
@@ -409,7 +405,7 @@ ALTER TABLE ONLY conversation_notifications
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user", public;
+SET search_path TO "$user",public;
 
 INSERT INTO schema_migrations (version) VALUES ('20160413113248');
 

@@ -44,6 +44,28 @@ angular.module('Learnento').service('Notification', ['$http', 'Authentication', 
                 data: '',
                 headers: headers
             })
+        },
+        activeConversationNotification: function(id){
+            var headers = {
+                Authorization: 'Bearer '+ Authentication.getToken()
+            };
+            return $http({
+                method: 'GET',
+                url: 'api/conversation_notifications/' + id,
+                data: '',
+                headers: headers
+            })
+        },
+        clearConversationNotification: function(id){
+            var headers = {
+                Authorization: 'Bearer '+ Authentication.getToken()
+            };
+            return $http({
+                method: 'PUT',
+                url: 'api/conversation_notifications/' + id,
+                data: '',
+                headers: headers
+            })
         }
     }
-}])
+}]);
