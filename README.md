@@ -39,4 +39,5 @@
  * __Socket.io__ : Enables all the realtime features on the project
  * __Node.js__ : Manages socket.io client connections, and speaks with the Rails app through Redis
  * __Redis__ : This pub/sub service allows the Rails app and the Node/Socket.io server to communicate through channels
+ * __WebRTC__: Used for voice/video conferencing
  
