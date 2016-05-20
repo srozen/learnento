@@ -1,9 +1,77 @@
+$lred: #D66360;
+$lgrey: #AFA8A2;
+$lbackground: #F2F1ED;
+$lblack: #333333;
+
 .home-page {
+
+  text-align: center;
+
+  header {
+    margin: auto;
+    text-align: center;
+    padding-bottom: 5rem;
+  }
+
+  .advantages {
+    margin: 2rem;
+
+    .advantage {
+      margin-top: 4rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  .steps {
+    margin-left: 30%;
+    text-align: left;
+    .step {
+      margin-top: 4rem;
+    }
+    .step-number {
+      font-size: 3rem;
+      color: $lred;
+      margin-right: 3rem;
+      padding-top: 0.3rem;
+    }
+  }
+
+  i {
+    color: $lred;
+  }
+
+  article {
+    margin-bottom: 7rem;
+  }
+
+  .horizontal-sep {
+    border-color: $lblack;
+    width: 50%;
+  }
+
+  .btn-primary {
+    background-color: $lred;
+    border-color: #D66380;
+  }
+
+  .btn-primary:active,
+  .btn-primary.active {
+    background-color: #d6453e;
+    border-color: #D66380;
+  }
+
+  h1, h2 {
+    text-align: center;
+    padding-bottom: 3rem;
+    font-family: 'aileron';
+  }
+
   footer {
     color: white;
     text-align: center;
     padding: 25px 0;
-    background-color: #233140;
+    background-color: $lblack;
+    margin-top: 3rem;
     .footer-col {
       margin-bottom: 50px;
     }
