@@ -21,7 +21,7 @@
         <h3>Messages : </h3>
         <div data-purpose="active-conversation-messages" class="active-conversation" scroll-glue>
             <div ng-repeat="message in activeMessages">
-                <p class="message" ng-class="messageClass(message.user_id)" data-purpose="message"><span ng-class="messageClass(message.user_id)" class="message-content">{{message.content}}</span></p>
+                <p ng-class="messageClass(message.user_id)" data-purpose="message">{{message.content}}</p>
             </div>
         </div>
 

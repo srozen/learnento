@@ -1,43 +1,15 @@
-$lred: #D66360;
-$lgrey: #AFA8A2;
-$lbackground: #F2F1ED;
-$lblack: #333333;
-
-
 .active-conversation
 {
   height: 200px; // Set this height to the appropriate size
   overflow-y: scroll; // Only add scroll to vertical column
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-
-
-.message-content {
-  -webkit-border-radius: 20%;
-  -moz-border-radius: 20%;
-  border-radius: 20%;
-
-  padding: 0.5rem 1.5rem;
 }
 
 .message-current
 {
   text-align: right;
-  .message-current {
-    background-color: $lgrey;
-    color: white;
-  }
 }
 
 .message-other
 {
   text-align: left;
-  color: white;
-  display: inline-block;
-  background-color: $lred;
-  -webkit-border-radius: 20%;
-  -moz-border-radius: 20%;
-  border-radius: 20%;
 }
