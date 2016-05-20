@@ -1,0 +1,17 @@
+$lred: #D66360;
+$lgrey: #AFA8A2;
+$lbackground: #F2F1ED;
+$lblack: #333333;
+
+@font-face {
+  font-family: 'Aileron';
+  src:font-url('aileron/Aileron-Light.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  background-color: $lbackground;
+  color: $lblack;
+  font-family: 'aileron';
+}
