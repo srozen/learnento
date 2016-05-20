@@ -10,7 +10,8 @@
     "socket.io-client": "~> 1.4.5",
     "socket.io": "~> 1.4.5",
     "ngAudio": "~> 1.7.2",
-    "angular-scroll-glue": "~> 2.0.4"
+    "angular-scroll-glue": "~> 2.0.4",
+    "ng-scroll-glue": "~> 2.0.10"
   },
   "resolutions": {
     "angular": "1.5.3"
