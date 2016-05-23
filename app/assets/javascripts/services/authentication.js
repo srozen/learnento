@@ -14,6 +14,9 @@ angular.module('Learnento').service('Authentication', ['$http', '$window', '$roo
     var loggedIn = function() {
         return getToken();
     };
+    var tokenAvailable = function(){
+        return $q.when($window.localStorage['learnenToken'] != null);
+    };
     var currentUser = function() {
         if (loggedIn()) {
             var token = getToken();
@@ -79,6 +82,7 @@ angular.module('Learnento').service('Authentication', ['$http', '$window', '$roo
         currentUser: currentUser,
         register: register,
         login: login,
-        isOwner: isOwner
+        isOwner: isOwner,
+        tokenAvailable: tokenAvailable
     }
 }]);

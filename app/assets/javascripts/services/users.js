@@ -1,9 +1,9 @@
 angular.module('Learnento').service('User', ['$http', 'Authentication', function UserFactory($http, Authentication){
-    var headers = {
-            Authorization: 'Bearer '+ Authentication.getToken()
-    };
     return {
         show: function(id){
+            var headers = {
+                Authorization: 'Bearer '+ Authentication.getToken()
+            };
             return $http({
                 method: 'GET',
                 url: '/api/users/'+id,
@@ -12,6 +12,9 @@ angular.module('Learnento').service('User', ['$http', 'Authentication', function
             })
         },
         all: function(params){
+            var headers = {
+                Authorization: 'Bearer '+ Authentication.getToken()
+            };
             return $http({
                 method: 'GET',
                 url: '/api/users',
@@ -20,6 +23,9 @@ angular.module('Learnento').service('User', ['$http', 'Authentication', function
             })
         },
         update: function(id, editData){
+            var headers = {
+                Authorization: 'Bearer '+ Authentication.getToken()
+            };
             return $http({
                 method: 'PUT',
                 url: '/api/users/'+id,

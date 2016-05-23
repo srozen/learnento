@@ -1,9 +1,15 @@
-angular.module('Learnento').controller('NavigationController', ['Authentication', '$scope', '$rootScope', 'Notification', 'ngAudio', '$state', function(Authentication, $scope, $rootScope, Notification, ngAudio, $state){
+angular.module('Learnento').controller('NavigationController', ['Authentication', '$scope', '$rootScope', 'Notification', 'ngAudio', '$state', 'User', function(Authentication, $scope, $rootScope, Notification, ngAudio, $state, User){
 
     $scope.loggedIn = Authentication.loggedIn();
     $scope.currentUser = Authentication.currentUser();
     $scope.friendNotification = 0;
     $scope.messagingNotification = 0;
+
+    if($scope.loggedIn){
+      User.show($scope.currentUser.id).success(function(data){
+        $scope.navUser = data;
+      })
+    }
 
     var connectSocket = function(){
         if($scope.loggedIn){
@@ -79,6 +85,9 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
     $rootScope.$on('login', function(){
         $scope.loggedIn = Authentication.loggedIn();
         $scope.currentUser = $rootScope.currentUser;
+        User.show($scope.currentUser.id).success(function(data){
+          $scope.navUser = data;
+        })
         connectSocket();
     });
 }]);
