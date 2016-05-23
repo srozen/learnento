@@ -1,3 +1,18 @@
 // Place all the styles related to the friend_requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$lred: #D66360;
+
+.friend-requests {
+  width: 60%;
+  margin: auto;
+
+  .user-info {
+    margin: 2rem 0rem;
+
+    .avatar {
+      border: solid 2px $lred;
+    }
+  }
+}

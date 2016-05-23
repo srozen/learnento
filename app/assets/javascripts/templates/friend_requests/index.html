@@ -1,8 +1,11 @@
-<section data-purpose="friend-requests">
+<section data-purpose="friend-requests" class="friend-requests">
 
     <h2>Friend Requests</h2>
     <div ng-repeat="request in requests" data-purpose="friend-request">
-        <p>{{request.email}} has added you ! </p>
+        <div class="user-info">
+            <img ng-src="{{request.avatar.url}}" alt="user-avatar" width="50" height="50" class="avatar">
+            <a href="#/users/{{request.id}}">{{request.first_name}}</a> would like to add you has friend !
+        </div>
         <div class="panel panel-default">
             <div class="panel-body" data-purpose="friend-request-message">
                {{request.message}}
