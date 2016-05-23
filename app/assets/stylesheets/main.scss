@@ -3,6 +3,7 @@ $lgrey: #AFA8A2;
 $lbackground: #F2F1ED;
 $lblack: #333333;
 
+
 @font-face {
   font-family: 'Aileron';
   src:font-url('aileron/Aileron-Light.otf');
@@ -14,4 +15,21 @@ body{
   background-color: $lbackground;
   color: $lblack;
   font-family: 'aileron';
+}
+
+// Button primary
+
+.btn-primary {
+  background-color: $lred;
+  border-color: #D66380;
+}
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #d6453e;
+  border-color: #D66380;
+}
+.btn-primary:hover,
+.btn-primary.hover {
+  background-color: #d6453e;
+  border-color: #D66380;
 }
