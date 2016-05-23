@@ -1,4 +1,4 @@
-<section ng-controller="LoginController">
+<section ng-controller="LoginController" class="user-login">
     <h2>Log in</h2>
 
     <div ng-if="error_message" data-purpose="error-message" class="alert alert-danger" role="alert">
@@ -8,13 +8,15 @@
 
     <form ng-submit="handleLogin()">
         <fieldset class="form-group">
-            <label for="email"><i class="fa fa-envelope"> Email</i></label>
+            <label for="email"><i class="fa fa-envelope"></i>  Email</label>
             <input type="email" class="form-control" autofocus="true" data-purpose="login-email" ng-model="email">
         </fieldset>
         <fieldset class="form-group">
             <label for="password"><i class="fa fa-lock"></i> Password</label>
             <input type="password" autocomplete="off" class="form-control" data-purpose="login-password" ng-model="password">
         </fieldset>
-        <input type="submit" class="btn btn-primary" data-purpose="login-confirmation" value="Login">
+        <fieldset class="login-buttons">
+            <input type="submit" class="btn btn-primary" data-purpose="login-confirmation" value="Login">
+        </fieldset>
     </form>
 </section>

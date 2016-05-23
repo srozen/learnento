@@ -1,3 +1,48 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Registration
+
+.user-register{
+
+  h2, .register-button {
+    text-align: center;
+  }
+
+  .form-group {
+    width: 60%;
+    margin: auto;
+    padding: 1rem 0rem;
+  }
+}
+
+// Edition
+
+.profile-edition{
+
+  h2, .edit-buttons {
+    text-align: center;
+  }
+
+  .form-group {
+    width: 60%;
+    margin: auto;
+    padding: 1rem 0rem;
+  }
+}
+
+// Login
+
+.user-login{
+  h2, .login-buttons {
+    text-align: center;
+  }
+
+  .form-group {
+    width: 60%;
+    margin: auto;
+    padding: 1rem 0rem;
+  }
+}
