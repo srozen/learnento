@@ -33,7 +33,7 @@ class Api::V1::FriendsController < ApiController
       current_user.unblock_friend(user)
       current_user.friend_request(user)
       user.accept_request(current_user)
-      Conversation.create!(sender_id: user.id, recipient_id: current_user.id)
+      create_conversation(user.id, current_user.id)
     end
     render json: ''
   end
@@ -53,6 +53,18 @@ class Api::V1::FriendsController < ApiController
         conv = Conversation.between(user_id, current_user_id).first
         Conversation.destroy(conv.id)
       end
+  end
+
+  def create_conversation(user_id, current_user_id)
+    if !Conversation.between(user_id, current_user_id).present?
+      conversation = Conversation.create!(sender_id: user_id, recipient_id: current_user_id)
+      create_conversation_notifications(user_id, current_user_id, conversation.id)
+    end
+  end
+
+  def create_conversation_notifications(user_id, current_user_id, conversation_id)
+    ConversationNotification.create!(user_id: user_id, conversation_id: conversation_id, status: false)
+    ConversationNotification.create!(user_id: current_user_id, conversation_id: conversation_id, status: false)
   end
 
 end
