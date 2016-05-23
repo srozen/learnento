@@ -1,25 +1,21 @@
-<section data-purpose="messaging-page">
+<section data-purpose="messaging-page" class="messaging-page">
     <h1>Messaging Page</h1>
-    <div>
-        User id = {{currentUser.id}}
-    </div>
-    <div ng-repeat="conversation in conversations">
-        <ul>
-            <li>
-                <a href="" ng-click="switchConversation($index)">{{conversation.friend.first_name}}</a>
-            </li>
+    <div class="conversations">
+        <div ng-repeat="conversation in conversations">
+            <img ng-src="{{conversation.friend.avatar.url}}" class="avatar" alt="friend-avatar" height="50" width="50">
+            <a href="" ng-click="switchConversation($index)">{{conversation.friend.first_name}}</a><br>
             <b ng-if="conversation.newMessage">[NEW]</b>
-            <em data-purpose="conversation-last-message">{{conversation.lastMessage.content}}</em>
-        </ul>
+            <em>{{conversation.lastUser}} : <span data-purpose="conversation-last-message">{{conversation.lastMessage.content}}</span></em>
+        </div>
     </div>
 
-    <div ng-show="userHasConversations">
+    <div ng-show="userHasConversations" class="active-conversation">
         <h2>Active Conv : </h2>
         <div data-purpose="active-conversation-header">
             {{activeConversation.friend.first_name}}
         </div>
         <h3>Messages : </h3>
-        <div data-purpose="active-conversation-messages" class="active-conversation" scroll-glue>
+        <div data-purpose="active-conversation-messages" class="conversation-content" scroll-glue>
             <div ng-repeat="message in activeMessages">
                 <p ng-class="messageClass(message.user_id)" data-purpose="message">{{message.content}}</p>
             </div>
@@ -27,7 +23,7 @@
 
         <div>
             <form ng-submit="sendMessage()">
-                <input type="text" ng-model="message" data-purpose="message-input"/>
+                <input type="text" ng-model="message" data-purpose="message-input" class="col-xs-8"/>
                 <input type="submit" class="btn btn-primary" value="Submit" data-purpose="send-message-button">
             </form>
         </div>

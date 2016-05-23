@@ -1,7 +1,20 @@
-.active-conversation
+$lred: #D66360;
+$lgrey: #AFA8A2;
+$lbackground: #F2F1ED;
+$lblack: #333333;
+
+
+
+.messaging-page {
+
+}
+
+
+.conversation-content
 {
   height: 200px; // Set this height to the appropriate size
   overflow-y: scroll; // Only add scroll to vertical column
+  padding: 0rem 3rem;
 }
 
 .message-current

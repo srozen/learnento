@@ -21,6 +21,11 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
             // last message
             Messaging.show(conversation.id).success(function(data){
                 conversation['lastMessage'] = data.messages[data.messages.length - 1];
+                if(conversation['lastMessage'] != null){
+                    User.show(conversation['lastMessage'].user_id).success(function(data){
+                        conversation['lastUser'] = data.first_name;
+                    })
+                }
             });
             // new message notification
             Notification.activeConversationNotification(conversation.id).success(function(data){
@@ -55,6 +60,9 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
         angular.forEach($scope.conversations, function(conversation){
             if(conversation.id == data.message.conversation_id){
                 conversation['lastMessage'] = data.message;
+                User.show(data.user_id).success(function(data){
+                    conversation['lastUser'] = data.first_name;
+                });
                 if($scope.activeConversation.id != data.message.conversation_id){
                     conversation['newMessage'] = true;
                 } else {
@@ -104,6 +112,9 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
         angular.forEach($scope.conversations, function(conversation){
             if(conversation.id == $scope.activeConversation.id){
                 conversation['lastMessage'] = msg;
+                User.show($scope.currentUser.id).success(function(data){
+                    conversation['lastUser'] = data.first_name;
+                })
             }
         });
 
