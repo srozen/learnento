@@ -1,6 +1,10 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$lred: #D66360;
+$lgrey: #AFA8A2;
+$lbackground: #F2F1ED;
+$lblack: #333333;
 
 // Profile
 
@@ -9,6 +13,21 @@
   width: 60%;
 }
 
+//
+
+.user-index{
+  .avatar {
+    float: left;
+    clear: both;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    border: solid 2px $lred;
+  }
+
+  .paginator {
+    color: $lred;
+  }
+}
 // Registration
 
 .user-register{
