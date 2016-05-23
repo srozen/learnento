@@ -1,4 +1,4 @@
-angular.module('Learnento').controller('UsersEditController', ['$stateParams', 'User', '$location', '$scope', 'Authentication', function($stateParams, User, $location, $scope, Authentication) {
+angular.module('Learnento').controller('UsersEditController', ['$stateParams', 'User', '$location', '$scope', 'Authentication', '$rootScope', function($stateParams, User, $location, $scope, Authentication, $rootScope) {
     if(!Authentication.isOwner($stateParams.id)){
         $location.path('home');
     }
@@ -33,6 +33,7 @@ angular.module('Learnento').controller('UsersEditController', ['$stateParams', '
         };
 
         User.update($scope.user.id, data).then(function(){
+            $rootScope.$broadcast('userUpdate');
             $location.path('/users/'+Authentication.currentUser().id);
         }, function(){
             $scope.error_message = response.data.error;

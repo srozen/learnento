@@ -90,4 +90,10 @@ angular.module('Learnento').controller('NavigationController', ['Authentication'
         })
         connectSocket();
     });
+
+    $rootScope.$on('userUpdate', function(){
+      User.show($scope.currentUser.id).success(function(data){
+        $scope.navUser = data;
+      })
+    });
 }]);
