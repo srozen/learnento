@@ -1,9 +1,7 @@
-<section data-purpose="profile-page">
-    <h1> Profile </h1>
+<section data-purpose="profile-page" class="profile-page container">
+    <h1 data-purpose="first-name"> {{user.first_name}} {{user.last_name}} </h1>
     <div data-purpose="user-details">
         <li>{{user.email}}</li>
-        <li data-purpose="first-name">{{user.first_name}}</li>
-        <li>{{user.last_name}}</li>
     </div>
     <div>
         <img ng-src="{{user.avatar.url}}" alt="" height="100" width="100">
