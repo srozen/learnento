@@ -43,6 +43,11 @@ angular.module('Learnento').config(['$stateProvider', '$urlRouterProvider', func
             url: '/messaging',
             templateUrl: 'messaging/index.html',
             controller: 'MessagingIndexController'
+        })
+        .state('video', {
+            url: '/video',
+            templateUrl: 'video/index.html',
+            controller: 'VideoController'
         });
     $urlRouterProvider.otherwise('home');
 }]);
