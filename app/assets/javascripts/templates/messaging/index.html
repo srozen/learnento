@@ -21,14 +21,16 @@
             <hr>
             <div data-purpose="active-conversation-messages" class="conversation-content" scroll-glue>
                 <div ng-repeat="message in activeMessages">
-                    <p ng-class="messageClass(message.user_id)" data-purpose="message">{{message.content}}</p>
+                    <p ng-class="messageClass(message.user_id)" data-purpose="message">
+                        <span class="message-content">{{message.content}}</span>
+                    </p>
                 </div>
             </div>
 
-            <div>
+            <div class="message-sender">
                 <form ng-submit="sendMessage()">
-                    <input type="text" ng-model="message" data-purpose="message-input" class="col-xs-8"/>
-                    <input type="submit" class="btn btn-primary" value="Submit" data-purpose="send-message-button">
+                    <input type="text" ng-model="message" data-purpose="send-message-input" class="col-xs-8"/>
+                    <input type="submit" class="btn btn-primary send-message-button" value="Submit" data-purpose="send-message-button">
                 </form>
             </div>
         </div>

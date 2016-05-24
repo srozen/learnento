@@ -37,8 +37,16 @@ $lblack: #333333;
       margin-bottom: 1rem;
       margin-left: 1rem;
     }
-  }
 
+    .message-sender {
+      margin-left: 11rem;
+      margin-top: 3rem;
+
+      .send-message-button {
+        margin-left: 2rem;
+      }
+    }
+  }
 
 }
 
@@ -53,9 +61,23 @@ $lblack: #333333;
 .message-current
 {
   text-align: right;
+  .message-content {
+    background-color: $lgrey;
+  }
 }
 
 .message-other
 {
   text-align: left;
+  .message-content {
+    background-color: $lred;
+  }
+}
+
+.message-content {
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 19px;
+  border-radius: 19px;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
 }
