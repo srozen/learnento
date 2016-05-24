@@ -11,6 +11,7 @@ RSpec.feature 'Messaging after unblocking', '
       i_check_my_friend_requests_page
       i_have_a_new_friend_request
       i_accept_the_friend_request
+      sleep 0.5
       i_go_on_messaging_page
       i_am_on_the_messaging_page
       sleep 0.5
