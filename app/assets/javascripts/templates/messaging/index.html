@@ -5,7 +5,7 @@
             <div ng-repeat="conversation in conversations" class="conversations-panel-item">
                 <img ng-src="{{conversation.friend.avatar.url}}" class="avatar" alt="friend-avatar" height="50" width="50">
                 <a href="" ng-click="switchConversation($index)">{{conversation.friend.first_name}}</a><br>
-                <b ng-if="conversation.newMessage">[NEW]</b>
+                <i ng-if="conversation.newMessage" class="fa fa-dot-circle-o new-message-icon" aria-hidden="true"></i>
                 <em>{{conversation.lastUser}} : <span data-purpose="conversation-last-message">{{conversation.lastMessage.content}}</span></em>
             </div>
         </div>
