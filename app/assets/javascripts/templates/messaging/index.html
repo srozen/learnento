@@ -1,35 +1,42 @@
-<section data-purpose="messaging-page" class="messaging-page">
-    <h1>Messaging Page</h1>
-    <div class="conversations">
-        <div ng-repeat="conversation in conversations">
-            <img ng-src="{{conversation.friend.avatar.url}}" class="avatar" alt="friend-avatar" height="50" width="50">
-            <a href="" ng-click="switchConversation($index)">{{conversation.friend.first_name}}</a><br>
-            <b ng-if="conversation.newMessage">[NEW]</b>
-            <em>{{conversation.lastUser}} : <span data-purpose="conversation-last-message">{{conversation.lastMessage.content}}</span></em>
-        </div>
-    </div>
-
-    <div ng-show="userHasConversations" class="active-conversation">
-        <h2>Active Conv : </h2>
-        <div data-purpose="active-conversation-header">
-            {{activeConversation.friend.first_name}}
-        </div>
-        <h3>Messages : </h3>
-        <div data-purpose="active-conversation-messages" class="conversation-content" scroll-glue>
-            <div ng-repeat="message in activeMessages">
-                <p ng-class="messageClass(message.user_id)" data-purpose="message">{{message.content}}</p>
+<section data-purpose="messaging-page" class="messaging-page container">
+    <div class="row">
+        <div class="conversations col-md-4 conversations-panel">
+            <h3> Conversations </h3>
+            <div ng-repeat="conversation in conversations" class="conversations-panel-item">
+                <img ng-src="{{conversation.friend.avatar.url}}" class="avatar" alt="friend-avatar" height="50" width="50">
+                <a href="" ng-click="switchConversation($index)">{{conversation.friend.first_name}}</a><br>
+                <b ng-if="conversation.newMessage">[NEW]</b>
+                <em>{{conversation.lastUser}} : <span data-purpose="conversation-last-message">{{conversation.lastMessage.content}}</span></em>
             </div>
         </div>
 
-        <div>
-            <form ng-submit="sendMessage()">
-                <input type="text" ng-model="message" data-purpose="message-input" class="col-xs-8"/>
-                <input type="submit" class="btn btn-primary" value="Submit" data-purpose="send-message-button">
-            </form>
+        <div ng-show="userHasConversations" class="active-conversation col-md-8">
+            <div data-purpose="active-conversation-header" class="active-conversation-header">
+                <img ng-src="{{activeConversation.friend.avatar.url}}" alt="Active Conversation User Avatar" class="active-conversation-avatar" height="30" width="30">
+                <h2 class="active-conversation-title">{{activeConversation.friend.first_name}} {{activeConversation.friend.last_name}}</h2>
+                <a href="#/users/{{activeConversation.friend.id}}">
+                    <i class="fa fa-user active-conversation-icon icon-grey"></i>
+                </a>
+            </div>
+            <hr>
+            <div data-purpose="active-conversation-messages" class="conversation-content" scroll-glue>
+                <div ng-repeat="message in activeMessages">
+                    <p ng-class="messageClass(message.user_id)" data-purpose="message">{{message.content}}</p>
+                </div>
+            </div>
+
+            <div>
+                <form ng-submit="sendMessage()">
+                    <input type="text" ng-model="message" data-purpose="message-input" class="col-xs-8"/>
+                    <input type="submit" class="btn btn-primary" value="Submit" data-purpose="send-message-button">
+                </form>
+            </div>
         </div>
-    </div>
-    <div ng-hide="userHasConversations" data-purpose="no-conversations-advice">
-        You seem to have no conversations ! <br>
-        Make some friends <a href="#/users">here</a> !
+
+
+        <div ng-hide="userHasConversations" data-purpose="no-conversations-advice">
+            You seem to have no conversations ! <br>
+            Make some friends <a href="#/users">here</a> !
+        </div>
     </div>
 </section>

@@ -6,13 +6,46 @@ $lblack: #333333;
 
 
 .messaging-page {
+  .conversations-panel {
+    margin-top: 4rem;
+    margin-right: -12rem;
+    margin-left: -3rem;
+
+    .avatar {
+      border: solid 2px $lred;
+    }
+  }
+
+  .conversations-panel-item {
+    margin: 1rem 0rem;
+  }
+
+  .active-conversation {
+    .active-conversation-header {
+      text-align: center;
+    }
+
+    .active-conversation-avatar{
+      margin-bottom: 1rem;
+      margin-right: 1rem;
+    }
+    .active-conversation-title {
+      display: inline;
+    }
+
+    .active-conversation-icon{
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+    }
+  }
+
 
 }
 
 
 .conversation-content
 {
-  height: 200px; // Set this height to the appropriate size
+  height: 400px; // Set this height to the appropriate size
   overflow-y: scroll; // Only add scroll to vertical column
   padding: 0rem 3rem;
 }
