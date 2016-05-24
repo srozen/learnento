@@ -23,6 +23,7 @@ gem 'sprockets', '2.12.3'
 gem 'jwt'
 gem 'api-versions', '~> 1.2', '>= 1.2.1'
 gem 'redis', '~> 3.2', '>= 3.2.2'
+gem 'thin', '~> 1.6', '>= 1.6.4'
 
 
 source 'https://rails-assets.org' do
