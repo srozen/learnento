@@ -9,6 +9,7 @@ RSpec.feature 'Messaging after unblocking', '
     as_user(user) do
       otheruser_send_me_a_friend_request
       i_check_my_friend_requests_page
+      sleep 0.5
       i_have_a_new_friend_request
       i_accept_the_friend_request
       sleep 0.5
@@ -49,6 +50,7 @@ RSpec.feature 'Messaging after unblocking', '
   end
 
   def i_check_my_friend_requests_page
+    navigation.access_menu
     navigation.access_friend_requests
   end
 

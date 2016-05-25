@@ -22,6 +22,7 @@ RSpec.feature 'User brows his friends requests', '
   }
 
   def i_access_my_friend_request_page
+    navigation.access_menu
     navigation.access_friend_requests
   end
 

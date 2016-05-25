@@ -9,7 +9,7 @@ RSpec.feature 'User accept friend request', '
     as_user(user) do
       otheruser_send_me_a_friend_request
       i_check_my_friend_requests_page
-      sleep 0.5
+      sleep 1
       i_have_a_new_friend_request
       i_accept_the_friend_request
       sleep 1
@@ -34,6 +34,7 @@ RSpec.feature 'User accept friend request', '
   end
 
   def i_check_my_friend_requests_page
+    navigation.access_menu
     navigation.access_friend_requests
   end
 

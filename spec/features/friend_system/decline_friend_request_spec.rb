@@ -28,6 +28,7 @@ RSpec.feature 'Declining a friend request', '
   end
 
   def i_check_my_friend_requests_menu
+    navigation.access_menu
     navigation.access_friend_requests
   end
 
