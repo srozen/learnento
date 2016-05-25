@@ -9,6 +9,7 @@ RSpec.feature 'Declining a friend request', '
     as_user(user) do
       otheruser_send_me_a_friend_request
       i_check_my_friend_requests_menu
+      sleep 0.5
       i_have_a_new_friend_request
       i_decline_the_friend_request
       i_go_on_my_friendlist
