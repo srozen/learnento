@@ -11,6 +11,7 @@ RSpec.feature 'Sending a message to two friends', '
       sleep 1
       as_user(user) do
         i_go_on_messaging_page
+        sleep 0.5
         i_am_on_the_messaging_page
         sleep 2
         i_access_a_conversation(otheruser.first_name)
@@ -30,6 +31,7 @@ RSpec.feature 'Sending a message to two friends', '
       sleep 1
       as_user(otheruser) do
         i_go_on_messaging_page
+        sleep 0.5
         i_am_on_the_messaging_page
         sleep 0.5
         a_conversation_is_active
@@ -42,6 +44,7 @@ RSpec.feature 'Sending a message to two friends', '
       sleep 1
       as_user(randomuser) do
         i_go_on_messaging_page
+        sleep 0.5
         i_am_on_the_messaging_page
         sleep 0.5
         a_conversation_is_active

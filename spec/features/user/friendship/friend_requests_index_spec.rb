@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User brows his friends requests', '
+RSpec.feature 'User browse his friends requests', '
   As a user
   In order to manage my friend requests
   I want to see who I added or who added me as friend', :js do
@@ -8,6 +8,7 @@ RSpec.feature 'User brows his friends requests', '
   scenario 'Registered user checks his friendrequests index' do
     as_user(user) do
       i_access_my_friend_request_page
+      sleep 0.5
       my_friend_request_page_is_displayed
       someone_requested_me_as_friend
     end
