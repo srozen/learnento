@@ -23,7 +23,7 @@ gem 'sprockets', '2.12.3'
 gem 'jwt'
 gem 'api-versions', '~> 1.2', '>= 1.2.1'
 gem 'redis', '~> 3.2', '>= 3.2.2'
-gem 'thin', '~> 1.6', '>= 1.6.4'
+
 
 
 source 'https://rails-assets.org' do
@@ -60,4 +60,5 @@ group :development do
   gem 'airbrussh', require: false
   gem 'highline', require: false
   gem 'capistrano-faster-assets', require: false
+  gem 'thin', '~> 1.6', '>= 1.6.4'
 end
