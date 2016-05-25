@@ -9,6 +9,75 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
         $scope.currentUser['details'] = data;
     });
 
+
+    navigator.getUserMedia = ( navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia ||
+    navigator.msGetUserMedia);
+
+    var peer;
+
+    $scope.initCall = function(id){
+        navigator.getUserMedia({video: true, audio: true}, function(stream){
+
+            peer = new window.SimplePeer({
+                initiator: true,
+                trickle: false,
+                stream: stream
+            });
+            var executed = false;
+            peer.on('signal', function(data){
+                if(!executed){
+                    $rootScope.socket.emit('initCall', {id: id, callerId: $scope.currentUser.id, rtcId: JSON.stringify(data)});
+                    executed = true;
+                }
+
+            });
+
+            $rootScope.socket.on('answering', function(data){
+                console.log('receivre response');
+                peer.signal(data.rtcId);
+            });
+
+            peer.on('stream', function(stream){
+                var video = document.createElement('video');
+                document.body.appendChild(video);
+                video.src = window.URL.createObjectURL(stream);
+                video.play();
+            })
+
+        }, function(err){
+            console.log(err)
+        });
+    };
+
+    $rootScope.socket.on('calling', function(data){
+        console.log('you are called');
+        navigator.getUserMedia({video: true, audio: true}, function(stream) {
+
+            peer = new window.SimplePeer({trickle: false, stream: stream});
+            var executed = false;
+            peer.signal(data.rtcId);
+            peer.on('signal', function (signalData) {
+                if (!executed) {
+                    $rootScope.socket.emit('answerCall', {id: data.callerId, rtcId: JSON.stringify(signalData)});
+                    executed = true;
+                }
+            });
+
+            peer.on('stream', function(stream){
+                var video = document.createElement('video');
+                document.body.appendChild(video);
+                video.src = window.URL.createObjectURL(stream);
+                video.play();
+            })
+
+        }, function(err){
+            console.log(err);
+        });
+    });
+
+    // Fetch all the conversations and associated components
     Messaging.all().success(function(data){
         // Fetch the conversations
         $scope.conversations = data.conversations;
