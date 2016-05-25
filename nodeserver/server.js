@@ -1,10 +1,20 @@
-var io = require('socket.io').listen(5001),
-    redis = require('redis').createClient();
+var redis = require('redis').createClient();
+
+var fs = require('fs');
+
+var options = {
+    key: fs.readFileSync('./server.key'),
+    cert: fs.readFileSync('./server.crt')
+};
+
+var app = require('https').createServer(options)
+    , io = require('socket.io').listen(app);
+
+app.listen(5001);
 
 var clients = {};
 
 io.on('connection', function(socket){
-    //console.log('Client ', socket.id, ' logged in.');
     var subFriendships = require('redis').createClient();
     var subMessaging = require('redis').createClient();
 
@@ -23,6 +33,14 @@ io.on('connection', function(socket){
         delete clients[socket.id];
         //console.log(clients)
     });
+
+    socket.on('initCall', function(data){
+        io.sockets.connected[clients[data.id]].emit('calling', data);
+    });
+
+    socket.on('answerCall', function(data){
+        io.sockets.connected[clients[data.id]].emit('answering', data);
+    })
 
     subFriendships.on('message', function(channel, message){
         data = JSON.parse(message);
