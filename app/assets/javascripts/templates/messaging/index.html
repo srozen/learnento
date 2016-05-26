@@ -11,7 +11,7 @@
         </div>
 
         <div ng-show="userHasConversations" class="active-conversation col-md-8">
-            <div data-purpose="active-conversation-header" class="active-conversation-header">
+            <div data-purpose="active-conversation-header" class="active-conversation-header" id="active-conversation-header">
                 <img ng-src="{{activeConversation.friend.avatar.url}}" alt="Active Conversation User Avatar" class="active-conversation-avatar" height="30" width="30">
                 <h2 class="active-conversation-title">{{activeConversation.friend.first_name}} {{activeConversation.friend.last_name}}</h2>
                 <a href="#/users/{{activeConversation.friend.id}}">
@@ -20,6 +20,7 @@
                 <a href="" ng-click="initCall(activeConversation.friend.id)">
                     <i class="fa fa-video-camera active-conversation-icon icon-grey"></i>
                 </a>
+
             </div>
             <hr>
             <div data-purpose="active-conversation-messages" class="conversation-content" scroll-glue>

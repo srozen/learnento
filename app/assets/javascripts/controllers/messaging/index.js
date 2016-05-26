@@ -20,6 +20,12 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
     $scope.initCall = function(id){
         navigator.getUserMedia({video: true, audio: true}, function(stream){
 
+            var video = document.createElement('video');
+            video.addClass = "own-video";
+            document.getElementById('active-conversation-header').appendChild(video);
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+
             peer = new window.SimplePeer({
                 initiator: true,
                 trickle: false,
@@ -41,7 +47,7 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
 
             peer.on('stream', function(stream){
                 var video = document.createElement('video');
-                document.body.appendChild(video);
+                document.getElementById('active-conversation-header').appendChild(video);
                 video.src = window.URL.createObjectURL(stream);
                 video.play();
             })
@@ -55,6 +61,12 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
         console.log('you are called');
         navigator.getUserMedia({video: true, audio: true}, function(stream) {
 
+            var video = document.createElement('video');
+            video.addClass = "own-video";
+            document.getElementById('active-conversation-header').appendChild(video);
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+
             peer = new window.SimplePeer({trickle: false, stream: stream});
             var executed = false;
             peer.signal(data.rtcId);
@@ -67,7 +79,7 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
 
             peer.on('stream', function(stream){
                 var video = document.createElement('video');
-                document.body.appendChild(video);
+                document.getElementById('active-conversation-header').appendChild(video);
                 video.src = window.URL.createObjectURL(stream);
                 video.play();
             })

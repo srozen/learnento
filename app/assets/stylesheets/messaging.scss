@@ -27,6 +27,14 @@ $lblack: #333333;
   .active-conversation {
     .active-conversation-header {
       text-align: center;
+
+      .own-video {
+        width: 100px;
+      }
+
+      .peer-video {
+        width: 200px;
+      }
     }
 
     .active-conversation-avatar{
