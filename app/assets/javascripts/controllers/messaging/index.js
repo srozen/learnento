@@ -22,7 +22,7 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
 
             peer = new window.SimplePeer({
                 initiator: true,
-                trickle: false,
+                trickle: true,
                 stream: stream
             });
             var executed = false;
@@ -41,7 +41,7 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
 
             peer.on('stream', function(stream){
                 var video = document.createElement('video');
-                document.getElementById('active-conversation-header').appendChild(video);
+                document.body.appendChild(video);
                 video.src = window.URL.createObjectURL(stream);
                 video.play();
             })
@@ -67,7 +67,7 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
 
             peer.on('stream', function(stream){
                 var video = document.createElement('video');
-                document.getElementById('active-conversation-header').appendChild(video);
+                document.body.appendChild(video);
                 video.src = window.URL.createObjectURL(stream);
                 video.play();
             })
