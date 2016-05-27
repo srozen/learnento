@@ -16,20 +16,29 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
     navigator.msGetUserMedia);
 
     var peer;
+    var interlocutorId;
+    var localVideo = document.getElementById('own-video');
+    var peerVideo = document.getElementById('peer-video');
+    var localStream, peerStream;
 
     $scope.initCall = function(id){
         navigator.getUserMedia({video: true, audio: true}, function(stream){
 
-            var video = document.createElement('video');
-            document.body.appendChild(video);
-            video.src = window.URL.createObjectURL(stream);
-            video.play();
+            interlocutorId = id;
+
+            $scope.$apply(function(){
+                $scope.videoChatting = true;
+            });
+
+            localStream = stream;
+            localVideo.srcObject = stream;
 
             peer = new window.SimplePeer({
                 initiator: true,
                 trickle: false,
                 stream: stream
             });
+
             var executed = false;
             peer.on('signal', function(data){
                 if(!executed){
@@ -45,10 +54,8 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
             });
 
             peer.on('stream', function(stream){
-                var video = document.createElement('video');
-                document.body.appendChild(video);
-                video.src = window.URL.createObjectURL(stream);
-                video.play();
+                peerVideo.srcObject = stream;
+                peerStream = stream;
             })
 
         }, function(err){
@@ -60,10 +67,14 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
         console.log('you are called');
         navigator.getUserMedia({video: true, audio: true}, function(stream) {
 
-            var video = document.createElement('video');
-            document.body.appendChild(video);
-            video.src = window.URL.createObjectURL(stream);
-            video.play();
+            interlocutorId = data.callerId;
+
+            $scope.$apply(function(){
+                $scope.videoChatting = true;
+            });
+
+            localStream = stream;
+            localVideo.srcObject = stream;
 
             peer = new window.SimplePeer({trickle: false, stream: stream});
             var executed = false;
@@ -76,16 +87,34 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
             });
 
             peer.on('stream', function(stream){
-                var video = document.createElement('video');
-                document.body.appendChild(video);
-                video.src = window.URL.createObjectURL(stream);
-                video.play();
-            })
+                peerVideo.srcObject = stream;
+                peerStream = stream;
+            });
 
         }, function(err){
             console.log(err);
         });
     });
+
+    $scope.stopCall = function(){
+        localStream.stop();
+        localStream = null;
+        $scope.videoChatting = false;
+        $rootScope.socket.emit('endCall', {id: interlocutorId});
+        peer.destroy();
+        peer = null;
+    };
+
+    $rootScope.socket.on('peerEndCall', function(data){
+        localStream.stop();
+        localStream = null;
+        $scope.$apply(function(){
+            $scope.videoChatting = false;
+        });
+        peer.destroy();
+        peer = null;
+    });
+
 
     // Fetch all the conversations and associated components
     Messaging.all().success(function(data){

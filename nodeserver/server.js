@@ -38,9 +38,13 @@ io.on('connection', function(socket){
         io.sockets.connected[clients[data.id]].emit('calling', data);
     });
 
+    socket.on('endCall', function(data){
+        io.sockets.connected[clients[data.id]].emit('peerEndCall', data);
+    });
+
     socket.on('answerCall', function(data){
         io.sockets.connected[clients[data.id]].emit('answering', data);
-    })
+    });
 
     subFriendships.on('message', function(channel, message){
         data = JSON.parse(message);

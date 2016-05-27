@@ -17,9 +17,18 @@
                 <a href="#/users/{{activeConversation.friend.id}}">
                     <i class="fa fa-user active-conversation-icon icon-grey"></i>
                 </a>
-                <a href="" ng-click="initCall(activeConversation.friend.id)">
+                <a href="" ng-hide="videoChatting" ng-click="initCall(activeConversation.friend.id)">
                     <i class="fa fa-video-camera active-conversation-icon icon-grey"></i>
                 </a>
+
+                <div ng-show="videoChatting">
+                    <video id="peer-video" autoplay></video>
+                    <video id="own-video" autoplay></video>
+                    <br>
+                    <button href="" ng-click="stopCall(activeConversation.friend.id)" class="btn btn-default">
+                        <i class="fa fa-times"></i> End Call
+                    </button>
+                </div>
 
             </div>
             <hr>

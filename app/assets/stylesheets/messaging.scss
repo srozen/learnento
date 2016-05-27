@@ -28,11 +28,11 @@ $lblack: #333333;
     .active-conversation-header {
       text-align: center;
 
-      .own-video {
+      #own-video {
         width: 100px;
       }
 
-      .peer-video {
+      #peer-video {
         width: 200px;
       }
     }
