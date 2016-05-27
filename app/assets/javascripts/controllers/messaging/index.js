@@ -35,7 +35,7 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
 
             peer = new window.SimplePeer({
                 initiator: true,
-                trickle: false,
+                trickle: true,
                 stream: stream
             });
 
@@ -76,7 +76,7 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
             localStream = stream;
             localVideo.srcObject = stream;
 
-            peer = new window.SimplePeer({trickle: false, stream: stream});
+            peer = new window.SimplePeer({trickle: true, stream: stream});
             var executed = false;
             peer.signal(data.rtcId);
             peer.on('signal', function (signalData) {
