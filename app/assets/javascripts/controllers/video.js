@@ -8,7 +8,7 @@ angular.module('Learnento').controller('VideoController', [function(){
     navigator.msGetUserMedia);
 
 // Put variables in global scope to make them available to the browser console.
-    var video = document.querySelector('video');
+    var video = document.getElementById('gum-local');
     var constraints = window.constraints = {
         audio: false,
         video: true
