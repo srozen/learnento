@@ -20,9 +20,14 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
     $scope.initCall = function(id){
         navigator.getUserMedia({video: true, audio: true}, function(stream){
 
+            var video = document.createElement('video');
+            document.body.appendChild(video);
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+
             peer = new window.SimplePeer({
                 initiator: true,
-                trickle: true,
+                trickle: false,
                 stream: stream
             });
             var executed = false;
@@ -54,6 +59,11 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
     $rootScope.socket.on('calling', function(data){
         console.log('you are called');
         navigator.getUserMedia({video: true, audio: true}, function(stream) {
+
+            var video = document.createElement('video');
+            document.body.appendChild(video);
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
 
             peer = new window.SimplePeer({trickle: false, stream: stream});
             var executed = false;
