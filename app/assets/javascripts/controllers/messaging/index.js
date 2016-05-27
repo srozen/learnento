@@ -102,17 +102,15 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
         $scope.videoChatting = false;
         $rootScope.socket.emit('endCall', {id: interlocutorId});
         peer.destroy();
-        peer = null;
     };
 
     $rootScope.socket.on('peerEndCall', function(data){
-        localStream.stop();
-        localStream = null;
         $scope.$apply(function(){
+            localStream.stop();
+            localStream = null;
             $scope.videoChatting = false;
+            peer.destroy();
         });
-        peer.destroy();
-        peer = null;
     });
 
 
