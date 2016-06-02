@@ -30,10 +30,12 @@ $lblack: #333333;
 
       #own-video {
         width: 100px;
+        resize: both;
       }
 
       #peer-video {
         width: 200px;
+        resize: both;
       }
     }
 

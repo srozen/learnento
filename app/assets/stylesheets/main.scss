@@ -19,17 +19,24 @@ body{
 
 // Button primary
 
-.btn-primary {
+.btn-custom-primary {
   background-color: $lred;
   border-color: #D66380;
 }
-.btn-primary:active,
-.btn-primary.active {
+
+.btn-custom-primary:hover,
+.btn-custom-primary.hover {
   background-color: #d6453e;
   border-color: #D66380;
 }
-.btn-primary:hover,
-.btn-primary.hover {
+
+.btn-custom-primary:focus,
+.btn-custom-primary.focus {
+  background-color: #d6453e;
+  border-color: #D66380;
+}
+.btn-custom-primary:active,
+.btn-custom-primary.active {
   background-color: #d6453e;
   border-color: #D66380;
 }
