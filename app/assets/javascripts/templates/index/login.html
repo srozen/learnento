@@ -1,4 +1,4 @@
-<section ng-controller="LoginController" class="user-login">
+<section ng-controller="LoginController" class=" container user-login">
     <h2>Log in</h2>
 
     <div ng-if="error_message" data-purpose="error-message" class="alert alert-danger" role="alert">
@@ -16,7 +16,7 @@
             <input type="password" autocomplete="off" class="form-control" data-purpose="login-password" ng-model="password">
         </fieldset>
         <fieldset class="login-buttons">
-            <input type="submit" class="btn btn-primary" data-purpose="login-confirmation" value="Login">
+            <input type="submit" class="btn btn-custom-primary" data-purpose="login-confirmation" value="Login">
             <a href="#/home" class="btn btn-default" data-purpose="cancel-edition"> Cancel </a>
         </fieldset>
     </form>

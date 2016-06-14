@@ -6,12 +6,12 @@
     <div class="avatar">
         <img ng-src="{{user.avatar.url}}" alt="" height="100" width="100">
     </div>
-    <a data-purpose="edit-profile-button" ng-show="editButton" class="btn btn-primary" href="#/users/edit/{{user.id}}"> Edit </a>
+    <a data-purpose="edit-profile-button" ng-show="editButton" class="btn btn-custom-primary" href="#/users/edit/{{user.id}}"> Edit </a>
     <a data-purpose="pending-friend-request-button" ng-show="pendingButton" class="btn btn-primary disabled" >Pending</a>
 
     <div ng-show="addFriendButton">
         <!-- Button trigger modal -->
-        <button type="button" class='btn btn-primary' data-toggle="modal" data-target="#add-friend" data-purpose="send-friend-request-button">
+        <button type="button" class='btn btn-custom-primary' data-toggle="modal" data-target="#add-friend" data-purpose="send-friend-request-button">
             <i class="fa fa-user-plus"></i> Add User </button>
         </button>
 
