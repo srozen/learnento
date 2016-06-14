@@ -123,6 +123,10 @@ angular.module('Learnento').controller('MessagingIndexController', ['$scope', 'A
             // associated friend
             User.show(getFriendId(conversation, $scope.currentUser.id)).success(function(data){
                 conversation['friend'] = data;
+                $rootScope.socket.emit('checkConnection', {id: data.id});
+                $rootScope.socket.on('connectionStatus' + data.id , function(connectionStatus){
+                    $scope.$apply(conversation['friend']['connected'] = connectionStatus);
+                });
             });
             // last message
             Messaging.show(conversation.id).success(function(data){

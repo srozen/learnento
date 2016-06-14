@@ -4,7 +4,15 @@
             <h3> Conversations </h3>
             <div ng-repeat="conversation in conversations" class="conversations-panel-item">
                 <img ng-src="{{conversation.friend.avatar.url}}" class="avatar" alt="friend-avatar" height="50" width="50">
-                <a href="" ng-click="switchConversation($index)">{{conversation.friend.first_name}}</a><br>
+                <a href="" ng-click="switchConversation($index)">{{conversation.friend.first_name}}</a>
+                <span class="connection-status">
+                    <span ng-if="conversation.friend.connected" class="connection-status-online">
+                        <i class="fa fa-circle" aria-hidden="true"></i>
+                    </span>
+                    <span ng-if="!conversation.friend.connected" class="connection-status-offline">
+                        <i class="fa fa-circle-o" aria-hidden="true"></i>
+                    </span>
+                </span><br>
                 <i ng-if="conversation.newMessage" class="fa fa-dot-circle-o new-message-icon" aria-hidden="true"></i>
                 <em>{{conversation.lastUser}} : <span data-purpose="conversation-last-message">{{conversation.lastMessage.content}}</span></em>
             </div>
@@ -19,7 +27,16 @@
                 </a>
                 <a href="" ng-hide="videoChatting" ng-click="initCall(activeConversation.friend.id)">
                     <i class="fa fa-video-camera active-conversation-icon icon-grey"></i>
-                </a>
+                </a><br>
+
+                <span class="connection-status">
+                    <span ng-if="activeConversation.friend.connected" class="connection-status-online">
+                        <i class="fa fa-circle" aria-hidden="true"></i> Online
+                    </span>
+                    <span ng-if="!activeConversation.friend.connected" class="connection-status-offline">
+                        <i class="fa fa-circle-o" aria-hidden="true"></i> Offline
+                    </span>
+                </span>
 
                 <div ng-show="videoChatting">
                     <video id="peer-video" autoplay></video>

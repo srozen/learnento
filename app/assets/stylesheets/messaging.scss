@@ -3,6 +3,14 @@ $lgrey: #AFA8A2;
 $lbackground: #F2F1ED;
 $lblack: #333333;
 
+.connection-status-online{
+  color: #008800;
+}
+
+.connection-status-offline{
+  color: $lgrey;
+}
+
 
 
 .messaging-page {
