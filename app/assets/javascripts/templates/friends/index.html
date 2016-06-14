@@ -4,7 +4,15 @@
         <div ng-repeat="friend in friends">
             <div data-purpose="friend" class="friend-infos">
                 <img ng-src="{{friend.avatar.url}}" alt="friend-avatar" width="50" height="50">
-                <a href="#/users/{{friend.id}}">{{friend.first_name}} {{friend.last_name}}</a>
+                <a href="#/users/{{friend.id}}">{{friend.first_name}} {{friend.last_name}}</a><br>
+                <span class="connection-status">
+                    <span ng-if="friend.connected" class="connection-status-online">
+                        <i class="fa fa-circle" aria-hidden="true"></i> Online
+                    </span>
+                    <span ng-if="!friend.connected" class="connection-status-offline">
+                        <i class="fa fa-circle-o" aria-hidden="true"></i> Offline
+                    </span>
+                </span>
             </div>
         <span class="friend-removing">
             <!-- Button trigger modal -->

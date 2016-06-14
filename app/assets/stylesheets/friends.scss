@@ -2,11 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$lred: #D66360;
+$lgrey: #AFA8A2;
+$lbackground: #F2F1ED;
+$lblack: #333333;
+
+
 .friendlist {
   width: 60%;
   margin: auto;
 
   .friend-infos {
     margin: 1rem 0rem;
+  }
+
+  .connection-status-online{
+    color: #008800;
+  }
+
+  .connection-status-offline{
+    color: $lgrey;
   }
 }

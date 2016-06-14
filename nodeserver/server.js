@@ -34,8 +34,8 @@ io.on('connection', function(socket){
         //console.log(clients)
     });
 
-    socket.on('connectionCheck', function(data){
-        socket.emit(clients[data.id] != null);
+    socket.on('checkConnection', function(data){
+        socket.emit('connectionStatus' + data.id, clients[data.id] != null);
     });
 
     socket.on('initCall', function(data){

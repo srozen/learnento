@@ -1,4 +1,4 @@
-angular.module('Learnento').controller('FriendsIndexController', ['$scope', 'Friend', 'Authentication', '$location', '$document', function($scope, Friend, Authentication, $location, $document){
+angular.module('Learnento').controller('FriendsIndexController', ['$scope', 'Friend', 'Authentication', '$location', '$document', '$rootScope', function($scope, Friend, Authentication, $location, $document, $rootScope){
 
     if(!Authentication.loggedIn()){
         $location.path('home');
@@ -7,6 +7,14 @@ angular.module('Learnento').controller('FriendsIndexController', ['$scope', 'Fri
 
     Friend.all().success(function(data){
         $scope.friends = data.friends;
+
+        angular.forEach($scope.friends, function(friend){
+            $rootScope.socket.emit('checkConnection', {id: friend.id});
+            $rootScope.socket.on('connectionStatus' + friend.id , function(data){
+                $scope.$apply(friend['connected'] = data);
+            });
+        });
+
         $scope.blockeds = data.blocked_friends;
 
     });
