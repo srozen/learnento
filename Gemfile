@@ -44,6 +44,7 @@ group :development, :test do
   gem 'teaspoon-jasmine', '~> 2.2'
   gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
   gem 'poltergeist', '~> 1.9'
+  gem 'rails-erd', '~> 1.4', '>= 1.4.7'
 end
 
 group :development do
